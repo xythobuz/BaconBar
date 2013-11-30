@@ -27,7 +27,12 @@
 -(IBAction)showPreferences:(id)sender {
     [NSApp activateIgnoringOtherApps:YES];
     prefWindow = [[PrefController alloc] initWithWindowNibName:@"Prefs"];
+    [prefWindow setParent:self];
     [prefWindow showWindow:self];
+}
+
+-(void)prefReturnName:(NSString *)name Pass:(NSString *)pass subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits {
+    
 }
 
 @end

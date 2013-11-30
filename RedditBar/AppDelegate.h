@@ -20,4 +20,6 @@
 
 -(IBAction)showPreferences:(id)sender;
 
+-(void)prefReturnName:(NSString *)name Pass:(NSString *)pass subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits;
+
 @end

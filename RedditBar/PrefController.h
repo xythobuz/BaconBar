@@ -10,4 +10,16 @@
 
 @interface PrefController : NSWindowController
 
+@property (weak) IBOutlet NSTextField *username;
+@property (weak) IBOutlet NSSecureTextField *password;
+@property (atomic, retain) IBOutlet NSButtonCell *subscriptions;
+@property (atomic, retain) IBOutlet NSTextView *subreddits;
+@property (atomic, retain) IBOutlet NSWindow *win;
+@property (atomic, retain) NSObject *parent;
+
+-(IBAction)buttonSave:(id)sender;
+-(IBAction)toggleSubs:(id)sender;
+
+-(void)setParent:(NSObject *)par;
+
 @end
