@@ -11,6 +11,8 @@
 
 @implementation PrefController
 
+NSString *modhashSetLiteral = @"__MODHASH__IS__SET__";
+
 @synthesize username, password, subscriptions, subreddits, win, parent, state, lengthFormat, lengthField, lengthStepper, length;
 
 -(Boolean)isValidList:(NSString *)input {
@@ -27,14 +29,17 @@
     
     [username setStringValue:state.username];
     
-    // TODO what to do with modhash and password field??
+    if (![state.modhash isEqualToString:@""]) {
+        [password setStringValue:modhashSetLiteral];
+    }
     
     [subscriptions setState:[NSNumber numberWithBool:state.useSubsciptions].integerValue];
     [self toggleSubs:nil]; // Maybe the subreddits field needs to be editable
     
     NSMutableString *reddits = [[NSMutableString alloc] init];
     for(int i = 0; i < [state.subreddits count]; i++) {
-        [reddits appendFormat:@"%@\n", [state.subreddits objectAtIndex:i]];
+        if (![[state.subreddits objectAtIndex:i] isEqualToString:@""])
+            [reddits appendFormat:@"%@\n", [state.subreddits objectAtIndex:i]];
     }
     [subreddits setString:reddits];
     length = state.length;
@@ -43,6 +48,32 @@
 }
 
 -(IBAction)buttonSave:(id)sender {
+    if ([username.stringValue isEqualToString:@""]) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:@"OK"];
+        [alert setMessageText:@"Authentication Error"];
+        [alert setInformativeText:@"Please enter a username!"];
+        [alert setAlertStyle:NSCriticalAlertStyle];
+        [alert beginSheetModalForWindow:win modalDelegate:nil didEndSelector:nil contextInfo:nil];
+        return;
+    }
+    
+    if ([state.modhash isEqualToString:@""] && [password.stringValue isEqualToString:@""]) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:@"OK"];
+        [alert setMessageText:@"Authentication Error"];
+        [alert setInformativeText:@"Please enter a password!"];
+        [alert setAlertStyle:NSCriticalAlertStyle];
+        [alert beginSheetModalForWindow:win modalDelegate:nil didEndSelector:nil contextInfo:nil];
+        return;
+    }
+    
+    NSString *modhash = state.modhash;
+    if (![password.stringValue isEqualToString:modhashSetLiteral]) {
+        // TODO reauthenticate & get modhash from reddit
+        
+    }
+    
     Boolean subs;
     if (subscriptions.state != 0) {
         subs = TRUE;
@@ -58,9 +89,6 @@
             return;
         }
     }
-    
-    // TODO if username / password changed, get modhash! Else, use the one we got from init
-    NSString *modhash;
     
     AppDelegate *app = (AppDelegate *)parent;
     [app prefReturnName:username.stringValue Modhash:modhash subscriptions:subs subreddits:subreddits.textStorage.string length:length];

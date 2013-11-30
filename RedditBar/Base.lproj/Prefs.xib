@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
     </dependencies>
     <objects>
@@ -153,7 +154,7 @@ Gw
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="XZM-90-hQ8">
                         <rect key="frame" x="118" y="234" width="204" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Subscriptions" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="vW5-Cp-Bm1">
+                        <buttonCell key="cell" type="check" title="Subscriptions" bezelStyle="regularSquare" imagePosition="overlaps" alignment="right" state="on" inset="2" id="vW5-Cp-Bm1">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
