@@ -10,9 +10,24 @@
 
 @implementation AppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    // Insert code here to initialize your application
+@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, prefWindow;
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
+    NSBundle *bundle = [NSBundle mainBundle];
+    statusImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon" ofType:@"png"]];
+    statusHighlightImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon-alt" ofType:@"png"]];
+    [statusItem setImage:statusImage];
+    [statusItem setAlternateImage:statusHighlightImage];
+    [statusItem setMenu:statusMenu];
+    [statusItem setToolTip:@"Reddit Bar"];
+    [statusItem setHighlightMode:YES];
+}
+
+-(IBAction)showPreferences:(id)sender {
+    [NSApp activateIgnoringOtherApps:YES];
+    prefWindow = [[PrefController alloc] initWithWindowNibName:@"Prefs"];
+    [prefWindow showWindow:self];
 }
 
 @end

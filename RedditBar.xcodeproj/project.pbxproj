@@ -18,6 +18,10 @@
 		E9CF1F41184961020004AE02 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9CF1F20184961010004AE02 /* Cocoa.framework */; };
 		E9CF1F49184961020004AE02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9CF1F47184961020004AE02 /* InfoPlist.strings */; };
 		E9CF1F4B184961020004AE02 /* RedditBarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CF1F4A184961020004AE02 /* RedditBarTests.m */; };
+		E9CF1F561849654F0004AE02 /* icon-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = E9CF1F541849654F0004AE02 /* icon-alt.png */; };
+		E9CF1F571849654F0004AE02 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9CF1F551849654F0004AE02 /* icon.png */; };
+		E9CF1F5C1849685C0004AE02 /* PrefController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CF1F5B1849685C0004AE02 /* PrefController.m */; };
+		E9CF1F5E184968DD0004AE02 /* Prefs.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CF1F5D184968DD0004AE02 /* Prefs.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,11 @@
 		E9CF1F46184961020004AE02 /* RedditBarTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RedditBarTests-Info.plist"; sourceTree = "<group>"; };
 		E9CF1F48184961020004AE02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E9CF1F4A184961020004AE02 /* RedditBarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedditBarTests.m; sourceTree = "<group>"; };
+		E9CF1F541849654F0004AE02 /* icon-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-alt.png"; sourceTree = "<group>"; };
+		E9CF1F551849654F0004AE02 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		E9CF1F5A1849685C0004AE02 /* PrefController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefController.h; sourceTree = "<group>"; };
+		E9CF1F5B1849685C0004AE02 /* PrefController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefController.m; sourceTree = "<group>"; };
+		E9CF1F5D184968DD0004AE02 /* Prefs.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Prefs.xib; path = ../Prefs.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +124,14 @@
 		E9CF1F26184961010004AE02 /* RedditBar */ = {
 			isa = PBXGroup;
 			children = (
+				E9CF1F541849654F0004AE02 /* icon-alt.png */,
+				E9CF1F551849654F0004AE02 /* icon.png */,
 				E9CF1F32184961010004AE02 /* AppDelegate.h */,
 				E9CF1F33184961010004AE02 /* AppDelegate.m */,
 				E9CF1F35184961020004AE02 /* MainMenu.xib */,
+				E9CF1F5A1849685C0004AE02 /* PrefController.h */,
+				E9CF1F5B1849685C0004AE02 /* PrefController.m */,
+				E9CF1F5D184968DD0004AE02 /* Prefs.xib */,
 				E9CF1F38184961020004AE02 /* Images.xcassets */,
 				E9CF1F27184961010004AE02 /* Supporting Files */,
 			);
@@ -230,10 +244,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9CF1F5E184968DD0004AE02 /* Prefs.xib in Resources */,
 				E9CF1F2B184961010004AE02 /* InfoPlist.strings in Resources */,
 				E9CF1F39184961020004AE02 /* Images.xcassets in Resources */,
+				E9CF1F571849654F0004AE02 /* icon.png in Resources */,
 				E9CF1F31184961010004AE02 /* Credits.rtf in Resources */,
 				E9CF1F37184961020004AE02 /* MainMenu.xib in Resources */,
+				E9CF1F561849654F0004AE02 /* icon-alt.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +271,7 @@
 			files = (
 				E9CF1F34184961010004AE02 /* AppDelegate.m in Sources */,
 				E9CF1F2D184961010004AE02 /* main.m in Sources */,
+				E9CF1F5C1849685C0004AE02 /* PrefController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
