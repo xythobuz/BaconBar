@@ -22,6 +22,10 @@
     [statusItem setMenu:statusMenu];
     [statusItem setToolTip:@"Reddit Bar"];
     [statusItem setHighlightMode:YES];
+    
+    // TODO load preferences
+    // TODO apply config
+    // TODO reload menu list
 }
 
 -(IBAction)showPreferences:(id)sender {
@@ -32,7 +36,9 @@
 }
 
 -(void)prefReturnName:(NSString *)name Pass:(NSString *)pass subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits {
-    
+    // TODO store preferences
+    // TODO apply config
+    // TODO reload menu list
 }
 
 @end
