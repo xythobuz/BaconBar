@@ -10,7 +10,33 @@
 
 @implementation AppDelegate
 
-@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, prefWindow;
+@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, prefWindow, currentState;
+
+-(void)defaultPreferences {
+    NSUserDefaults *store = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *appDefaults = [NSMutableDictionary dictionaryWithObject:@"" forKey:@"username"];
+    [appDefaults setValue:@"" forKey:@"modhash"];
+    [appDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"subscriptions"];
+    [store registerDefaults:appDefaults];
+}
+
+-(void)savePreferences {
+    NSUserDefaults *store = [NSUserDefaults standardUserDefaults];
+    [store setObject:currentState.username forKey:@"username"];
+    [store setObject:currentState.modhash forKey:@"modhash"];
+    [store setBool:currentState.useSubsciptions forKey:@"subscriptions"];
+    [store setObject:currentState.subreddits forKey:@"subreddits"];
+    [store synchronize];
+}
+
+-(void)loadPreferences {
+    NSUserDefaults *store = [NSUserDefaults standardUserDefaults];
+    [store synchronize];
+    [currentState setUsername:[store stringForKey:@"username"]];
+    [currentState setModhash:[store stringForKey:@"modhash"]];
+    [currentState setUseSubsciptions:[store boolForKey:@"subscriptions"]];
+    [currentState setSubreddits:[store arrayForKey:@"subreddits"]];
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
@@ -23,8 +49,11 @@
     [statusItem setToolTip:@"Reddit Bar"];
     [statusItem setHighlightMode:YES];
     
-    // TODO load preferences
-    // TODO apply config
+    [self defaultPreferences];
+    currentState = [[StateModel alloc] init];
+    [self loadPreferences]; // Fill currentState
+    
+    // TODO apply currentState
     // TODO reload menu list
 }
 
@@ -32,12 +61,18 @@
     [NSApp activateIgnoringOtherApps:YES];
     prefWindow = [[PrefController alloc] initWithWindowNibName:@"Prefs"];
     [prefWindow setParent:self];
+    [prefWindow setState:currentState];
     [prefWindow showWindow:self];
 }
 
--(void)prefReturnName:(NSString *)name Pass:(NSString *)pass subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits {
-    // TODO store preferences
-    // TODO apply config
+-(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits {
+    currentState.username = name;
+    currentState.modhash = modhash;
+    currentState.useSubsciptions = subscriptions;
+    currentState.subreddits = [subreddits componentsSeparatedByString: @"\n"];
+    [self savePreferences]; // write currentState
+    
+    // TODO apply currentState
     // TODO reload menu list
 }
 

@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PrefController.h"
+#import "StateModel.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
@@ -17,9 +18,10 @@
 @property (atomic, retain) NSImage *statusImage;
 @property (atomic, retain) NSImage *statusHighlightImage;
 @property (atomic, retain) PrefController *prefWindow;
+@property (atomic, retain) StateModel *currentState;
 
 -(IBAction)showPreferences:(id)sender;
 
--(void)prefReturnName:(NSString *)name Pass:(NSString *)pass subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits;
+-(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits;
 
 @end

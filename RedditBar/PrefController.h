@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "StateModel.h"
 
 @interface PrefController : NSWindowController
 
@@ -16,10 +17,9 @@
 @property (atomic, retain) IBOutlet NSTextView *subreddits;
 @property (atomic, retain) IBOutlet NSWindow *win;
 @property (atomic, retain) NSObject *parent;
+@property (atomic, retain) StateModel *state;
 
 -(IBAction)buttonSave:(id)sender;
 -(IBAction)toggleSubs:(id)sender;
-
--(void)setParent:(NSObject *)par;
 
 @end

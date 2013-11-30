@@ -11,47 +11,65 @@
 
 @implementation PrefController
 
-@synthesize username, password, subscriptions, subreddits, win, parent;
+@synthesize username, password, subscriptions, subreddits, win, parent, state;
 
--(Boolean)isValidList:(NSString *)input validated:(NSString **)output {
-    // TODO: Check if subreddit input is valid
-    *output = input;
-    return TRUE;
-}
-
--(IBAction)buttonSave:(id)sender {
-    Boolean subs;
-    NSString *reddits;
-    if (subscriptions.state != 0) {
-        subs = TRUE;
+-(Boolean)isValidList:(NSString *)input {
+    NSCharacterSet *invalidChars = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_\n"] invertedSet];
+    if ([input rangeOfCharacterFromSet:invalidChars].location != NSNotFound) {
+        return FALSE;
     } else {
-        subs = FALSE;
-        if (![self isValidList:subreddits.textStorage.string validated:&reddits]) {
-            // TODO show error message
-            return;
-        }
-    }
-    AppDelegate *app = (AppDelegate *)parent;
-    [app prefReturnName:username.stringValue Pass:password.stringValue subscriptions:subs subreddits:reddits];
-    [win performClose:self];
-}
-
--(IBAction)toggleSubs:(id)sender {
-    if (subscriptions.state != 0) {
-        // Use subscriptions
-        [subreddits setEditable:FALSE];
-        [subreddits setString:@""];
-    } else {
-        // Use userlist
-        [subreddits setEditable:TRUE];
-        [subreddits setString:@"One Subreddit per line!"];
+        return TRUE;
     }
 }
 
 -(void)showWindow:(id)sender {
     [super showWindow:sender];
     
+    [username setStringValue:state.username];
     
+    // TODO what to do with modhash and password field??
+    
+    [subscriptions setState:[NSNumber numberWithBool:state.useSubsciptions].integerValue];
+    [self toggleSubs:nil]; // Maybe the subreddits field needs to be editable
+    
+    NSMutableString *reddits = [[NSMutableString alloc] init];
+    for(int i = 0; i < [state.subreddits count]; i++) {
+        [reddits appendFormat:@"%@\n", [state.subreddits objectAtIndex:i]];
+    }
+    [subreddits setString:reddits];
+}
+
+-(IBAction)buttonSave:(id)sender {
+    Boolean subs;
+    if (subscriptions.state != 0) {
+        subs = TRUE;
+    } else {
+        subs = FALSE;
+        if (![self isValidList:subreddits.textStorage.string]) {
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle:@"OK"];
+            [alert setMessageText:@"Preferences Error"];
+            [alert setInformativeText:@"Subreddit List Invalid!"];
+            [alert setAlertStyle:NSCriticalAlertStyle];
+            [alert beginSheetModalForWindow:win modalDelegate:nil didEndSelector:nil contextInfo:nil];
+            return;
+        }
+    }
+    
+    // TODO if username / password changed, get modhash! Else, use the one we got from init
+    NSString *modhash;
+    
+    AppDelegate *app = (AppDelegate *)parent;
+    [app prefReturnName:username.stringValue Modhash:modhash subscriptions:subs subreddits:subreddits.textStorage.string];
+    [win performClose:self];
+}
+
+-(IBAction)toggleSubs:(id)sender {
+    if (subscriptions.state != 0) {
+        [subreddits setEditable:FALSE];
+    } else {
+        [subreddits setEditable:TRUE];
+    }
 }
 
 @end
