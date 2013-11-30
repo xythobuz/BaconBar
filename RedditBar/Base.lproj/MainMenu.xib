@@ -13,6 +13,7 @@
         <customObject id="-3" userLabel="Application"/>
         <customObject id="494" customClass="AppDelegate">
             <connections>
+                <outlet property="application" destination="-3" id="1K5-sF-Im7"/>
                 <outlet property="statusMenu" destination="fuB-VS-nSq" id="AZY-3d-h8G"/>
             </connections>
         </customObject>
@@ -23,16 +24,22 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="7Rc-fG-5uQ"/>
-                <menuItem title="Preferences" id="1lW-9C-xt6">
+                <menuItem title="Preferences..." id="1lW-9C-xt6">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="showPreferences:" target="494" id="Fen-Ci-4tc"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Quit" id="710-jT-UTj">
+                <menuItem title="About Reddit Bar" id="4ah-qP-9eP">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="terminate:" target="-1" id="xXG-pT-ly4"/>
+                        <action selector="showAbout:" target="494" id="7IO-ZS-OJf"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Quit" id="oyC-3G-WEc">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="terminate:" target="-1" id="AHO-0z-nt2"/>
                     </connections>
                 </menuItem>
             </items>

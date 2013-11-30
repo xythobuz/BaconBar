@@ -13,6 +13,7 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (atomic, retain) IBOutlet NSMenu *statusMenu;
+@property (atomic, retain) IBOutlet NSApplication *application;
 
 @property (atomic, retain) NSStatusItem *statusItem;
 @property (atomic, retain) NSImage *statusImage;
@@ -21,7 +22,8 @@
 @property (atomic, retain) StateModel *currentState;
 
 -(IBAction)showPreferences:(id)sender;
+-(IBAction)showAbout:(id)sender;
 
--(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits;
+-(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length;
 
 @end

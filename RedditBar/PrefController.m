@@ -11,7 +11,7 @@
 
 @implementation PrefController
 
-@synthesize username, password, subscriptions, subreddits, win, parent, state;
+@synthesize username, password, subscriptions, subreddits, win, parent, state, lengthFormat, lengthField, lengthStepper, length;
 
 -(Boolean)isValidList:(NSString *)input {
     NSCharacterSet *invalidChars = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_\n"] invertedSet];
@@ -37,6 +37,9 @@
         [reddits appendFormat:@"%@\n", [state.subreddits objectAtIndex:i]];
     }
     [subreddits setString:reddits];
+    length = state.length;
+    [lengthStepper setIntegerValue:length];
+    [lengthField setIntegerValue:length];
 }
 
 -(IBAction)buttonSave:(id)sender {
@@ -60,7 +63,7 @@
     NSString *modhash;
     
     AppDelegate *app = (AppDelegate *)parent;
-    [app prefReturnName:username.stringValue Modhash:modhash subscriptions:subs subreddits:subreddits.textStorage.string];
+    [app prefReturnName:username.stringValue Modhash:modhash subscriptions:subs subreddits:subreddits.textStorage.string length:length];
     [win performClose:self];
 }
 
@@ -70,6 +73,12 @@
     } else {
         [subreddits setEditable:TRUE];
     }
+}
+
+-(IBAction)lengthDidChange:(id)sender {
+    length = [sender integerValue];
+    [lengthStepper setIntegerValue:length];
+    [lengthField setIntegerValue:length];
 }
 
 @end

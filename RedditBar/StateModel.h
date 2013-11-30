@@ -14,5 +14,6 @@
 @property (atomic, retain) NSString *modhash;
 @property (atomic) Boolean useSubsciptions;
 @property (atomic, retain) NSArray *subreddits;
+@property (atomic) NSInteger length;
 
 @end

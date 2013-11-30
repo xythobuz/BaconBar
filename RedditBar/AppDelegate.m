@@ -10,13 +10,14 @@
 
 @implementation AppDelegate
 
-@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, prefWindow, currentState;
+@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, prefWindow, currentState, application;
 
 -(void)defaultPreferences {
     NSUserDefaults *store = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *appDefaults = [NSMutableDictionary dictionaryWithObject:@"" forKey:@"username"];
     [appDefaults setValue:@"" forKey:@"modhash"];
     [appDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"subscriptions"];
+    [appDefaults setValue:[NSNumber numberWithInt:10] forKey:@"length"];
     [store registerDefaults:appDefaults];
 }
 
@@ -26,6 +27,7 @@
     [store setObject:currentState.modhash forKey:@"modhash"];
     [store setBool:currentState.useSubsciptions forKey:@"subscriptions"];
     [store setObject:currentState.subreddits forKey:@"subreddits"];
+    [store setInteger:currentState.length forKey:@"length"];
     [store synchronize];
 }
 
@@ -36,6 +38,7 @@
     [currentState setModhash:[store stringForKey:@"modhash"]];
     [currentState setUseSubsciptions:[store boolForKey:@"subscriptions"]];
     [currentState setSubreddits:[store arrayForKey:@"subreddits"]];
+    [currentState setLength:[store integerForKey:@"length"]];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -65,11 +68,17 @@
     [prefWindow showWindow:self];
 }
 
--(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits {
+-(IBAction)showAbout:(id)sender {
+    [NSApp activateIgnoringOtherApps:YES];
+    [application orderFrontStandardAboutPanel:self];
+}
+
+-(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length {
     currentState.username = name;
     currentState.modhash = modhash;
     currentState.useSubsciptions = subscriptions;
     currentState.subreddits = [subreddits componentsSeparatedByString: @"\n"];
+    currentState.length = length;
     [self savePreferences]; // write currentState
     
     // TODO apply currentState

@@ -11,15 +11,20 @@
 
 @interface PrefController : NSWindowController
 
-@property (weak) IBOutlet NSTextField *username;
-@property (weak) IBOutlet NSSecureTextField *password;
+@property (atomic, retain) IBOutlet NSTextField *username;
+@property (atomic, retain) IBOutlet NSSecureTextField *password;
 @property (atomic, retain) IBOutlet NSButtonCell *subscriptions;
 @property (atomic, retain) IBOutlet NSTextView *subreddits;
 @property (atomic, retain) IBOutlet NSWindow *win;
+@property (atomic, retain) IBOutlet NSNumberFormatter *lengthFormat;
+@property (atomic, retain) IBOutlet NSTextField *lengthField;
+@property (atomic, retain) IBOutlet NSStepper *lengthStepper;
 @property (atomic, retain) NSObject *parent;
 @property (atomic, retain) StateModel *state;
+@property (atomic) NSInteger length;
 
 -(IBAction)buttonSave:(id)sender;
 -(IBAction)toggleSubs:(id)sender;
+-(IBAction)lengthDidChange:(id)sender;
 
 @end
