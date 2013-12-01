@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E9341914184A1A1A00D03488 /* StateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9341913184A1A1A00D03488 /* StateModel.m */; };
 		E934191B184A47DE00D03488 /* Prefs.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9341919184A47DE00D03488 /* Prefs.xib */; };
+		E9B6773E184B73DC00850559 /* Reddit.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6773D184B73DC00850559 /* Reddit.m */; };
 		E9CF1F21184961010004AE02 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9CF1F20184961010004AE02 /* Cocoa.framework */; };
 		E9CF1F2B184961010004AE02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9CF1F29184961010004AE02 /* InfoPlist.strings */; };
 		E9CF1F2D184961010004AE02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CF1F2C184961010004AE02 /* main.m */; };
@@ -39,6 +40,8 @@
 		E9341912184A1A1A00D03488 /* StateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateModel.h; sourceTree = "<group>"; };
 		E9341913184A1A1A00D03488 /* StateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateModel.m; sourceTree = "<group>"; };
 		E934191A184A47DE00D03488 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Prefs.xib; sourceTree = "<group>"; };
+		E9B6773C184B73DC00850559 /* Reddit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reddit.h; sourceTree = "<group>"; };
+		E9B6773D184B73DC00850559 /* Reddit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reddit.m; sourceTree = "<group>"; };
 		E9CF1F1D184961010004AE02 /* RedditBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedditBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9CF1F20184961010004AE02 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E9CF1F23184961010004AE02 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -131,6 +134,8 @@
 				E9CF1F551849654F0004AE02 /* icon.png */,
 				E9CF1F32184961010004AE02 /* AppDelegate.h */,
 				E9CF1F33184961010004AE02 /* AppDelegate.m */,
+				E9B6773C184B73DC00850559 /* Reddit.h */,
+				E9B6773D184B73DC00850559 /* Reddit.m */,
 				E9341912184A1A1A00D03488 /* StateModel.h */,
 				E9341913184A1A1A00D03488 /* StateModel.m */,
 				E9CF1F35184961020004AE02 /* MainMenu.xib */,
@@ -295,6 +300,7 @@
 				E9341914184A1A1A00D03488 /* StateModel.m in Sources */,
 				E9CF1F2D184961010004AE02 /* main.m in Sources */,
 				E9CF1F5C1849685C0004AE02 /* PrefController.m in Sources */,
+				E9B6773E184B73DC00850559 /* Reddit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

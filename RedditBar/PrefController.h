@@ -19,6 +19,7 @@
 @property (atomic, retain) IBOutlet NSNumberFormatter *lengthFormat;
 @property (atomic, retain) IBOutlet NSTextField *lengthField;
 @property (atomic, retain) IBOutlet NSStepper *lengthStepper;
+@property (atomic, retain) IBOutlet NSProgressIndicator *progress;
 @property (atomic, retain) NSObject *parent;
 @property (atomic, retain) StateModel *state;
 @property (atomic) NSInteger length;

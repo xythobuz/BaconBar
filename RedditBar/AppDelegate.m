@@ -10,7 +10,23 @@
 
 @implementation AppDelegate
 
-@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, prefWindow, currentState, application;
+@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, prefWindow, currentState, application, api;
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
+    NSBundle *bundle = [NSBundle mainBundle];
+    statusImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon" ofType:@"png"]];
+    statusHighlightImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon-alt" ofType:@"png"]];
+    [statusItem setImage:statusImage];
+    [statusItem setAlternateImage:statusHighlightImage];
+    [statusItem setMenu:statusMenu];
+    [statusItem setToolTip:@"Reddit Bar"];
+    [statusItem setHighlightMode:YES];
+    currentState = [[StateModel alloc] init];
+    [self defaultPreferences];
+    [self loadPreferences];
+    [self reloadListWithOptions];
+}
 
 -(void)defaultPreferences {
     NSUserDefaults *store = [NSUserDefaults standardUserDefaults];
@@ -41,23 +57,9 @@
     [currentState setLength:[store integerForKey:@"length"]];
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
-    NSBundle *bundle = [NSBundle mainBundle];
-    statusImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon" ofType:@"png"]];
-    statusHighlightImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon-alt" ofType:@"png"]];
-    [statusItem setImage:statusImage];
-    [statusItem setAlternateImage:statusHighlightImage];
-    [statusItem setMenu:statusMenu];
-    [statusItem setToolTip:@"Reddit Bar"];
-    [statusItem setHighlightMode:YES];
+-(void)reloadListWithOptions {
+    api = [[Reddit alloc] initWithUsername:currentState.username Modhash:currentState.modhash];
     
-    [self defaultPreferences];
-    currentState = [[StateModel alloc] init];
-    [self loadPreferences]; // Fill currentState
-    
-    // TODO apply currentState
-    // TODO reload menu list
 }
 
 -(IBAction)showPreferences:(id)sender {
@@ -79,10 +81,8 @@
     currentState.useSubsciptions = subscriptions;
     currentState.subreddits = [subreddits componentsSeparatedByString: @"\n"];
     currentState.length = length;
-    [self savePreferences]; // write currentState
-    
-    // TODO apply currentState
-    // TODO reload menu list
+    [self savePreferences];
+    [self reloadListWithOptions];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "PrefController.h"
 #import "StateModel.h"
+#import "Reddit.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
@@ -20,6 +21,7 @@
 @property (atomic, retain) NSImage *statusHighlightImage;
 @property (atomic, retain) PrefController *prefWindow;
 @property (atomic, retain) StateModel *currentState;
+@property (atomic, retain) Reddit *api;
 
 -(IBAction)showPreferences:(id)sender;
 -(IBAction)showAbout:(id)sender;
