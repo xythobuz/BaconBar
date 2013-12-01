@@ -23,9 +23,12 @@
 @property (atomic, retain) PrefController *prefWindow;
 @property (atomic, retain) StateModel *currentState;
 @property (atomic, retain) Reddit *api;
+@property (atomic, retain) NSArray *menuItems;
+@property (atomic, retain) NSArray *redditItems;
 
 -(IBAction)showPreferences:(id)sender;
 -(IBAction)showAbout:(id)sender;
+-(IBAction)linkToOpen:(id)sender;
 
 -(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length;
 

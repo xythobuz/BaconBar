@@ -10,7 +10,7 @@
 
 @implementation AppDelegate
 
-@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, prefWindow, currentState, application, api, firstMenuItem;
+@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, prefWindow, currentState, application, api, firstMenuItem, menuItems, redditItems;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
@@ -82,19 +82,76 @@
             [firstMenuItem setTitle:@"Error reading Frontpage!"];
             return;
         }
-        [self putItemArrayInMenu:items];
+        redditItems = items;
     } else {
         NSArray *items = [api readSubreddits:currentState.subreddits Length:currentState.length];
         if (items == nil) {
             [firstMenuItem setTitle:@"Error reading Subreddits!"];
             return;
         }
-        [self putItemArrayInMenu:items];
+        redditItems = items;
+    }
+    [self putItemArrayInMenu:redditItems];
+}
+
+-(IBAction)linkToOpen:(id)sender {
+    NSString *title = [(NSMenuItem *)sender title];
+    if ([title isEqualToString:@"Link..."]) {
+        for (NSUInteger i = 0; i < [menuItems count]; i++) {
+            NSMenuItem *item = [menuItems objectAtIndex:i];
+            NSMenu *submenu = item.submenu;
+            if (submenu != nil) {
+                if (sender == [submenu itemAtIndex:0]) {
+                    RedditItem *rItem = [redditItems objectAtIndex:i];
+                    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[rItem link]]];
+                    return;
+                }
+            }
+        }
+    } else if ([title isEqualToString:@"Comments..."]) {
+        for (NSUInteger i = 0; i < [menuItems count]; i++) {
+            NSMenuItem *item = [menuItems objectAtIndex:i];
+            NSMenu *submenu = item.submenu;
+            if (submenu != nil) {
+                if (sender == [submenu itemAtIndex:1]) {
+                    RedditItem *rItem = [redditItems objectAtIndex:i];
+                    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[rItem comments]]];
+                    return;
+                }
+            }
+        }
+    } else {
+        for (NSUInteger i = 0; i < [menuItems count]; i++) {
+            NSMenuItem *item = [menuItems objectAtIndex:i];
+            if (sender == item) {
+                RedditItem *rItem = [redditItems objectAtIndex:i];
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[rItem link]]];
+                return;
+            }
+        }
     }
 }
 
 -(void)putItemArrayInMenu:(NSArray *)array {
-    // TODO populate menu
+    [firstMenuItem setHidden:YES];
+    NSMutableArray *items = [NSMutableArray arrayWithCapacity:array.count];
+    for (NSUInteger i = 0; i < [array count]; i++) {
+        RedditItem *reddit = [array objectAtIndex:i];
+        NSMenuItem *item = [[NSMenuItem alloc] init];
+        [item setTitle:reddit.name];
+        if (reddit.isSelf) {
+            [item setAction:@selector(linkToOpen:)];
+            [item setKeyEquivalent:@""];
+        } else {
+            NSMenu *submenu = [[NSMenu alloc] init];
+            [submenu addItemWithTitle:@"Link..." action:@selector(linkToOpen:) keyEquivalent:@""];
+            [submenu addItemWithTitle:@"Comments..." action:@selector(linkToOpen:) keyEquivalent:@""];
+            [item setSubmenu:submenu];
+        }
+        [items addObject:item];
+        [statusMenu insertItem:item atIndex:i];
+    }
+    menuItems = items;
 }
 
 -(IBAction)showPreferences:(id)sender {

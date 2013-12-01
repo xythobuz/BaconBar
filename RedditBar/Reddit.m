@@ -94,7 +94,12 @@ NSString *appName = @"RedditBar";
 
 -(NSArray *)readFrontpageLength:(NSInteger)length {
     // TODO read frontpage
-    return nil;
+    
+    RedditItem *a = [RedditItem itemWithName:@"Test 1" Link:@"http://google.de" Comments:@"http://google.de" Self:NO];
+    RedditItem *b = [RedditItem itemWithName:@"Test 2" Link:@"http://reddit.com" Comments:@"http://reddit.com" Self:NO];
+    RedditItem *c = [RedditItem itemWithName:@"Test 3" Link:@"http://google.de" Comments:nil Self:YES];
+    NSMutableArray *array = [NSMutableArray arrayWithObjects:a, b, c, nil];
+    return array;
 }
 
 -(NSArray *)readSubreddits:(NSArray *)source Length:(NSInteger)length {
