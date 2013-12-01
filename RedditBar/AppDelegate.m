@@ -25,12 +25,7 @@
     currentState = [[StateModel alloc] init];
     [self defaultPreferences];
     [self loadPreferences];
-    
-    if ([currentState.modhash isEqualToString:@""]) {
-        [firstMenuItem setTitle:@"Not logged in!"];
-    } else {
-        [self reloadListWithOptions];
-    }
+    [self reloadListWithOptions];
 }
 
 -(void)defaultPreferences {
@@ -46,7 +41,7 @@
     NSUserDefaults *store = [NSUserDefaults standardUserDefaults];
     [store setObject:currentState.username forKey:@"username"];
     [store setObject:currentState.modhash forKey:@"modhash"];
-    [store setBool:currentState.useSubsciptions forKey:@"subscriptions"];
+    [store setBool:currentState.useSubscriptions forKey:@"subscriptions"];
     [store setObject:currentState.subreddits forKey:@"subreddits"];
     [store setInteger:currentState.length forKey:@"length"];
     [store synchronize];
@@ -57,7 +52,7 @@
     [store synchronize];
     [currentState setUsername:[store stringForKey:@"username"]];
     [currentState setModhash:[store stringForKey:@"modhash"]];
-    [currentState setUseSubsciptions:[store boolForKey:@"subscriptions"]];
+    [currentState setUseSubscriptions:[store boolForKey:@"subscriptions"]];
     [currentState setSubreddits:[store arrayForKey:@"subreddits"]];
     [currentState setLength:[store integerForKey:@"length"]];
 }
@@ -68,7 +63,38 @@
         return;
     }
     api = [[Reddit alloc] initWithUsername:currentState.username Modhash:currentState.modhash];
+    NSString *tmp = @"";
+    if (![api isAuthenticatedNewModhash:&tmp]) {
+        [firstMenuItem setTitle:@"Not logged in!"];
+        return;
+    }
     
+    // Reddit gives out new modhashes all the time??
+    //if (![tmp isEqualToString:@""]) {
+    //    NSLog(@"Modhash has changed!\n");
+    //    currentState.modhash = tmp; // We got a new modhash from reddit
+    //    [self savePreferences];
+    //}
+    
+    if (currentState.useSubscriptions) {
+        NSArray *items = [api readFrontpageLength:currentState.length];
+        if (items == nil) {
+            [firstMenuItem setTitle:@"Error reading Frontpage!"];
+            return;
+        }
+        [self putItemArrayInMenu:items];
+    } else {
+        NSArray *items = [api readSubreddits:currentState.subreddits Length:currentState.length];
+        if (items == nil) {
+            [firstMenuItem setTitle:@"Error reading Subreddits!"];
+            return;
+        }
+        [self putItemArrayInMenu:items];
+    }
+}
+
+-(void)putItemArrayInMenu:(NSArray *)array {
+    // TODO populate menu
 }
 
 -(IBAction)showPreferences:(id)sender {
@@ -87,7 +113,7 @@
 -(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length {
     currentState.username = name;
     currentState.modhash = modhash;
-    currentState.useSubsciptions = subscriptions;
+    currentState.useSubscriptions = subscriptions;
     currentState.subreddits = [subreddits componentsSeparatedByString: @"\n"];
     currentState.length = length;
     [self savePreferences];

@@ -12,7 +12,7 @@
 
 @property (atomic, retain) NSString *username;
 @property (atomic, retain) NSString *modhash;
-@property (atomic) Boolean useSubsciptions;
+@property (atomic) Boolean useSubscriptions;
 @property (atomic, retain) NSArray *subreddits;
 @property (atomic) NSInteger length;
 

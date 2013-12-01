@@ -10,6 +10,6 @@
 
 @implementation StateModel
 
-@synthesize username, modhash, useSubsciptions, subreddits;
+@synthesize username, modhash, useSubscriptions, subreddits;
 
 @end

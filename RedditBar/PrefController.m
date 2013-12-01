@@ -31,7 +31,7 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
     if (![state.modhash isEqualToString:@""]) {
         [password setStringValue:modhashSetLiteral];
     }
-    [subscriptions setState:[NSNumber numberWithBool:state.useSubsciptions].integerValue];
+    [subscriptions setState:[NSNumber numberWithBool:state.useSubscriptions].integerValue];
     [self toggleSubs:nil]; // Maybe the subreddits field needs to be editable
     NSMutableString *reddits = [[NSMutableString alloc] init];
     for(int i = 0; i < [state.subreddits count]; i++) {

@@ -36,6 +36,28 @@ NSString *appName = @"RedditBar";
     return self;
 }
 
+-(BOOL)isAuthenticatedNewModhash:(NSString **)newModHash {
+    NSHTTPURLResponse *response;
+    NSData *data = [self queryAPI:@"api/me.json" withResponse:&response];
+    if ((data != nil) && ([response statusCode] == 200)) {
+        NSError *error;
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        NSDictionary *data = [json valueForKey:@"data"];
+        if (data == nil)
+            return FALSE;
+        NSString *newHash = [data valueForKey:@"modhash"];
+        if ((newHash == nil) || ([newHash isEqualToString:@""]))
+            return FALSE;
+        if (![newHash isEqualToString:modhash]) {
+            modhash = newHash;
+            *newModHash = newHash;
+        }
+        return TRUE;
+        
+    }
+    return FALSE;
+}
+
 -(NSString *)queryModhash {
     NSMutableString *stringData = [NSMutableString stringWithString:@"api_type=json"];
     [stringData appendFormat:@"&user=%@", [self urlencode: username]];
@@ -70,6 +92,33 @@ NSString *appName = @"RedditBar";
     }
 }
 
+-(NSArray *)readFrontpageLength:(NSInteger)length {
+    // TODO read frontpage
+    return nil;
+}
+
+-(NSArray *)readSubreddits:(NSArray *)source Length:(NSInteger)length {
+    // TODO read subreddits
+    return nil;
+}
+
+-(NSData *)queryAPI:(NSString *)api withResponse:(NSHTTPURLResponse **)res {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[self getAPIPoint:api]];
+    [request setTimeoutInterval:5.0];
+    [request setCachePolicy:NSURLCacheStorageNotAllowed];
+    [request setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%@/%@ by %@", appName, version, author] forHTTPHeaderField:@"User-Agent"];
+    if ((modhash != nil) && (![modhash isEqualToString:@""]))
+        [request addValue:modhash forHTTPHeaderField:@"X-Modhash"];
+    [request setHTTPMethod:@"GET"];
+    NSError *error = nil;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:res error:&error];
+    if (error)
+        return nil;
+    else
+        return data;
+}
+
 -(NSData *)queryAPI:(NSString *)api withData:(NSString *)string andResponse:(NSHTTPURLResponse **)res {
     NSData *requestBodyData = [string dataUsingEncoding:NSUTF8StringEncoding];
     NSString *requestBodyLength = [NSString stringWithFormat:@"%lu", (unsigned long)[requestBodyData length]];
@@ -79,6 +128,8 @@ NSString *appName = @"RedditBar";
     [request setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:requestBodyLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:[NSString stringWithFormat:@"%@/%@ by %@", appName, version, author] forHTTPHeaderField:@"User-Agent"];
+    if ((modhash != nil) && (![modhash isEqualToString:@""]))
+        [request addValue:modhash forHTTPHeaderField:@"X-Modhash"];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:requestBodyData];
     NSError *error = nil;
@@ -87,10 +138,6 @@ NSString *appName = @"RedditBar";
         return nil;
     else
         return data;
-}
-
--(BOOL)isAuthenticated {
-    return FALSE;
 }
 
 -(NSURL *)getAPIPoint:(NSString *)where {
