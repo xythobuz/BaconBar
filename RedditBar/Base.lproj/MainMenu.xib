@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
     </dependencies>
     <objects>
@@ -14,6 +15,7 @@
         <customObject id="494" customClass="AppDelegate">
             <connections>
                 <outlet property="application" destination="-3" id="1K5-sF-Im7"/>
+                <outlet property="firstMenuItem" destination="jfb-mv-iN9" id="2QT-D1-leO"/>
                 <outlet property="statusMenu" destination="fuB-VS-nSq" id="AZY-3d-h8G"/>
             </connections>
         </customObject>

@@ -10,7 +10,7 @@
 
 @implementation AppDelegate
 
-@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, prefWindow, currentState, application, api;
+@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, prefWindow, currentState, application, api, firstMenuItem;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
@@ -25,7 +25,12 @@
     currentState = [[StateModel alloc] init];
     [self defaultPreferences];
     [self loadPreferences];
-    [self reloadListWithOptions];
+    
+    if ([currentState.modhash isEqualToString:@""]) {
+        [firstMenuItem setTitle:@"Not logged in!"];
+    } else {
+        [self reloadListWithOptions];
+    }
 }
 
 -(void)defaultPreferences {
@@ -58,6 +63,10 @@
 }
 
 -(void)reloadListWithOptions {
+    if ([currentState.modhash isEqualToString:@""]) {
+        [firstMenuItem setTitle:@"Not logged in!"];
+        return;
+    }
     api = [[Reddit alloc] initWithUsername:currentState.username Modhash:currentState.modhash];
     
 }
