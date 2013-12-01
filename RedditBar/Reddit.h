@@ -20,4 +20,8 @@
 -(id)initWithUsername:(NSString *)name Modhash:(NSString *)hash;
 -(BOOL)isAuthenticated;
 
+-(NSData *)queryAPI:(NSString *)api withData:(NSString *)string andResponse:(NSHTTPURLResponse **)res;
+-(NSString *)urlencode:(NSString *)string;
+
+
 @end
