@@ -119,8 +119,21 @@ NSString *replaceTextForTitle = @"...";
 }
 
 -(void)readSubreddits:(id)parent {
-    // TODO read subreddits (as multireddit?)
-    // TODO if implemented, enable checkbox in prefs
+    NSMutableString *subs = [NSMutableString stringWithString:@"r/"];
+    for (NSUInteger i = 0; i < [subreddits count]; i++) {
+        [subs appendString:[subreddits objectAtIndex:i]];
+        if (i < ([subreddits count] - 1)) {
+            [subs appendString:@"+"];
+        }
+    }
+    NSString *url = [NSString stringWithFormat:@"%@/hot.json?limit=%ld", subs, (long)length];
+    NSHTTPURLResponse *response;
+    NSData *data = [self queryAPI:url withResponse:&response];
+    if ((data == nil) || ([response statusCode] != 200)) {
+        [parent performSelectorOnMainThread:@selector(reloadListHasSubredditsCallback:) withObject:nil waitUntilDone:false];
+    } else {
+        [parent performSelectorOnMainThread:@selector(reloadListHasSubredditsCallback:) withObject:[self convertJSONToItemArray:data] waitUntilDone:false];
+    }
 }
 
 -(void)isAuthenticatedNewModhash:(id)parent {
