@@ -143,7 +143,7 @@ Gw
                     <button id="XZM-90-hQ8">
                         <rect key="frame" x="118" y="234" width="204" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Subscriptions" bezelStyle="regularSquare" imagePosition="overlaps" alignment="right" state="on" inset="2" id="vW5-Cp-Bm1">
+                        <buttonCell key="cell" type="check" title="Subscriptions" bezelStyle="regularSquare" imagePosition="overlaps" alignment="right" enabled="NO" state="on" inset="2" id="vW5-Cp-Bm1">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>

@@ -60,12 +60,17 @@
 -(void)reloadListWithOptions {
     if ([currentState.modhash isEqualToString:@""]) {
         [firstMenuItem setTitle:@"Not logged in!"];
+        [self clearMenuItems];
+        [firstMenuItem setHidden:NO];
+        [self showPreferences:nil];
         return;
     }
     api = [[Reddit alloc] initWithUsername:currentState.username Modhash:currentState.modhash];
     NSString *tmp = @"";
     if (![api isAuthenticatedNewModhash:&tmp]) {
-        [firstMenuItem setTitle:@"Not logged in!"];
+        [firstMenuItem setTitle:@"Login Error!"];
+        [self clearMenuItems];
+        [firstMenuItem setHidden:NO];
         return;
     }
     
@@ -80,6 +85,8 @@
         NSArray *items = [api readFrontpageLength:currentState.length];
         if (items == nil) {
             [firstMenuItem setTitle:@"Error reading Frontpage!"];
+            [self clearMenuItems];
+            [firstMenuItem setHidden:NO];
             return;
         }
         redditItems = items;
@@ -87,10 +94,14 @@
         NSArray *items = [api readSubreddits:currentState.subreddits Length:currentState.length];
         if (items == nil) {
             [firstMenuItem setTitle:@"Error reading Subreddits!"];
+            [self clearMenuItems];
+            [firstMenuItem setHidden:NO];
             return;
         }
         redditItems = items;
     }
+    [self clearMenuItems];
+    [firstMenuItem setHidden:YES];
     [self putItemArrayInMenu:redditItems];
 }
 
@@ -132,8 +143,16 @@
     }
 }
 
+-(void)clearMenuItems {
+    if (menuItems != nil) {
+        for (NSUInteger i = 0; i < [menuItems count]; i++) {
+            [statusMenu removeItem:[menuItems objectAtIndex:i]];
+        }
+        menuItems = nil;
+    }
+}
+
 -(void)putItemArrayInMenu:(NSArray *)array {
-    [firstMenuItem setHidden:YES];
     NSMutableArray *items = [NSMutableArray arrayWithCapacity:array.count];
     for (NSUInteger i = 0; i < [array count]; i++) {
         RedditItem *reddit = [array objectAtIndex:i];

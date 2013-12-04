@@ -93,12 +93,36 @@ NSString *appName = @"RedditBar";
 }
 
 -(NSArray *)readFrontpageLength:(NSInteger)length {
-    // TODO read frontpage
+    NSHTTPURLResponse *response;
+    NSString *url = [NSString stringWithFormat:@"hot.json?limit=%ld", (long)length];
+    NSData *data = [self queryAPI:url withResponse:&response];
+    if ((data == nil) || ([response statusCode] != 200)) {
+        return nil;
+    }
+    NSError *error;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+    NSDictionary *dat = [json valueForKey:@"data"];
+    if (dat == nil)
+        return nil;
+    NSArray *children = [dat valueForKey:@"children"];
+    if (children == nil)
+        return nil;
     
-    RedditItem *a = [RedditItem itemWithName:@"Test 1" Link:@"http://google.de" Comments:@"http://google.de" Self:NO];
-    RedditItem *b = [RedditItem itemWithName:@"Test 2" Link:@"http://reddit.com" Comments:@"http://reddit.com" Self:NO];
-    RedditItem *c = [RedditItem itemWithName:@"Test 3" Link:@"http://google.de" Comments:nil Self:YES];
-    NSMutableArray *array = [NSMutableArray arrayWithObjects:a, b, c, nil];
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:[children count]];
+    for (NSUInteger i = 0; i < [children count]; i++) {
+        NSDictionary *child = [children objectAtIndex:i];
+        NSDictionary *current = [child valueForKey:@"data"];
+        NSString *name = [current valueForKey:@"title"];
+        NSString *link = [current valueForKey:@"url"];
+        NSString *comments = nil;
+        NSNumber *num = [current valueForKey:@"is_self"];
+        BOOL isSelf = [num boolValue];
+        if (!isSelf) {
+            comments = [NSString stringWithFormat:@"http://www.reddit.com%@", [current valueForKey:@"permalink"]];
+        }
+        RedditItem *r = [RedditItem itemWithName:name Link:link Comments:comments Self:isSelf];
+        [array insertObject:r atIndex:i];
+    }
     return array;
 }
 
