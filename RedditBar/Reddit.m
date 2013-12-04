@@ -127,7 +127,7 @@ NSString *appName = @"RedditBar";
 }
 
 -(NSArray *)readSubreddits:(NSArray *)source Length:(NSInteger)length {
-    // TODO read subreddits
+    // TODO read subreddits (as multireddit?)
     return nil;
 }
 

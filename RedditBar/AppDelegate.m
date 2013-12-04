@@ -20,7 +20,7 @@
     [statusItem setImage:statusImage];
     [statusItem setAlternateImage:statusHighlightImage];
     [statusItem setMenu:statusMenu];
-    [statusItem setToolTip:@"Reddit Bar"];
+    [statusItem setToolTip:NSLocalizedString(@"RedditBar", @"Main Menuitem Tooltip")];
     [statusItem setHighlightMode:YES];
     currentState = [[StateModel alloc] init];
     [self defaultPreferences];
@@ -59,7 +59,7 @@
 
 -(void)reloadListWithOptions {
     if ([currentState.modhash isEqualToString:@""]) {
-        [firstMenuItem setTitle:@"Not logged in!"];
+        [firstMenuItem setTitle:NSLocalizedString(@"Not logged in!", @"Statusitem when no modhash is stored")];
         [self clearMenuItems];
         [firstMenuItem setHidden:NO];
         [self showPreferences:nil];
@@ -68,7 +68,7 @@
     api = [[Reddit alloc] initWithUsername:currentState.username Modhash:currentState.modhash];
     NSString *tmp = @"";
     if (![api isAuthenticatedNewModhash:&tmp]) {
-        [firstMenuItem setTitle:@"Login Error!"];
+        [firstMenuItem setTitle:NSLocalizedString(@"Login Error!", @"Statusitem when API is not authenticated")];
         [self clearMenuItems];
         [firstMenuItem setHidden:NO];
         return;
@@ -84,7 +84,7 @@
     if (currentState.useSubscriptions) {
         NSArray *items = [api readFrontpageLength:currentState.length];
         if (items == nil) {
-            [firstMenuItem setTitle:@"Error reading Frontpage!"];
+            [firstMenuItem setTitle:NSLocalizedString(@"Error reading Frontpage!", @"Status api Read error")];
             [self clearMenuItems];
             [firstMenuItem setHidden:NO];
             return;
@@ -93,7 +93,7 @@
     } else {
         NSArray *items = [api readSubreddits:currentState.subreddits Length:currentState.length];
         if (items == nil) {
-            [firstMenuItem setTitle:@"Error reading Subreddits!"];
+            [firstMenuItem setTitle:NSLocalizedString(@"Error reading Subreddits!", @"Status api read error")];
             [self clearMenuItems];
             [firstMenuItem setHidden:NO];
             return;
@@ -107,7 +107,7 @@
 
 -(IBAction)linkToOpen:(id)sender {
     NSString *title = [(NSMenuItem *)sender title];
-    if ([title isEqualToString:@"Link..."]) {
+    if ([title isEqualToString:NSLocalizedString(@"Link...", nil)]) {
         for (NSUInteger i = 0; i < [menuItems count]; i++) {
             NSMenuItem *item = [menuItems objectAtIndex:i];
             NSMenu *submenu = item.submenu;
@@ -119,7 +119,7 @@
                 }
             }
         }
-    } else if ([title isEqualToString:@"Comments..."]) {
+    } else if ([title isEqualToString:NSLocalizedString(@"Comments...", nil)]) {
         for (NSUInteger i = 0; i < [menuItems count]; i++) {
             NSMenuItem *item = [menuItems objectAtIndex:i];
             NSMenu *submenu = item.submenu;
@@ -137,6 +137,7 @@
             if (sender == item) {
                 RedditItem *rItem = [redditItems objectAtIndex:i];
                 [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[rItem link]]];
+                [statusMenu removeItem:[menuItems objectAtIndex:i]];
                 return;
             }
         }
@@ -163,8 +164,8 @@
             [item setKeyEquivalent:@""];
         } else {
             NSMenu *submenu = [[NSMenu alloc] init];
-            [submenu addItemWithTitle:@"Link..." action:@selector(linkToOpen:) keyEquivalent:@""];
-            [submenu addItemWithTitle:@"Comments..." action:@selector(linkToOpen:) keyEquivalent:@""];
+            [submenu addItemWithTitle:NSLocalizedString(@"Link...", @"Link item") action:@selector(linkToOpen:) keyEquivalent:@""];
+            [submenu addItemWithTitle:NSLocalizedString(@"Comments...", @"comment item") action:@selector(linkToOpen:) keyEquivalent:@""];
             [item setSubmenu:submenu];
         }
         [items addObject:item];

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E90E74B4184FAA0F00F38929 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E90E74B2184FAA0F00F38929 /* Localizable.strings */; };
 		E9341914184A1A1A00D03488 /* StateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9341913184A1A1A00D03488 /* StateModel.m */; };
 		E934191B184A47DE00D03488 /* Prefs.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9341919184A47DE00D03488 /* Prefs.xib */; };
 		E9A129B1184BD24000F50D1D /* RedditItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A129B0184BD24000F50D1D /* RedditItem.m */; };
@@ -36,6 +37,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E90E74B3184FAA0F00F38929 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E90E74B6184FAADE00F38929 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		E90E74B7184FAADE00F38929 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Prefs.strings; sourceTree = "<group>"; };
+		E90E74B8184FAADE00F38929 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E90E74B9184FAADE00F38929 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E90E74BA184FAADE00F38929 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = de.lproj/Credits.rtf; sourceTree = "<group>"; };
+		E90E74BB184FAADE00F38929 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E9341912184A1A1A00D03488 /* StateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateModel.h; sourceTree = "<group>"; };
 		E9341913184A1A1A00D03488 /* StateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateModel.m; sourceTree = "<group>"; };
 		E934191A184A47DE00D03488 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Prefs.xib; sourceTree = "<group>"; };
@@ -137,10 +145,11 @@
 				E9A129B0184BD24000F50D1D /* RedditItem.m */,
 				E9341912184A1A1A00D03488 /* StateModel.h */,
 				E9341913184A1A1A00D03488 /* StateModel.m */,
-				E9CF1F35184961020004AE02 /* MainMenu.xib */,
-				E9341919184A47DE00D03488 /* Prefs.xib */,
 				E9CF1F5A1849685C0004AE02 /* PrefController.h */,
 				E9CF1F5B1849685C0004AE02 /* PrefController.m */,
+				E9CF1F35184961020004AE02 /* MainMenu.xib */,
+				E9341919184A47DE00D03488 /* Prefs.xib */,
+				E90E74B2184FAA0F00F38929 /* Localizable.strings */,
 				E9CF1F38184961020004AE02 /* Images.xcassets */,
 				E9CF1F27184961010004AE02 /* Supporting Files */,
 			);
@@ -237,6 +246,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = E9CF1F14184961010004AE02;
 			productRefGroup = E9CF1F1E184961010004AE02 /* Products */;
@@ -255,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9CF1F2B184961010004AE02 /* InfoPlist.strings in Resources */,
+				E90E74B4184FAA0F00F38929 /* Localizable.strings in Resources */,
 				E9CF1F39184961020004AE02 /* Images.xcassets in Resources */,
 				E9CF1F31184961010004AE02 /* Credits.rtf in Resources */,
 				E9CF1F37184961020004AE02 /* MainMenu.xib in Resources */,
@@ -321,10 +332,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		E90E74B2184FAA0F00F38929 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E90E74B3184FAA0F00F38929 /* en */,
+				E90E74B8184FAADE00F38929 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		E9341919184A47DE00D03488 /* Prefs.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E934191A184A47DE00D03488 /* Base */,
+				E90E74B7184FAADE00F38929 /* de */,
 			);
 			name = Prefs.xib;
 			sourceTree = "<group>";
@@ -333,6 +354,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E9CF1F2A184961010004AE02 /* en */,
+				E90E74B9184FAADE00F38929 /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -341,6 +363,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E9CF1F30184961010004AE02 /* en */,
+				E90E74BA184FAADE00F38929 /* de */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -349,6 +372,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E9CF1F36184961020004AE02 /* Base */,
+				E90E74B6184FAADE00F38929 /* de */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -357,6 +381,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E9CF1F48184961020004AE02 /* en */,
+				E90E74BB184FAADE00F38929 /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

@@ -48,9 +48,9 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
 -(IBAction)buttonSave:(id)sender {
     if ([username.stringValue isEqualToString:@""]) {
         NSAlert *alert = [[NSAlert alloc] init];
-        [alert addButtonWithTitle:@"OK"];
-        [alert setMessageText:@"Authentication Error"];
-        [alert setInformativeText:@"Please enter a username!"];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", nil)];
+        [alert setMessageText:NSLocalizedString(@"Authentication Error", @"Pref Error")];
+        [alert setInformativeText:NSLocalizedString(@"Please enter a username!", @"Pref Error")];
         [alert setAlertStyle:NSCriticalAlertStyle];
         [alert beginSheetModalForWindow:win modalDelegate:nil didEndSelector:nil contextInfo:nil];
         return;
@@ -58,9 +58,9 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
     
     if ([state.modhash isEqualToString:@""] && [password.stringValue isEqualToString:@""]) {
         NSAlert *alert = [[NSAlert alloc] init];
-        [alert addButtonWithTitle:@"OK"];
-        [alert setMessageText:@"Authentication Error"];
-        [alert setInformativeText:@"Please enter a password!"];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", nil)];
+        [alert setMessageText:NSLocalizedString(@"Authentication Error", nil)];
+        [alert setInformativeText:NSLocalizedString(@"Please enter a password!", @"Pref Error")];
         [alert setAlertStyle:NSCriticalAlertStyle];
         [alert beginSheetModalForWindow:win modalDelegate:nil didEndSelector:nil contextInfo:nil];
         return;
@@ -74,9 +74,9 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
         [progress stopAnimation:self];
         if ((modhash == nil) || ([modhash isEqualToString:@""])) {
             NSAlert *alert = [[NSAlert alloc] init];
-            [alert addButtonWithTitle:@"OK"];
-            [alert setMessageText:@"Authentication Error"];
-            [alert setInformativeText:@"Wrong Username or Password!"];
+            [alert addButtonWithTitle:NSLocalizedString(@"OK", nil)];
+            [alert setMessageText:NSLocalizedString(@"Authentication Error", nil)];
+            [alert setInformativeText:NSLocalizedString(@"Wrong Username or Password!", @"Pref API Error")];
             [alert setAlertStyle:NSCriticalAlertStyle];
             [alert beginSheetModalForWindow:win modalDelegate:nil didEndSelector:nil contextInfo:nil];
             return;
@@ -90,9 +90,9 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
         subs = FALSE;
         if (![self isValidList:subreddits.textStorage.string]) {
             NSAlert *alert = [[NSAlert alloc] init];
-            [alert addButtonWithTitle:@"OK"];
-            [alert setMessageText:@"Preferences Error"];
-            [alert setInformativeText:@"Subreddit List Invalid!"];
+            [alert addButtonWithTitle:NSLocalizedString(@"OK", nil)];
+            [alert setMessageText:NSLocalizedString(@"Preferences Error", @"Pref Error")];
+            [alert setInformativeText:NSLocalizedString(@"Subreddit List Invalid!", @"Pref Error")];
             [alert setAlertStyle:NSCriticalAlertStyle];
             [alert beginSheetModalForWindow:win modalDelegate:nil didEndSelector:nil contextInfo:nil];
             return;

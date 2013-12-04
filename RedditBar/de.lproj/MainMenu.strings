@@ -1,0 +1,12 @@
+
+/* Class = "NSMenuItem"; title = "Preferences..."; ObjectID = "1lW-9C-xt6"; */
+"1lW-9C-xt6.title" = "Einstellungen...";
+
+/* Class = "NSMenuItem"; title = "About Reddit Bar"; ObjectID = "4ah-qP-9eP"; */
+"4ah-qP-9eP.title" = "Über RedditBar";
+
+/* Class = "NSMenuItem"; title = "Loading..."; ObjectID = "jfb-mv-iN9"; */
+"jfb-mv-iN9.title" = "Lade...";
+
+/* Class = "NSMenuItem"; title = "Quit"; ObjectID = "oyC-3G-WEc"; */
+"oyC-3G-WEc.title" = "Beenden";
