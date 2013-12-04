@@ -57,6 +57,47 @@
     [currentState setLength:[store integerForKey:@"length"]];
 }
 
+-(void)reloadListNotAuthenticatedCallback {
+    [firstMenuItem setTitle:NSLocalizedString(@"Login Error!", @"Statusitem when API is not authenticated")];
+    [self clearMenuItems];
+    [firstMenuItem setHidden:NO];
+}
+
+-(void)reloadListHasFrontpageCallback:(NSArray *)items {
+    if (items == nil) {
+        [firstMenuItem setTitle:NSLocalizedString(@"Error reading Frontpage!", @"Status api Read error")];
+        [self clearMenuItems];
+        [firstMenuItem setHidden:NO];
+        return;
+    }
+    redditItems = items;
+    [self clearMenuItems];
+    [firstMenuItem setHidden:YES];
+    [self putItemArrayInMenu:redditItems];
+}
+
+-(void)reloadListHasSubredditsCallback:(NSArray *)items {
+    if (items == nil) {
+        [firstMenuItem setTitle:NSLocalizedString(@"Error reading Subreddits!", @"Status api read error")];
+        [self clearMenuItems];
+        [firstMenuItem setHidden:NO];
+        return;
+    }
+    redditItems = items;
+    [self clearMenuItems];
+    [firstMenuItem setHidden:YES];
+    [self putItemArrayInMenu:redditItems];
+}
+
+-(void)reloadListIsAuthenticatedCallback {
+    if (currentState.useSubscriptions) {
+        [NSThread detachNewThreadSelector:@selector(readFrontpage:) toTarget:api withObject:self];
+    } else {
+        [api setSubreddits:currentState.subreddits];
+        [NSThread detachNewThreadSelector:@selector(readSubreddits:) toTarget:api withObject:self];
+    }
+}
+
 -(void)reloadListWithOptions {
     if ([currentState.modhash isEqualToString:@""]) {
         [firstMenuItem setTitle:NSLocalizedString(@"Not logged in!", @"Statusitem when no modhash is stored")];
@@ -65,44 +106,9 @@
         [self showPreferences:nil];
         return;
     }
-    api = [[Reddit alloc] initWithUsername:currentState.username Modhash:currentState.modhash];
-    NSString *tmp = @"";
-    if (![api isAuthenticatedNewModhash:&tmp]) {
-        [firstMenuItem setTitle:NSLocalizedString(@"Login Error!", @"Statusitem when API is not authenticated")];
-        [self clearMenuItems];
-        [firstMenuItem setHidden:NO];
-        return;
-    }
     
-    // Reddit gives out new modhashes all the time??
-    //if (![tmp isEqualToString:@""]) {
-    //    NSLog(@"Modhash has changed!\n");
-    //    currentState.modhash = tmp; // We got a new modhash from reddit
-    //    [self savePreferences];
-    //}
-    
-    if (currentState.useSubscriptions) {
-        NSArray *items = [api readFrontpageLength:currentState.length];
-        if (items == nil) {
-            [firstMenuItem setTitle:NSLocalizedString(@"Error reading Frontpage!", @"Status api Read error")];
-            [self clearMenuItems];
-            [firstMenuItem setHidden:NO];
-            return;
-        }
-        redditItems = items;
-    } else {
-        NSArray *items = [api readSubreddits:currentState.subreddits Length:currentState.length];
-        if (items == nil) {
-            [firstMenuItem setTitle:NSLocalizedString(@"Error reading Subreddits!", @"Status api read error")];
-            [self clearMenuItems];
-            [firstMenuItem setHidden:NO];
-            return;
-        }
-        redditItems = items;
-    }
-    [self clearMenuItems];
-    [firstMenuItem setHidden:YES];
-    [self putItemArrayInMenu:redditItems];
+    api = [[Reddit alloc] initWithUsername:currentState.username Modhash:currentState.modhash Length:currentState.length];
+    [NSThread detachNewThreadSelector:@selector(isAuthenticatedNewModhash:) toTarget:api withObject:self];
 }
 
 -(IBAction)linkToOpen:(id)sender {

@@ -14,16 +14,22 @@
 @property (atomic, retain) NSString *username;
 @property (atomic, retain) NSString *modhash;
 @property (atomic, retain) NSString *password;
+@property (atomic) NSInteger length;
+@property (atomic, retain) NSArray *subreddits;
 
+// Used by Pref Window, unthreaded
 -(id)initWithUsername:(NSString *)name Password:(NSString *)pass;
 -(NSString *)queryModhash;
 
--(id)initWithUsername:(NSString *)name Modhash:(NSString *)hash;
--(BOOL)isAuthenticatedNewModhash:(NSString **)newModHash;
+// Used by MainMenu
+-(id)initWithUsername:(NSString *)name Modhash:(NSString *)hash Length:(NSInteger)leng;
 
--(NSArray *)readFrontpageLength:(NSInteger)length;
--(NSArray *)readSubreddits:(NSArray *)source Length:(NSInteger)length;
+// Use Threaded!
+-(void)isAuthenticatedNewModhash:(id)parent;
+-(void)readFrontpage:(id)parent;
+-(void)readSubreddits:(id)parent;
 
+// Internal
 -(NSData *)queryAPI:(NSString *)api withData:(NSString *)string andResponse:(NSHTTPURLResponse **)res;
 -(NSString *)urlencode:(NSString *)string;
 

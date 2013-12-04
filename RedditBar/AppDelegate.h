@@ -30,6 +30,12 @@
 -(IBAction)showAbout:(id)sender;
 -(IBAction)linkToOpen:(id)sender;
 
+-(void)reloadListWithOptions;
+-(void)reloadListIsAuthenticatedCallback;
+-(void)reloadListNotAuthenticatedCallback;
+-(void)reloadListHasSubredditsCallback:(NSArray *)items;
+-(void)reloadListHasFrontpageCallback:(NSArray *)items;
+
 -(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length;
 
 @end
