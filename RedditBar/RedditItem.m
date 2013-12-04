@@ -10,7 +10,7 @@
 
 @implementation RedditItem
 
-@synthesize name, link, comments, isSelf;
+@synthesize name, fullName, link, comments, isSelf;
 
 +(RedditItem *)itemWithName:(NSString *)name Link:(NSString *)link Comments:(NSString *)comments Self:(BOOL)isSelf {
     RedditItem *i = [[RedditItem alloc] init];

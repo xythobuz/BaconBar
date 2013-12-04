@@ -101,6 +101,7 @@ NSString *replaceTextForTitle = @"...";
             name = [NSString stringWithFormat:@"%@%@", [name substringToIndex:(maxTitleLength - [replaceTextForTitle length])], replaceTextForTitle];
         }
         RedditItem *r = [RedditItem itemWithName:name Link:link Comments:comments Self:isSelf];
+        [r setFullName:[current valueForKey:@"title"]];
         [array insertObject:r atIndex:i];
     }
     return array;

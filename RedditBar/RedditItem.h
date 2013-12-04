@@ -11,6 +11,7 @@
 @interface RedditItem : NSObject
 
 @property (atomic, retain) NSString *name;
+@property (atomic, retain) NSString *fullName;
 @property (atomic, retain) NSString *link;
 @property (atomic, retain) NSString *comments;
 @property (atomic) BOOL isSelf;

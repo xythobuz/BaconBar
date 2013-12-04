@@ -165,6 +165,8 @@
         RedditItem *reddit = [array objectAtIndex:i];
         NSMenuItem *item = [[NSMenuItem alloc] init];
         [item setTitle:reddit.name];
+        if (![reddit.name isEqualToString:reddit.fullName])
+            [item setToolTip:reddit.fullName];
         if (reddit.isSelf) {
             [item setAction:@selector(linkToOpen:)];
             [item setKeyEquivalent:@""];
