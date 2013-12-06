@@ -26,10 +26,16 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="7Rc-fG-5uQ"/>
-                <menuItem title="Reload" id="e8u-nc-P6x">
+                <menuItem title="Load next" id="e8u-nc-P6x">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="reloadCompleteList:" target="494" id="yTe-cz-LY1"/>
+                        <action selector="reloadNextList:" target="494" id="tbv-NV-8s7"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Reload" id="bQG-wq-9Zw">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="reloadCompleteList:" target="494" id="FoB-kO-9Sk"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="w4G-0W-l5l"/>

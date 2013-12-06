@@ -138,6 +138,15 @@
     [self reloadListWithOptions];
 }
 
+- (IBAction)reloadNextList:(id)sender {
+    [firstMenuItem setTitle:NSLocalizedString(@"Loading...", nil)];
+    [self clearMenuItems];
+    [firstMenuItem setHidden:NO];
+    
+    // TODO on list load, store after cookie??
+    // then use it here to load the list after the last item
+}
+
 -(IBAction)linkToOpen:(id)sender {
     NSString *title = [(NSMenuItem *)sender title];
     if ([title isEqualToString:NSLocalizedString(@"Link...", nil)]) {

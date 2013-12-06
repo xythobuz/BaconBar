@@ -49,6 +49,7 @@
 -(IBAction)showPreferences:(id)sender;
 -(IBAction)showAbout:(id)sender;
 - (IBAction)reloadCompleteList:(id)sender;
+- (IBAction)reloadNextList:(id)sender;
 -(IBAction)linkToOpen:(id)sender;
 
 -(void)reloadListWithOptions;

@@ -4,8 +4,11 @@
 /* Class = "NSMenuItem"; title = "About RedditBar"; ObjectID = "4ah-qP-9eP"; */
 "4ah-qP-9eP.title" = "About RedditBar";
 
-/* Class = "NSMenuItem"; title = "Reload"; ObjectID = "e8u-nc-P6x"; */
-"e8u-nc-P6x.title" = "Aktualisieren";
+/* Class = "NSMenuItem"; title = "Reload"; ObjectID = "bQG-wq-9Zw"; */
+"bQG-wq-9Zw.title" = "Aktualisieren";
+
+/* Class = "NSMenuItem"; title = "Load next"; ObjectID = "e8u-nc-P6x"; */
+"e8u-nc-P6x.title" = "Mehr laden";
 
 /* Class = "NSMenuItem"; title = "Loading..."; ObjectID = "jfb-mv-iN9"; */
 "jfb-mv-iN9.title" = "Lade...";
