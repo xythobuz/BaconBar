@@ -31,14 +31,11 @@
 
 @implementation Reddit
 
-NSString *version = @"1.0.0";
-NSString *author = @"xythobuz";
-NSString *appName = @"RedditBar";
-
 NSInteger maxTitleLength = 50;
 NSString *replaceTextForTitle = @"...";
+#define AUTHOR @"xythobuz"
 
-@synthesize username, modhash, password, length, subreddits;
+@synthesize username, modhash, password, version, appName, author, length, subreddits;
 
 -(id)initWithUsername:(NSString *)name Modhash:(NSString *)hash Length:(NSInteger)leng {
     self = [super init];
@@ -47,6 +44,9 @@ NSString *replaceTextForTitle = @"...";
         modhash = hash;
         password = nil;
         length = leng;
+        version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
+        author = AUTHOR;
     }
     return self;
 }
@@ -57,6 +57,10 @@ NSString *replaceTextForTitle = @"...";
         username = name;
         modhash = nil;
         password = pass;
+        length = 0;
+        version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
+        author = AUTHOR;
     }
     return self;
 }

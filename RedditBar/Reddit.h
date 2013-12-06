@@ -34,6 +34,9 @@
 @property (atomic, retain) NSString *username;
 @property (atomic, retain) NSString *modhash;
 @property (atomic, retain) NSString *password;
+@property (atomic, retain) NSString *version;
+@property (atomic, retain) NSString *appName;
+@property (atomic, retain) NSString *author;
 @property (atomic) NSInteger length;
 @property (atomic, retain) NSArray *subreddits;
 
