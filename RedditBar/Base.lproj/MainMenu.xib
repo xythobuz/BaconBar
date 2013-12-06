@@ -26,6 +26,13 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="7Rc-fG-5uQ"/>
+                <menuItem title="Reload" id="e8u-nc-P6x">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="reloadCompleteList:" target="494" id="yTe-cz-LY1"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="w4G-0W-l5l"/>
                 <menuItem title="Preferences..." id="1lW-9C-xt6">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>

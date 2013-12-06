@@ -1,51 +1,51 @@
+
 /* Class = "NSWindow"; title = "RedditBar Preferences"; ObjectID = "1"; */
-"1.title" = "RedditBar Einstellungen";
+"1.title" = "RedditBar Preferences";
 
 /* Class = "NSTextFieldCell"; title = "10"; ObjectID = "0SD-Tf-uZS"; */
 "0SD-Tf-uZS.title" = "10";
 
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "32T-3T-EcY"; */
-"32T-3T-EcY.title" = "Ausschneiden";
+"32T-3T-EcY.title" = "Cut";
 
 /* Class = "NSTextFieldCell"; title = "Subreddits:"; ObjectID = "Cmr-7n-CaG"; */
 "Cmr-7n-CaG.title" = "Subreddits:";
 
 /* Class = "NSTextFieldCell"; title = "Items:"; ObjectID = "FNJ-RL-DXT"; */
-"FNJ-RL-DXT.title" = "Länge:";
+"FNJ-RL-DXT.title" = "Items:";
 
 /* Class = "NSTextFieldCell"; title = "Username: "; ObjectID = "GTO-OP-MYS"; */
-"GTO-OP-MYS.title" = "Benutzername: ";
+"GTO-OP-MYS.title" = "Username: ";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "IWp-hb-gSM"; */
-"IWp-hb-gSM.title" = "Hauptmenü";
+"IWp-hb-gSM.title" = "Main Menu";
 
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "IyX-7D-esH"; */
-"IyX-7D-esH.title" = "Rückgängig";
+"IyX-7D-esH.title" = "Undo";
 
 /* Class = "NSButtonCell"; title = "Save"; ObjectID = "Mqa-FJ-C43"; */
-"Mqa-FJ-C43.title" = "Speichern";
+"Mqa-FJ-C43.title" = "Save";
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "TjO-Z6-Vng"; */
-"TjO-Z6-Vng.title" = "Abbrechen";
+"TjO-Z6-Vng.title" = "Cancel";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "YpZ-Vi-h1u"; */
-"YpZ-Vi-h1u.title" = "Bearbeiten";
+"YpZ-Vi-h1u.title" = "Edit";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "czz-51-wxr"; */
-"czz-51-wxr.title" = "Bearbeiten";
+"czz-51-wxr.title" = "Edit";
 
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "j3h-hj-rfI"; */
-"j3h-hj-rfI.title" = "Einfügen";
+"j3h-hj-rfI.title" = "Paste";
 
 /* Class = "NSTextFieldCell"; title = "Password:"; ObjectID = "m11-YF-fEa"; */
-"m11-YF-fEa.title" = "Passwort:";
+"m11-YF-fEa.title" = "Password:";
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "qSu-ha-DhM"; */
-"qSu-ha-DhM.title" = "Alle auswählen";
+"qSu-ha-DhM.title" = "Select All";
 
 /* Class = "NSButtonCell"; title = "Subscriptions"; ObjectID = "vW5-Cp-Bm1"; */
-"vW5-Cp-Bm1.title" = "Abbonements";
+"vW5-Cp-Bm1.title" = "Subscriptions";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "wSY-To-FDI"; */
-"wSY-To-FDI.title" = "Kopieren";
-
+"wSY-To-FDI.title" = "Copy";

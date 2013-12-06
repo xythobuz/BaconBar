@@ -13,6 +13,9 @@
 /* Link item */
 "Link..." = "Link...";
 
+/* Statusitem when user clicks reload */
+"Loading..." = "Lade...";
+
 /* Statusitem when API is not authenticated */
 "Login Error!" = "Fehler beim login!";
 

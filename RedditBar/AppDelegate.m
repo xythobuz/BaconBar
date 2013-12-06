@@ -131,30 +131,33 @@
     [NSThread detachNewThreadSelector:@selector(isAuthenticatedNewModhash:) toTarget:api withObject:self];
 }
 
+- (IBAction)reloadCompleteList:(id)sender {
+    [firstMenuItem setTitle:NSLocalizedString(@"Loading...", @"Statusitem when user clicks reload")];
+    [self clearMenuItems];
+    [firstMenuItem setHidden:NO];
+    [self reloadListWithOptions];
+}
+
 -(IBAction)linkToOpen:(id)sender {
     NSString *title = [(NSMenuItem *)sender title];
     if ([title isEqualToString:NSLocalizedString(@"Link...", nil)]) {
         for (NSUInteger i = 0; i < [menuItems count]; i++) {
             NSMenuItem *item = [menuItems objectAtIndex:i];
             NSMenu *submenu = item.submenu;
-            if (submenu != nil) {
-                if (sender == [submenu itemAtIndex:0]) {
-                    RedditItem *rItem = [redditItems objectAtIndex:i];
-                    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[rItem link]]];
-                    return;
-                }
+            if ((submenu != nil) && (sender == [submenu itemAtIndex:0])) {
+                RedditItem *rItem = [redditItems objectAtIndex:i];
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[rItem link]]];
+                break;
             }
         }
     } else if ([title isEqualToString:NSLocalizedString(@"Comments...", nil)]) {
         for (NSUInteger i = 0; i < [menuItems count]; i++) {
             NSMenuItem *item = [menuItems objectAtIndex:i];
             NSMenu *submenu = item.submenu;
-            if (submenu != nil) {
-                if (sender == [submenu itemAtIndex:1]) {
-                    RedditItem *rItem = [redditItems objectAtIndex:i];
-                    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[rItem comments]]];
-                    return;
-                }
+            if ((submenu != nil) && (sender == [submenu itemAtIndex:1])) {
+                RedditItem *rItem = [redditItems objectAtIndex:i];
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[rItem comments]]];
+                break;
             }
         }
     } else {
@@ -164,7 +167,7 @@
                 RedditItem *rItem = [redditItems objectAtIndex:i];
                 [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[rItem link]]];
                 [statusMenu removeItem:[menuItems objectAtIndex:i]];
-                return;
+                break;
             }
         }
     }

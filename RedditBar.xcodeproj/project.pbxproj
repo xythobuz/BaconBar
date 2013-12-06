@@ -37,7 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E90E74B3184FAA0F00F38929 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E90E74B3184FAA0F00F38929 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E90E74B6184FAADE00F38929 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		E90E74B7184FAADE00F38929 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Prefs.strings; sourceTree = "<group>"; };
 		E90E74B8184FAADE00F38929 /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -47,6 +47,8 @@
 		E9341912184A1A1A00D03488 /* StateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateModel.h; sourceTree = "<group>"; };
 		E9341913184A1A1A00D03488 /* StateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateModel.m; sourceTree = "<group>"; };
 		E934191A184A47DE00D03488 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Prefs.xib; sourceTree = "<group>"; };
+		E97FD65E185232CA006B5B3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		E97FD65F185232D5006B5B3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Prefs.strings; sourceTree = "<group>"; };
 		E9A129AF184BD24000F50D1D /* RedditItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedditItem.h; sourceTree = "<group>"; };
 		E9A129B0184BD24000F50D1D /* RedditItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedditItem.m; sourceTree = "<group>"; };
 		E9B6773C184B73DC00850559 /* Reddit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reddit.h; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				E9CF1F1A184961010004AE02 /* Frameworks */,
 				E9341915184A3A6500D03488 /* ShellScript */,
 				E9CF1F1B184961010004AE02 /* Resources */,
+				E97FD65D185231D0006B5B3E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -297,6 +300,19 @@
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
+		E97FD65D185231D0006B5B3E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# update_storyboard_strings.sh - automatically extract translatable strings from storyboards and update strings files\n# Based on http://forums.macrumors.com/showpost.php?p=16060008&postcount=4 by mikezang\n\nstoryboardExt=\".xib\"\nstringsExt=\".strings\"\nnewStringsExt=\".strings.new\"\noldStringsExt=\".strings.old\"\nlocaleDirExt=\".lproj\"\n\n# Find storyboard file full path inside project folder\nfor storyboardPath in `find . -name \"*$storyboardExt\" -print`\ndo\n# Get Base strings file full path\nbaseStringsPath=$(echo \"$storyboardPath\" | sed \"s/$storyboardExt/$stringsExt/\")\n\n# Create base strings file if it doesn't exist\nif ! [ -f $baseStringsPath ]; then\ntouch -r $storyboardPath $baseStringsPath\n# Make base strings file older than the storyboard file\ntouch -A -01 $baseStringsPath\nfi\n\n# Create strings file only when storyboard file newer\nif find $storyboardPath -prune -newer $baseStringsPath -print | grep -q .; then\n# Get storyboard file name and folder\nstoryboardFile=$(basename \"$storyboardPath\")\nstoryboardDir=$(dirname \"$storyboardPath\")\n\n# Get New Base strings file full path and strings file name\nnewBaseStringsPath=$(echo \"$storyboardPath\" | sed \"s/$storyboardExt/$newStringsExt/\")\nstringsFile=$(basename \"$baseStringsPath\")\nibtool --export-strings-file $newBaseStringsPath $storyboardPath\niconv -f UTF-16 -t UTF-8 $newBaseStringsPath > $baseStringsPath\nrm $newBaseStringsPath\n\n# Get all locale strings folder\nfor localeStringsDir in `find . -name \"*$localeDirExt\" -print`\ndo\n# Skip Base strings folder\nif [ $localeStringsDir != $storyboardDir ]; then\nlocaleStringsPath=$localeStringsDir/$stringsFile\n\n# Just copy base strings file on first time\nif [ ! -e $localeStringsPath ]; then\ncp $baseStringsPath $localeStringsPath\nelse\noldLocaleStringsPath=$(echo \"$localeStringsPath\" | sed \"s/$stringsExt/$oldStringsExt/\")\ncp $localeStringsPath $oldLocaleStringsPath\n\n# Merge baseStringsPath to localeStringsPath\nawk 'NR == FNR && /^\\/\\*/ {x=$0; getline; a[x]=$0; next} /^\\/\\*/ {x=$0; print; getline; $0=a[x]?a[x]:$0; printf $0\"\\n\\n\"}' $oldLocaleStringsPath $baseStringsPath > $localeStringsPath\n\nrm $oldLocaleStringsPath\nfi\nfi\ndone\nelse\necho \"$storyboardPath file not modified.\"\nfi\ndone";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -346,6 +362,7 @@
 			children = (
 				E934191A184A47DE00D03488 /* Base */,
 				E90E74B7184FAADE00F38929 /* de */,
+				E97FD65F185232D5006B5B3E /* en */,
 			);
 			name = Prefs.xib;
 			sourceTree = "<group>";
@@ -373,6 +390,7 @@
 			children = (
 				E9CF1F36184961020004AE02 /* Base */,
 				E90E74B6184FAADE00F38929 /* de */,
+				E97FD65E185232CA006B5B3E /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";

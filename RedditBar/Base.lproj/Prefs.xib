@@ -192,45 +192,6 @@ Gw
         </numberFormatter>
         <menu title="Main Menu" systemMenu="main" id="IWp-hb-gSM">
             <items>
-                <menuItem title="RedditBar" id="U8B-tM-Hrf">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="RedditBar" systemMenu="apple" id="94G-O2-jwC">
-                        <items>
-                            <menuItem title="About RedditBar" id="YW3-K5-K2j">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="twJ-Mg-T1U"/>
-                            <menuItem title="Preferences…" keyEquivalent="," id="fNd-08-bdx"/>
-                            <menuItem isSeparatorItem="YES" id="s0T-Bl-Th7"/>
-                            <menuItem title="Services" id="Tkq-PT-Dyn">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Services" systemMenu="services" id="sdR-Rd-lph"/>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="obO-uU-IXK"/>
-                            <menuItem title="Hide NewApplication" keyEquivalent="h" id="fH1-kn-NXO"/>
-                            <menuItem title="Hide Others" keyEquivalent="h" id="J40-1v-jag">
-                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                            </menuItem>
-                            <menuItem title="Show All" id="UbR-hU-EII">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="6ba-Ih-432"/>
-                            <menuItem title="Quit NewApplication" keyEquivalent="q" id="ROS-gn-vTj"/>
-                        </items>
-                    </menu>
-                </menuItem>
-                <menuItem title="File" id="c7K-B5-rY5">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="File" id="24r-2D-3jT">
-                        <items>
-                            <menuItem title="Close" keyEquivalent="w" id="bqC-fi-B0U">
-                                <connections>
-                                    <action selector="close:" target="-1" id="qY7-vk-B61"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
                 <menuItem title="Edit" id="czz-51-wxr">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Edit" id="YpZ-Vi-h1u">
@@ -240,7 +201,6 @@ Gw
                                     <action selector="undo:" target="-1" id="6su-5K-AYO"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="v8m-cQ-DEf"/>
                             <menuItem title="Cut" keyEquivalent="x" id="32T-3T-EcY">
                                 <connections>
                                     <action selector="cut:" target="-1" id="TeB-yv-dFt"/>
@@ -254,12 +214,6 @@ Gw
                             <menuItem title="Paste" keyEquivalent="v" id="j3h-hj-rfI">
                                 <connections>
                                     <action selector="paste:" target="-1" id="7m5-ZQ-jR1"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Delete" id="EtB-yf-Wow">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="delete:" target="-1" id="RD6-ys-5oS"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Select All" keyEquivalent="a" id="qSu-ha-DhM">

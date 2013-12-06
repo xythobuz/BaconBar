@@ -1,15 +1,15 @@
+
 /* Class = "NSMenuItem"; title = "Preferences..."; ObjectID = "1lW-9C-xt6"; */
-"1lW-9C-xt6.title" = "Einstellungen...";
+"1lW-9C-xt6.title" = "Preferences...";
 
 /* Class = "NSMenuItem"; title = "About RedditBar"; ObjectID = "4ah-qP-9eP"; */
 "4ah-qP-9eP.title" = "About RedditBar";
 
 /* Class = "NSMenuItem"; title = "Reload"; ObjectID = "e8u-nc-P6x"; */
-"e8u-nc-P6x.title" = "Aktualisieren";
+"e8u-nc-P6x.title" = "Reload";
 
 /* Class = "NSMenuItem"; title = "Loading..."; ObjectID = "jfb-mv-iN9"; */
-"jfb-mv-iN9.title" = "Lade...";
+"jfb-mv-iN9.title" = "Loading...";
 
 /* Class = "NSMenuItem"; title = "Quit"; ObjectID = "oyC-3G-WEc"; */
-"oyC-3G-WEc.title" = "Beenden";
-
+"oyC-3G-WEc.title" = "Quit";
