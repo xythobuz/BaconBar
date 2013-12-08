@@ -85,23 +85,16 @@
 }
 
 -(void)reloadListHasFrontpageCallback:(NSArray *)items {
-    if (items == nil) {
-        [firstMenuItem setTitle:NSLocalizedString(@"Error reading Frontpage!", @"Status api Read error")];
-        [self clearMenuItems];
-        [firstMenuItem setHidden:NO];
-        return;
-    }
-    lastFullName = [items objectAtIndex:[items count] - 1]; // last link fullname is at end of array
-    items = [items subarrayWithRange:NSMakeRange(0, [items count] - 1)]; // Remove last item
-    redditItems = items;
-    [self clearMenuItems];
-    [firstMenuItem setHidden:YES];
-    [self putItemArrayInMenu:redditItems];
+    [self reloadListHasXCallback:items ErrorMessage:NSLocalizedString(@"Error reading Frontpage!", @"Status api Read error")];
 }
 
 -(void)reloadListHasSubredditsCallback:(NSArray *)items {
+    [self reloadListHasXCallback:items ErrorMessage:NSLocalizedString(@"Error reading Subreddits!", @"Status api read error")];
+}
+
+-(void)reloadListHasXCallback:(NSArray *)items ErrorMessage:(NSString*)error {
     if (items == nil) {
-        [firstMenuItem setTitle:NSLocalizedString(@"Error reading Subreddits!", @"Status api read error")];
+        [firstMenuItem setTitle:error];
         [self clearMenuItems];
         [firstMenuItem setHidden:NO];
         return;
@@ -198,24 +191,28 @@
 -(void)putItemArrayInMenu:(NSArray *)array {
     NSMutableArray *items = [NSMutableArray arrayWithCapacity:array.count];
     for (NSUInteger i = 0; i < [array count]; i++) {
-        RedditItem *reddit = [array objectAtIndex:i];
-        NSMenuItem *item = [[NSMenuItem alloc] init];
-        [item setTitle:reddit.name];
-        if (![reddit.name isEqualToString:reddit.fullName])
-            [item setToolTip:reddit.fullName];
-        if (reddit.isSelf) {
-            [item setAction:@selector(linkToOpen:)];
-            [item setKeyEquivalent:@""];
-        } else {
-            NSMenu *submenu = [[NSMenu alloc] init];
-            [submenu addItemWithTitle:NSLocalizedString(@"Link...", @"Link item") action:@selector(linkToOpen:) keyEquivalent:@""];
-            [submenu addItemWithTitle:NSLocalizedString(@"Comments...", @"comment item") action:@selector(linkToOpen:) keyEquivalent:@""];
-            [item setSubmenu:submenu];
-        }
+        NSMenuItem *item = [self prepareItemForMenu:[array objectAtIndex:i]];
         [items addObject:item];
         [statusMenu insertItem:item atIndex:i];
     }
     menuItems = items;
+}
+
+-(NSMenuItem *)prepareItemForMenu:(RedditItem *)reddit {
+    NSMenuItem *item = [[NSMenuItem alloc] init];
+    [item setTitle:reddit.name];
+    if (![reddit.name isEqualToString:reddit.fullName])
+        [item setToolTip:reddit.fullName];
+    if (reddit.isSelf) {
+        [item setAction:@selector(linkToOpen:)];
+        [item setKeyEquivalent:@""];
+    } else {
+        NSMenu *submenu = [[NSMenu alloc] init];
+        [submenu addItemWithTitle:NSLocalizedString(@"Link...", @"Link item") action:@selector(linkToOpen:) keyEquivalent:@""];
+        [submenu addItemWithTitle:NSLocalizedString(@"Comments...", @"comment item") action:@selector(linkToOpen:) keyEquivalent:@""];
+        [item setSubmenu:submenu];
+    }
+    return item;
 }
 
 -(IBAction)showPreferences:(id)sender {
