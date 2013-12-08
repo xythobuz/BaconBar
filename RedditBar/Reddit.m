@@ -127,13 +127,25 @@ NSString *replaceTextForTitle = @"...";
         RedditItem *r = [RedditItem itemWithName:name Link:link Comments:comments Self:isSelf];
         [r setFullName:[current valueForKey:@"title"]];
         [array insertObject:r atIndex:i];
+        
+        if (i == ([children count] - 1)) {
+            NSString *name = [NSString stringWithFormat:@"%@_%@", [child valueForKey:@"kind"], [current valueForKey:@"id"]];
+            [array insertObject:name atIndex:i + 1];
+        }
     }
     return array;
 }
 
 -(void)readFrontpage:(id)parent {
     NSHTTPURLResponse *response;
-    NSString *url = [NSString stringWithFormat:@"hot.json?limit=%ld", (long)length];
+    
+    NSString *after = ((AppDelegate *)parent).lastFullName;
+    NSString *url;
+    if (after == nil)
+        url = [NSString stringWithFormat:@"hot.json?limit=%ld", (long)length];
+    else
+        url = [NSString stringWithFormat:@"hot.json?limit=%ld&after=%@", (long)length, after];
+        
     NSData *data = [self queryAPI:url withResponse:&response];
     if ((data == nil) || ([response statusCode] != 200)) {
         [parent performSelectorOnMainThread:@selector(reloadListHasFrontpageCallback:) withObject:nil waitUntilDone:false];
@@ -150,7 +162,14 @@ NSString *replaceTextForTitle = @"...";
             [subs appendString:@"+"];
         }
     }
-    NSString *url = [NSString stringWithFormat:@"%@/hot.json?limit=%ld", subs, (long)length];
+    
+    NSString *after = ((AppDelegate *)parent).lastFullName;
+    NSString *url;
+    if (after == nil)
+        url = [NSString stringWithFormat:@"%@/hot.json?limit=%ld", subs, (long)length];
+    else
+        url = [NSString stringWithFormat:@"%@/hot.json?limit=%ld&after=%@", subs, (long)length, after];
+    
     NSHTTPURLResponse *response;
     NSData *data = [self queryAPI:url withResponse:&response];
     if ((data == nil) || ([response statusCode] != 200)) {

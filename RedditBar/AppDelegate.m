@@ -30,7 +30,7 @@
 
 @implementation AppDelegate
 
-@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, prefWindow, currentState, application, api, firstMenuItem, menuItems, redditItems;
+@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, prefWindow, currentState, application, api, firstMenuItem, menuItems, redditItems, lastFullName;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
@@ -42,6 +42,7 @@
     [statusItem setMenu:statusMenu];
     [statusItem setToolTip:NSLocalizedString(@"RedditBar", @"Main Menuitem Tooltip")];
     [statusItem setHighlightMode:YES];
+    lastFullName = nil;
     currentState = [[StateModel alloc] init];
     [self defaultPreferences];
     [self loadPreferences];
@@ -90,6 +91,8 @@
         [firstMenuItem setHidden:NO];
         return;
     }
+    lastFullName = [items objectAtIndex:[items count] - 1]; // last link fullname is at end of array
+    items = [items subarrayWithRange:NSMakeRange(0, [items count] - 1)]; // Remove last item
     redditItems = items;
     [self clearMenuItems];
     [firstMenuItem setHidden:YES];
@@ -103,6 +106,8 @@
         [firstMenuItem setHidden:NO];
         return;
     }
+    lastFullName = [items objectAtIndex:[items count] - 1]; // last link fullname is at end of array
+    items = [items subarrayWithRange:NSMakeRange(0, [items count] - 1)]; // Remove last item
     redditItems = items;
     [self clearMenuItems];
     [firstMenuItem setHidden:YES];
@@ -135,6 +140,7 @@
     [firstMenuItem setTitle:NSLocalizedString(@"Loading...", @"Statusitem when user clicks reload")];
     [self clearMenuItems];
     [firstMenuItem setHidden:NO];
+    lastFullName = nil; // reload from start
     [self reloadListWithOptions];
 }
 
@@ -142,9 +148,7 @@
     [firstMenuItem setTitle:NSLocalizedString(@"Loading...", nil)];
     [self clearMenuItems];
     [firstMenuItem setHidden:NO];
-    
-    // TODO on list load, store after cookie??
-    // then use it here to load the list after the last item
+    [self reloadListWithOptions];
 }
 
 -(IBAction)linkToOpen:(id)sender {

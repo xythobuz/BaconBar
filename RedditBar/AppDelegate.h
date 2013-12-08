@@ -35,7 +35,7 @@
 
 @property (atomic, retain) IBOutlet NSMenu *statusMenu;
 @property (atomic, retain) IBOutlet NSApplication *application;
-@property (weak) IBOutlet NSMenuItem *firstMenuItem;
+@property (atomic, retain) IBOutlet NSMenuItem *firstMenuItem;
 
 @property (atomic, retain) NSStatusItem *statusItem;
 @property (atomic, retain) NSImage *statusImage;
@@ -45,6 +45,7 @@
 @property (atomic, retain) Reddit *api;
 @property (atomic, retain) NSArray *menuItems;
 @property (atomic, retain) NSArray *redditItems;
+@property (atomic, retain) NSString *lastFullName;
 
 -(IBAction)showPreferences:(id)sender;
 -(IBAction)showAbout:(id)sender;
