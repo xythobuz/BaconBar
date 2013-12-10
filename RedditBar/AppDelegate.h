@@ -59,6 +59,6 @@
 -(void)reloadListHasSubredditsCallback:(NSArray *)items;
 -(void)reloadListHasFrontpageCallback:(NSArray *)items;
 
--(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length;
+-(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length printSubs:(Boolean)showSubreddits;
 
 @end

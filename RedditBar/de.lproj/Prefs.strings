@@ -7,9 +7,6 @@
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "32T-3T-EcY"; */
 "32T-3T-EcY.title" = "Ausschneiden";
 
-/* Class = "NSTextFieldCell"; title = "Subreddits:"; ObjectID = "Cmr-7n-CaG"; */
-"Cmr-7n-CaG.title" = "Subreddits:";
-
 /* Class = "NSTextFieldCell"; title = "Items:"; ObjectID = "FNJ-RL-DXT"; */
 "FNJ-RL-DXT.title" = "Länge:";
 
@@ -40,11 +37,11 @@
 /* Class = "NSTextFieldCell"; title = "Password:"; ObjectID = "m11-YF-fEa"; */
 "m11-YF-fEa.title" = "Passwort:";
 
+/* Class = "NSButtonCell"; title = "Show Subreddit after Title"; ObjectID = "nFK-xi-2F3"; */
+"nFK-xi-2F3.title" = "Zeige Subreddit hinter Titel";
+
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "qSu-ha-DhM"; */
 "qSu-ha-DhM.title" = "Alle auswählen";
-
-/* Class = "NSButtonCell"; title = "Subscriptions"; ObjectID = "vW5-Cp-Bm1"; */
-"vW5-Cp-Bm1.title" = "Abbonements";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "wSY-To-FDI"; */
 "wSY-To-FDI.title" = "Kopieren";

@@ -35,5 +35,6 @@
 @property (atomic) Boolean useSubscriptions;
 @property (atomic, retain) NSArray *subreddits;
 @property (atomic) NSInteger length;
+@property (atomic) Boolean showSubreddit;
 
 @end

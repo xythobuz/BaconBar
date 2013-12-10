@@ -42,10 +42,10 @@
     [statusItem setMenu:statusMenu];
     [statusItem setToolTip:NSLocalizedString(@"RedditBar", @"Main Menuitem Tooltip")];
     [statusItem setHighlightMode:YES];
-    lastFullName = nil;
     currentState = [[StateModel alloc] init];
     [self defaultPreferences];
     [self loadPreferences];
+    lastFullName = nil;
     [self reloadListWithOptions];
 }
 
@@ -55,6 +55,7 @@
     [appDefaults setValue:@"" forKey:@"modhash"];
     [appDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"subscriptions"];
     [appDefaults setValue:[NSNumber numberWithInt:10] forKey:@"length"];
+    [appDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"showSubs"];
     [store registerDefaults:appDefaults];
 }
 
@@ -65,6 +66,7 @@
     [store setBool:currentState.useSubscriptions forKey:@"subscriptions"];
     [store setObject:currentState.subreddits forKey:@"subreddits"];
     [store setInteger:currentState.length forKey:@"length"];
+    [store setBool:currentState.showSubreddit forKey:@"showSubs"];
     [store synchronize];
 }
 
@@ -76,6 +78,7 @@
     [currentState setUseSubscriptions:[store boolForKey:@"subscriptions"]];
     [currentState setSubreddits:[store arrayForKey:@"subreddits"]];
     [currentState setLength:[store integerForKey:@"length"]];
+    [currentState setShowSubreddit:[store boolForKey:@"showSubs"]];
 }
 
 -(void)reloadListNotAuthenticatedCallback {
@@ -228,13 +231,15 @@
     [application orderFrontStandardAboutPanel:self];
 }
 
--(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length {
+-(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length printSubs:(Boolean)showSubreddits {
     currentState.username = name;
     currentState.modhash = modhash;
     currentState.useSubscriptions = subscriptions;
     currentState.subreddits = [subreddits componentsSeparatedByString: @"\n"];
     currentState.length = length;
+    currentState.showSubreddit = showSubreddits;
     [self savePreferences];
+    lastFullName = nil; // reload from start
     [self reloadListWithOptions];
 }
 

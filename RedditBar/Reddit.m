@@ -31,8 +31,9 @@
 
 @implementation Reddit
 
-NSInteger maxTitleLength = 50;
+NSInteger maxTitleLength = 60;
 NSString *replaceTextForTitle = @"...";
+NSString *subredditFormat = @" [r/%@]";
 #define AUTHOR @"xythobuz"
 
 @synthesize username, modhash, password, version, appName, author, length, subreddits;
@@ -99,7 +100,7 @@ NSString *replaceTextForTitle = @"...";
     }
 }
 
--(NSArray *)convertJSONToItemArray:(NSData *)data {
+-(NSArray *)convertJSONToItemArray:(NSData *)data ShowSubs:(Boolean)showSubs {
     NSError *error;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
     NSDictionary *dat = [json valueForKey:@"data"];
@@ -121,9 +122,16 @@ NSString *replaceTextForTitle = @"...";
         if (!isSelf) {
             comments = [NSString stringWithFormat:@"http://www.reddit.com%@", [current valueForKey:@"permalink"]];
         }
-        if ([name length] > maxTitleLength) {
-            name = [NSString stringWithFormat:@"%@%@", [name substringToIndex:(maxTitleLength - [replaceTextForTitle length])], replaceTextForTitle];
-        }
+        NSString *subreddit = [NSString stringWithFormat:subredditFormat, [current valueForKey:@"subreddit"]];
+        NSInteger maxLen = maxTitleLength;
+        if ([subreddit length] >= maxTitleLength)
+            showSubs = FALSE;
+        if (showSubs)
+            maxLen -= [subreddit length];
+        if ([name length] > maxLen)
+            name = [NSString stringWithFormat:@"%@%@", [name substringToIndex:(maxLen - [replaceTextForTitle length])], replaceTextForTitle];
+        if (showSubs)
+            name = [NSString stringWithFormat:@"%@%@", name, subreddit];
         RedditItem *r = [RedditItem itemWithName:name Link:link Comments:comments Self:isSelf];
         [r setFullName:[current valueForKey:@"title"]];
         [array insertObject:r atIndex:i];
@@ -140,6 +148,7 @@ NSString *replaceTextForTitle = @"...";
     NSHTTPURLResponse *response;
     
     NSString *after = ((AppDelegate *)parent).lastFullName;
+    Boolean showSubreddits = ((AppDelegate *)parent).currentState.showSubreddit;
     NSString *url;
     if (after == nil)
         url = [NSString stringWithFormat:@"hot.json?limit=%ld", (long)length];
@@ -150,7 +159,7 @@ NSString *replaceTextForTitle = @"...";
     if ((data == nil) || ([response statusCode] != 200)) {
         [parent performSelectorOnMainThread:@selector(reloadListHasFrontpageCallback:) withObject:nil waitUntilDone:false];
     } else {
-        [parent performSelectorOnMainThread:@selector(reloadListHasFrontpageCallback:) withObject:[self convertJSONToItemArray:data] waitUntilDone:false];
+        [parent performSelectorOnMainThread:@selector(reloadListHasFrontpageCallback:) withObject:[self convertJSONToItemArray:data ShowSubs:showSubreddits] waitUntilDone:false];
     }
 }
 
@@ -164,6 +173,7 @@ NSString *replaceTextForTitle = @"...";
     }
     
     NSString *after = ((AppDelegate *)parent).lastFullName;
+    Boolean showSubreddits = ((AppDelegate *)parent).currentState.showSubreddit;
     NSString *url;
     if (after == nil)
         url = [NSString stringWithFormat:@"%@/hot.json?limit=%ld", subs, (long)length];
@@ -175,7 +185,7 @@ NSString *replaceTextForTitle = @"...";
     if ((data == nil) || ([response statusCode] != 200)) {
         [parent performSelectorOnMainThread:@selector(reloadListHasSubredditsCallback:) withObject:nil waitUntilDone:false];
     } else {
-        [parent performSelectorOnMainThread:@selector(reloadListHasSubredditsCallback:) withObject:[self convertJSONToItemArray:data] waitUntilDone:false];
+        [parent performSelectorOnMainThread:@selector(reloadListHasSubredditsCallback:) withObject:[self convertJSONToItemArray:data ShowSubs:showSubreddits] waitUntilDone:false];
     }
 }
 

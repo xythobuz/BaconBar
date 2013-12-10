@@ -12,6 +12,7 @@
                 <outlet property="lengthStepper" destination="jxz-fQ-M1L" id="NK5-G4-9UJ"/>
                 <outlet property="password" destination="ARP-lb-J16" id="EDd-om-ciF"/>
                 <outlet property="progress" destination="vz0-tR-n1f" id="t06-dO-WKY"/>
+                <outlet property="showSubreddit" destination="fRR-M9-szp" id="bGR-ej-R9R"/>
                 <outlet property="subreddits" destination="EhP-FS-8dT" id="td1-kv-jQm"/>
                 <outlet property="subscriptions" destination="vW5-Cp-Bm1" id="gja-K0-7Uh"/>
                 <outlet property="username" destination="0mi-88-o94" id="4bB-K2-q5m"/>
@@ -57,7 +58,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="qFP-pd-32c">
-                        <rect key="frame" x="18" y="52" width="96" height="17"/>
+                        <rect key="frame" x="18" y="104" width="96" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Items:" id="FNJ-RL-DXT">
                             <font key="font" metaFont="system"/>
@@ -102,30 +103,21 @@ Gw
                             <action selector="performClose:" target="1" id="A62-EW-ZrT"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="R9P-ZH-hHZ">
-                        <rect key="frame" x="18" y="235" width="96" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Subreddits:" id="Cmr-7n-CaG">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="8ew-wY-1Yh">
-                        <rect key="frame" x="20" y="79" width="300" height="150"/>
+                        <rect key="frame" x="20" y="129" width="300" height="100"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" copiesOnScroll="NO" id="ENU-Jw-8fO">
-                            <rect key="frame" x="1" y="1" width="298" height="148"/>
+                            <rect key="frame" x="1" y="1" width="298" height="98"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="EhP-FS-8dT">
-                                    <rect key="frame" x="0.0" y="0.0" width="298" height="148"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="298" height="98"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="298" height="148"/>
+                                    <size key="minSize" width="298" height="98"/>
                                     <size key="maxSize" width="463" height="10000000"/>
                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="298" height="148"/>
+                                    <size key="minSize" width="298" height="98"/>
                                     <size key="maxSize" width="463" height="10000000"/>
                                 </textView>
                             </subviews>
@@ -136,14 +128,14 @@ Gw
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="z7j-r6-B6f">
-                            <rect key="frame" x="283" y="1" width="16" height="148"/>
+                            <rect key="frame" x="283" y="1" width="16" height="98"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
                     <button id="XZM-90-hQ8">
-                        <rect key="frame" x="118" y="234" width="204" height="18"/>
+                        <rect key="frame" x="18" y="236" width="280" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Subscriptions" bezelStyle="regularSquare" imagePosition="overlaps" alignment="right" state="on" inset="2" id="vW5-Cp-Bm1">
+                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="vW5-Cp-Bm1">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -152,7 +144,7 @@ Gw
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" id="MAv-jO-hIv">
-                        <rect key="frame" x="120" y="49" width="57" height="22"/>
+                        <rect key="frame" x="120" y="99" width="57" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="10" drawsBackground="YES" id="0SD-Tf-uZS">
                             <font key="font" metaFont="system"/>
@@ -165,7 +157,7 @@ Gw
                         </connections>
                     </textField>
                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="jxz-fQ-M1L">
-                        <rect key="frame" x="182" y="46" width="19" height="27"/>
+                        <rect key="frame" x="182" y="96" width="19" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="Gba-jV-Ouh"/>
                         <connections>
@@ -173,9 +165,17 @@ Gw
                         </connections>
                     </stepper>
                     <progressIndicator canDrawConcurrently="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="vz0-tR-n1f">
-                        <rect key="frame" x="267" y="49" width="16" height="16"/>
+                        <rect key="frame" x="304" y="240" width="16" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </progressIndicator>
+                    <button id="fRR-M9-szp">
+                        <rect key="frame" x="18" y="75" width="304" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Show Subreddit after Title" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nFK-xi-2F3">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
                 </subviews>
             </view>
         </window>

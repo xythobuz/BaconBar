@@ -34,7 +34,7 @@
 NSString *modhashSetLiteral = @"__MODHASH__IS__SET__";
 NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_\n";
 
-@synthesize username, password, subscriptions, subreddits, win, parent, state, lengthFormat, lengthField, lengthStepper, length, progress;
+@synthesize username, password, subscriptions, subreddits, win, parent, state, lengthFormat, lengthField, lengthStepper, length, progress, showSubreddit;
 
 -(Boolean)isValidList:(NSString *)input {
     NSCharacterSet *invalidChars = [[NSCharacterSet characterSetWithCharactersInString:subredditCharacters] invertedSet];
@@ -63,6 +63,7 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
     [lengthStepper setIntegerValue:length];
     [lengthField setIntegerValue:length];
     [progress setUsesThreadedAnimation:YES];
+    [showSubreddit setState:[NSNumber numberWithBool:state.showSubreddit].integerValue];
 }
 
 -(IBAction)buttonSave:(id)sender {
@@ -118,17 +119,24 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
             return;
         }
     }
+    Boolean print;
+    if (showSubreddit.state != 0)
+        print = TRUE;
+    else
+        print = FALSE;
     
     AppDelegate *app = (AppDelegate *)parent;
-    [app prefReturnName:username.stringValue Modhash:modhash subscriptions:subs subreddits:subreddits.textStorage.string length:length];
+    [app prefReturnName:username.stringValue Modhash:modhash subscriptions:subs subreddits:subreddits.textStorage.string length:length printSubs:print];
     [win performClose:self];
 }
 
 -(IBAction)toggleSubs:(id)sender {
     if (subscriptions.state != 0) {
         [subreddits setEditable:FALSE];
+        [subscriptions setTitle:NSLocalizedString(@"Use Subscriptions", @"Pref Checkbox State 1")];
     } else {
         [subreddits setEditable:TRUE];
+        [subscriptions setTitle:NSLocalizedString(@"Use Subreddits list", @"Pref Checkbox State 0")];
     }
 }
 

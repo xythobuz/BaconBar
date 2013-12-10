@@ -30,6 +30,6 @@
 
 @implementation StateModel
 
-@synthesize username, modhash, useSubscriptions, subreddits;
+@synthesize username, modhash, useSubscriptions, subreddits, showSubreddit;
 
 @end
