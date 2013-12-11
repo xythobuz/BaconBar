@@ -31,7 +31,7 @@
 
 @implementation Reddit
 
-NSInteger maxTitleLength = 60;
+NSInteger maxTitleLength = 66;
 NSString *replaceTextForTitle = @"...";
 NSString *subredditFormat = @" [r/%@]";
 #define AUTHOR @"xythobuz"
@@ -133,7 +133,10 @@ NSString *subredditFormat = @" [r/%@]";
         if (showSubs)
             name = [NSString stringWithFormat:@"%@%@", name, subreddit];
         RedditItem *r = [RedditItem itemWithName:name Link:link Comments:comments Self:isSelf];
-        [r setFullName:[current valueForKey:@"title"]];
+        NSString *fullName = [current valueForKey:@"title"];
+        if (showSubs)
+            fullName = [NSString stringWithFormat:@"%@%@", fullName, subreddit];
+        [r setFullName:fullName];
         [array insertObject:r atIndex:i];
         
         if (i == ([children count] - 1)) {
