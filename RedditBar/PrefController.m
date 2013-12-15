@@ -34,7 +34,7 @@
 NSString *modhashSetLiteral = @"__MODHASH__IS__SET__";
 NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_\n";
 
-@synthesize username, password, subscriptions, subreddits, win, parent, state, lengthFormat, lengthField, lengthStepper, length, progress, showSubreddit;
+@synthesize username, password, subscriptions, subreddits, win, parent, state, lengthField, lengthStepper, length, progress, showSubreddit, titleField, titleStepper, titleLength;
 
 -(Boolean)isValidList:(NSString *)input {
     NSCharacterSet *invalidChars = [[NSCharacterSet characterSetWithCharactersInString:subredditCharacters] invertedSet];
@@ -62,6 +62,9 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
     length = state.length;
     [lengthStepper setIntegerValue:length];
     [lengthField setIntegerValue:length];
+    titleLength = state.titleLength;
+    [titleStepper setIntegerValue:titleLength];
+    [titleField setIntegerValue:titleLength];
     [progress setUsesThreadedAnimation:YES];
     [showSubreddit setState:[NSNumber numberWithBool:state.showSubreddit].integerValue];
 }
@@ -126,7 +129,7 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
         print = FALSE;
     
     AppDelegate *app = (AppDelegate *)parent;
-    [app prefReturnName:username.stringValue Modhash:modhash subscriptions:subs subreddits:subreddits.textStorage.string length:length printSubs:print];
+    [app prefReturnName:username.stringValue Modhash:modhash subscriptions:subs subreddits:subreddits.textStorage.string length:[lengthField integerValue] printSubs:print titleLength:[titleField integerValue]];
     [win performClose:self];
 }
 
@@ -144,6 +147,12 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
     length = [sender integerValue];
     [lengthStepper setIntegerValue:length];
     [lengthField setIntegerValue:length];
+}
+
+-(IBAction)titleDidChange:(id)sender {
+    titleLength = [sender integerValue];
+    [titleStepper setIntegerValue:titleLength];
+    [titleField setIntegerValue:titleLength];
 }
 
 @end

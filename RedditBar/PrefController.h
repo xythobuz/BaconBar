@@ -36,7 +36,6 @@
 @property (atomic, retain) IBOutlet NSButtonCell *subscriptions;
 @property (atomic, retain) IBOutlet NSTextView *subreddits;
 @property (atomic, retain) IBOutlet NSWindow *win;
-@property (atomic, retain) IBOutlet NSNumberFormatter *lengthFormat;
 @property (atomic, retain) IBOutlet NSTextField *lengthField;
 @property (atomic, retain) IBOutlet NSStepper *lengthStepper;
 @property (atomic, retain) IBOutlet NSProgressIndicator *progress;
@@ -44,9 +43,13 @@
 @property (atomic, retain) NSObject *parent;
 @property (atomic, retain) StateModel *state;
 @property (atomic) NSInteger length;
+@property (atomic, retain) IBOutlet NSTextField *titleField;
+@property (atomic, retain) IBOutlet NSStepper *titleStepper;
+@property (atomic) NSInteger titleLength;
 
 -(IBAction)buttonSave:(id)sender;
 -(IBAction)toggleSubs:(id)sender;
 -(IBAction)lengthDidChange:(id)sender;
+-(IBAction)titleDidChange:(id)sender;
 
 @end

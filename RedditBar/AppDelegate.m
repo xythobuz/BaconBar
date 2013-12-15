@@ -96,7 +96,7 @@
         return;
     }
     
-    api = [[Reddit alloc] initWithUsername:currentState.username Modhash:currentState.modhash Length:currentState.length];
+    api = [[Reddit alloc] initWithUsername:currentState.username Modhash:currentState.modhash Length:currentState.length TitleLength:currentState.titleLength];
     [NSThread detachNewThreadSelector:@selector(isAuthenticatedNewModhash:) toTarget:api withObject:self];
 }
 
@@ -200,13 +200,14 @@
     [application orderFrontStandardAboutPanel:self];
 }
 
--(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length printSubs:(Boolean)showSubreddits {
+-(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length printSubs:(Boolean)showSubreddits titleLength:(NSInteger)titleLength {
     currentState.username = name;
     currentState.modhash = modhash;
     currentState.useSubscriptions = subscriptions;
     currentState.subreddits = [subreddits componentsSeparatedByString: @"\n"];
     currentState.length = length;
     currentState.showSubreddit = showSubreddits;
+    currentState.titleLength = titleLength;
     [currentState savePreferences];
     lastFullName = nil; // reload from start
     [self reloadListWithOptions];

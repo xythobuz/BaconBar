@@ -39,13 +39,14 @@
 @property (atomic, retain) NSString *author;
 @property (atomic) NSInteger length;
 @property (atomic, retain) NSArray *subreddits;
+@property (atomic) NSInteger titleLength;
 
 // Used by Pref Window, unthreaded
 -(id)initWithUsername:(NSString *)name Password:(NSString *)pass;
 -(NSString *)queryModhash;
 
 // Used by MainMenu
--(id)initWithUsername:(NSString *)name Modhash:(NSString *)hash Length:(NSInteger)leng;
+-(id)initWithUsername:(NSString *)name Modhash:(NSString *)hash Length:(NSInteger)leng TitleLength:(NSInteger)title;
 
 // Use Threaded!
 -(void)isAuthenticatedNewModhash:(id)parent;

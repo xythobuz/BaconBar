@@ -30,39 +30,49 @@
 
 @implementation StateModel
 
-@synthesize username, modhash, useSubscriptions, subreddits, length, showSubreddit;
+@synthesize username, modhash, useSubscriptions, subreddits, length, showSubreddit, titleLength;
+
+NSString *s_username = @"username";
+NSString *s_modhash = @"modhash";
+NSString *s_useSubs = @"subscriptions";
+NSString *s_subreddits = @"subreddits";
+NSString *s_length = @"length";
+NSString *s_subs = @"showSubs";
+NSString *s_title = @"titleLength";
 
 -(void)registerDefaultPreferences {
     NSUserDefaults *store = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *appDefaults = [NSMutableDictionary dictionaryWithObject:@"" forKey:@"username"];
-    [appDefaults setValue:@"" forKey:@"modhash"];
-    [appDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"subscriptions"];
-    [appDefaults setValue:[NSNumber numberWithInt:10] forKey:@"length"];
-    [appDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"showSubs"];
-    [appDefaults setValue:@"" forKey:@"session"];
+    NSMutableDictionary *appDefaults = [NSMutableDictionary dictionaryWithObject:@"" forKey:s_username];
+    [appDefaults setValue:@"" forKey:s_modhash];
+    [appDefaults setValue:[NSNumber numberWithBool:YES] forKey:s_useSubs];
+    [appDefaults setValue:[NSNumber numberWithInt:10] forKey:s_length];
+    [appDefaults setValue:[NSNumber numberWithBool:YES] forKey:s_subs];
+    [appDefaults setValue:[NSNumber numberWithInt:66] forKey:s_title];
     [store registerDefaults:appDefaults];
 }
 
 -(void)savePreferences {
     NSUserDefaults *store = [NSUserDefaults standardUserDefaults];
-    [store setObject:username forKey:@"username"];
-    [store setObject:modhash forKey:@"modhash"];
-    [store setBool:useSubscriptions forKey:@"subscriptions"];
-    [store setObject:subreddits forKey:@"subreddits"];
-    [store setInteger:length forKey:@"length"];
-    [store setBool:showSubreddit forKey:@"showSubs"];
+    [store setObject:username forKey:s_username];
+    [store setObject:modhash forKey:s_modhash];
+    [store setBool:useSubscriptions forKey:s_useSubs];
+    [store setObject:subreddits forKey:s_subreddits];
+    [store setInteger:length forKey:s_length];
+    [store setBool:showSubreddit forKey:s_subs];
+    [store setInteger:titleLength forKey:s_title];
     [store synchronize];
 }
 
 -(void)loadPreferences {
     NSUserDefaults *store = [NSUserDefaults standardUserDefaults];
     [store synchronize];
-    username = [store stringForKey:@"username"];
-    modhash = [store stringForKey:@"modhash"];
-    useSubscriptions = [store boolForKey:@"subscriptions"];
-    subreddits = [store arrayForKey:@"subreddits"];
-    length = [store integerForKey:@"length"];
-    showSubreddit = [store boolForKey:@"showSubs"];
+    username = [store stringForKey:s_username];
+    modhash = [store stringForKey:s_modhash];
+    useSubscriptions = [store boolForKey:s_useSubs];
+    subreddits = [store arrayForKey:s_subreddits];
+    length = [store integerForKey:s_length];
+    showSubreddit = [store boolForKey:s_subs];
+    titleLength = [store integerForKey:s_title];
 }
 
 @end

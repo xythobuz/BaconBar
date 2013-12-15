@@ -10,6 +10,9 @@
 /* Class = "NSTextFieldCell"; title = "Items:"; ObjectID = "FNJ-RL-DXT"; */
 "FNJ-RL-DXT.title" = "Links:";
 
+/* Class = "NSTextFieldCell"; title = "Title:"; ObjectID = "Frl-AE-ROJ"; */
+"Frl-AE-ROJ.title" = "Titel:";
+
 /* Class = "NSTextFieldCell"; title = "Username: "; ObjectID = "GTO-OP-MYS"; */
 "GTO-OP-MYS.title" = "Benutzername: ";
 
@@ -27,6 +30,9 @@
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "YpZ-Vi-h1u"; */
 "YpZ-Vi-h1u.title" = "Bearbeiten";
+
+/* Class = "NSTextFieldCell"; title = "66"; ObjectID = "b76-4r-MEp"; */
+"b76-4r-MEp.title" = "66";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "czz-51-wxr"; */
 "czz-51-wxr.title" = "Bearbeiten";

@@ -31,14 +31,13 @@
 
 @implementation Reddit
 
-NSInteger maxTitleLength = 66;
 NSString *replaceTextForTitle = @"...";
 NSString *subredditFormat = @" [r/%@]";
 #define AUTHOR @"xythobuz"
 
-@synthesize username, modhash, password, version, appName, author, length, subreddits;
+@synthesize username, modhash, password, version, appName, author, length, subreddits, titleLength;
 
--(id)initWithUsername:(NSString *)name Modhash:(NSString *)hash Length:(NSInteger)leng {
+-(id)initWithUsername:(NSString *)name Modhash:(NSString *)hash Length:(NSInteger)leng TitleLength:(NSInteger)title {
     self = [super init];
     if (self) {
         username = name;
@@ -48,6 +47,7 @@ NSString *subredditFormat = @" [r/%@]";
         version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
         appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
         author = AUTHOR;
+        titleLength = title;
     }
     return self;
 }
@@ -62,6 +62,7 @@ NSString *subredditFormat = @" [r/%@]";
         version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
         appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
         author = AUTHOR;
+        titleLength = 66;
     }
     return self;
 }
@@ -123,8 +124,8 @@ NSString *subredditFormat = @" [r/%@]";
             comments = [NSString stringWithFormat:@"http://www.reddit.com%@", [current valueForKey:@"permalink"]];
         }
         NSString *subreddit = [NSString stringWithFormat:subredditFormat, [current valueForKey:@"subreddit"]];
-        NSInteger maxLen = maxTitleLength;
-        if ([subreddit length] >= maxTitleLength)
+        NSInteger maxLen = titleLength;
+        if ([subreddit length] >= titleLength)
             showSubs = FALSE;
         if (showSubs)
             maxLen -= [subreddit length];
@@ -200,13 +201,13 @@ NSString *subredditFormat = @" [r/%@]";
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:dat options:0 error:&error];
         NSDictionary *data = [json valueForKey:@"data"];
         if (data == nil) {
-            NSLog(@"Not logged in!");
+            NSLog(@"Error loading me.json: not logged in!\n");
             [parent performSelectorOnMainThread:@selector(reloadListNotAuthenticatedCallback) withObject:nil waitUntilDone:false];
             return;
         }
         NSString *newHash = [data valueForKey:@"modhash"];
         if ((newHash == nil) || ([newHash isEqualToString:@""])) {
-            NSLog(@"Did not receive modhash!");
+            NSLog(@"Error interpreting me.json: did not receive modhash!\n");
             [parent performSelectorOnMainThread:@selector(reloadListNotAuthenticatedCallback) withObject:nil waitUntilDone:false];
             return;
         }

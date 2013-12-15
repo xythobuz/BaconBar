@@ -36,6 +36,7 @@
 @property (atomic, retain) NSArray *subreddits;
 @property (atomic) NSInteger length;
 @property (atomic) Boolean showSubreddit;
+@property (atomic) NSInteger titleLength;
 
 -(void)registerDefaultPreferences;
 -(void)savePreferences;
