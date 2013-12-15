@@ -37,4 +37,8 @@
 @property (atomic) NSInteger length;
 @property (atomic) Boolean showSubreddit;
 
+-(void)registerDefaultPreferences;
+-(void)savePreferences;
+-(void)loadPreferences;
+
 @end

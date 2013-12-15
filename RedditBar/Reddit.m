@@ -194,17 +194,19 @@ NSString *subredditFormat = @" [r/%@]";
 
 -(void)isAuthenticatedNewModhash:(id)parent {
     NSHTTPURLResponse *response;
-    NSData *data = [self queryAPI:@"api/me.json" withResponse:&response];
-    if ((data != nil) && ([response statusCode] == 200)) {
+    NSData *dat = [self queryAPI:@"api/me.json" withResponse:&response];
+    if ((dat != nil) && ([response statusCode] == 200)) {
         NSError *error;
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:dat options:0 error:&error];
         NSDictionary *data = [json valueForKey:@"data"];
         if (data == nil) {
+            NSLog(@"Not logged in!");
             [parent performSelectorOnMainThread:@selector(reloadListNotAuthenticatedCallback) withObject:nil waitUntilDone:false];
             return;
         }
         NSString *newHash = [data valueForKey:@"modhash"];
         if ((newHash == nil) || ([newHash isEqualToString:@""])) {
+            NSLog(@"Did not receive modhash!");
             [parent performSelectorOnMainThread:@selector(reloadListNotAuthenticatedCallback) withObject:nil waitUntilDone:false];
             return;
         }
@@ -231,8 +233,7 @@ NSString *subredditFormat = @" [r/%@]";
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:res error:&error];
     if (error)
         return nil;
-    else
-        return data;
+    return data;
 }
 
 -(NSData *)queryAPI:(NSString *)api withData:(NSString *)string andResponse:(NSHTTPURLResponse **)res {
@@ -246,14 +247,14 @@ NSString *subredditFormat = @" [r/%@]";
     [request setValue:[NSString stringWithFormat:@"%@/%@ by %@", appName, version, author] forHTTPHeaderField:@"User-Agent"];
     if ((modhash != nil) && (![modhash isEqualToString:@""]))
         [request addValue:modhash forHTTPHeaderField:@"X-Modhash"];
+    
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:requestBodyData];
     NSError *error = nil;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:res error:&error];
     if (error)
         return nil;
-    else
-        return data;
+    return data;
 }
 
 -(NSURL *)getAPIPoint:(NSString *)where {

@@ -17,7 +17,7 @@
 "Loading..." = "Lade...";
 
 /* Statusitem when API is not authenticated */
-"Login Error!" = "Fehler beim login!";
+"Login Error!" = "Fehler beim Login!";
 
 /* Statusitem when no modhash is stored */
 "Not logged in!" = "Nicht eingeloggt!";

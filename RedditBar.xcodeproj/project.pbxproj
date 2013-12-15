@@ -74,6 +74,7 @@
 		E9CF1F4A184961020004AE02 /* RedditBarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedditBarTests.m; sourceTree = "<group>"; };
 		E9CF1F5A1849685C0004AE02 /* PrefController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefController.h; sourceTree = "<group>"; };
 		E9CF1F5B1849685C0004AE02 /* PrefController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefController.m; sourceTree = "<group>"; };
+		E9F64A2B185D51C100D6CA16 /* RedditBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RedditBar.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +140,7 @@
 		E9CF1F26184961010004AE02 /* RedditBar */ = {
 			isa = PBXGroup;
 			children = (
+				E9F64A2B185D51C100D6CA16 /* RedditBar.entitlements */,
 				E9CF1F32184961010004AE02 /* AppDelegate.h */,
 				E9CF1F33184961010004AE02 /* AppDelegate.m */,
 				E9B6773C184B73DC00850559 /* Reddit.h */,
@@ -237,6 +239,13 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = xythobuz;
 				TargetAttributes = {
+					E9CF1F1C184961010004AE02 = {
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
 					E9CF1F3D184961020004AE02 = {
 						TestTargetID = E9CF1F1C184961010004AE02;
 					};
@@ -479,6 +488,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RedditBar/RedditBar.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RedditBar/RedditBar-Prefix.pch";
@@ -493,6 +504,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RedditBar/RedditBar.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RedditBar/RedditBar-Prefix.pch";
