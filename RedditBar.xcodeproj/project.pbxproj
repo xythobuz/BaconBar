@@ -24,6 +24,7 @@
 		E9CF1F49184961020004AE02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9CF1F47184961020004AE02 /* InfoPlist.strings */; };
 		E9CF1F4B184961020004AE02 /* RedditBarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CF1F4A184961020004AE02 /* RedditBarTests.m */; };
 		E9CF1F5C1849685C0004AE02 /* PrefController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CF1F5B1849685C0004AE02 /* PrefController.m */; };
+		E9F64A2E185E1E2900D6CA16 /* PrefWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F64A2D185E1E2900D6CA16 /* PrefWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		E9CF1F5A1849685C0004AE02 /* PrefController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefController.h; sourceTree = "<group>"; };
 		E9CF1F5B1849685C0004AE02 /* PrefController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefController.m; sourceTree = "<group>"; };
 		E9F64A2B185D51C100D6CA16 /* RedditBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RedditBar.entitlements; sourceTree = "<group>"; };
+		E9F64A2C185E1E2900D6CA16 /* PrefWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefWindow.h; sourceTree = "<group>"; };
+		E9F64A2D185E1E2900D6CA16 /* PrefWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefWindow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +154,8 @@
 				E9341913184A1A1A00D03488 /* StateModel.m */,
 				E9CF1F5A1849685C0004AE02 /* PrefController.h */,
 				E9CF1F5B1849685C0004AE02 /* PrefController.m */,
+				E9F64A2C185E1E2900D6CA16 /* PrefWindow.h */,
+				E9F64A2D185E1E2900D6CA16 /* PrefWindow.m */,
 				E9CF1F35184961020004AE02 /* MainMenu.xib */,
 				E9341919184A47DE00D03488 /* Prefs.xib */,
 				E90E74B2184FAA0F00F38929 /* Localizable.strings */,
@@ -334,6 +339,7 @@
 				E9A129B1184BD24000F50D1D /* RedditItem.m in Sources */,
 				E9CF1F2D184961010004AE02 /* main.m in Sources */,
 				E9CF1F5C1849685C0004AE02 /* PrefController.m in Sources */,
+				E9F64A2E185E1E2900D6CA16 /* PrefWindow.m in Sources */,
 				E9B6773E184B73DC00850559 /* Reddit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

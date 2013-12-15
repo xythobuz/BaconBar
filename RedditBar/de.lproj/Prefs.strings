@@ -1,4 +1,4 @@
-/* Class = "NSWindow"; title = "RedditBar Preferences"; ObjectID = "1"; */
+/* Class = "PrefWindow"; title = "RedditBar Preferences"; ObjectID = "1"; */
 "1.title" = "RedditBar Einstellungen";
 
 /* Class = "NSTextFieldCell"; title = "10"; ObjectID = "0SD-Tf-uZS"; */
@@ -8,7 +8,7 @@
 "32T-3T-EcY.title" = "Ausschneiden";
 
 /* Class = "NSTextFieldCell"; title = "Items:"; ObjectID = "FNJ-RL-DXT"; */
-"FNJ-RL-DXT.title" = "Länge:";
+"FNJ-RL-DXT.title" = "Links:";
 
 /* Class = "NSTextFieldCell"; title = "Username: "; ObjectID = "GTO-OP-MYS"; */
 "GTO-OP-MYS.title" = "Benutzername: ";

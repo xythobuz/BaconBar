@@ -192,6 +192,7 @@
     [prefWindow setParent:self];
     [prefWindow setState:currentState];
     [prefWindow showWindow:self];
+    [[prefWindow window] makeKeyAndOrderFront:self];
 }
 
 -(IBAction)showAbout:(id)sender {
