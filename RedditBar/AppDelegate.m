@@ -30,13 +30,15 @@
 
 @implementation AppDelegate
 
-@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, prefWindow, currentState, application, api, firstMenuItem, menuItems, redditItems, lastFullName;
+@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, orangeredImage, orangeredHighlightImage, prefWindow, currentState, application, api, firstMenuItem, menuItems, redditItems, lastFullName, refreshTimer;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
     NSBundle *bundle = [NSBundle mainBundle];
     statusImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon" ofType:@"png"]];
     statusHighlightImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon-alt" ofType:@"png"]];
+    orangeredImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"orangered" ofType:@"png"]];
+    orangeredHighlightImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"orangered-alt" ofType:@"png"]];
     [statusItem setImage:statusImage];
     [statusItem setAlternateImage:statusHighlightImage];
     [statusItem setMenu:statusMenu];
@@ -47,6 +49,29 @@
     [currentState loadPreferences];
     lastFullName = nil;
     [self reloadListWithOptions];
+    [self recreateRefreshTimer];
+}
+
+-(void)recreateRefreshTimer {
+    if (refreshTimer != nil)
+        [refreshTimer invalidate];
+    refreshTimer = [NSTimer scheduledTimerWithTimeInterval:(currentState.refreshInterval * 60) target:self selector:@selector(refreshTick:) userInfo:nil repeats:YES];
+    [refreshTimer fire];
+}
+
+-(void)refreshTick:(NSTimer *)timer {
+    [NSThread detachNewThreadSelector:@selector(readPMs:) toTarget:api withObject:self];
+}
+
+-(void)readPMsCallback:(NSArray *)items {
+    if (items == nil) {
+        [statusItem setImage:statusImage];
+        [statusItem setAlternateImage:statusHighlightImage];
+    } else {
+        [statusItem setImage:orangeredImage];
+        [statusItem setAlternateImage:orangeredHighlightImage];
+        // TODO put PMs in menu?!
+    }
 }
 
 -(void)reloadListNotAuthenticatedCallback {
@@ -200,7 +225,7 @@
     [application orderFrontStandardAboutPanel:self];
 }
 
--(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length printSubs:(Boolean)showSubreddits titleLength:(NSInteger)titleLength {
+-(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length printSubs:(Boolean)showSubreddits titleLength:(NSInteger)titleLength refresh:(NSInteger)refreshInterval {
     currentState.username = name;
     currentState.modhash = modhash;
     currentState.useSubscriptions = subscriptions;
@@ -208,9 +233,11 @@
     currentState.length = length;
     currentState.showSubreddit = showSubreddits;
     currentState.titleLength = titleLength;
+    currentState.refreshInterval = refreshInterval;
     [currentState savePreferences];
     lastFullName = nil; // reload from start
     [self reloadListWithOptions];
+    [self recreateRefreshTimer];
 }
 
 @end

@@ -40,12 +40,15 @@
 @property (atomic, retain) NSStatusItem *statusItem;
 @property (atomic, retain) NSImage *statusImage;
 @property (atomic, retain) NSImage *statusHighlightImage;
+@property (atomic, retain) NSImage *orangeredImage;
+@property (atomic, retain) NSImage *orangeredHighlightImage;
 @property (atomic, retain) PrefController *prefWindow;
 @property (atomic, retain) StateModel *currentState;
 @property (atomic, retain) Reddit *api;
 @property (atomic, retain) NSArray *menuItems;
 @property (atomic, retain) NSArray *redditItems;
 @property (atomic, retain) NSString *lastFullName;
+@property (atomic, retain) NSTimer *refreshTimer;
 
 -(IBAction)showPreferences:(id)sender;
 -(IBAction)showAbout:(id)sender;
@@ -58,7 +61,8 @@
 -(void)reloadListNotAuthenticatedCallback;
 -(void)reloadListHasSubredditsCallback:(NSArray *)items;
 -(void)reloadListHasFrontpageCallback:(NSArray *)items;
+-(void)readPMsCallback:(NSArray *)items;
 
--(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length printSubs:(Boolean)showSubreddits titleLength:(NSInteger)titleLength;
+-(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length printSubs:(Boolean)showSubreddits titleLength:(NSInteger)titleLength refresh:(NSInteger)refreshInterval;
 
 @end

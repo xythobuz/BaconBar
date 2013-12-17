@@ -52,6 +52,7 @@
 -(void)isAuthenticatedNewModhash:(id)parent;
 -(void)readFrontpage:(id)parent;
 -(void)readSubreddits:(id)parent;
+-(void)readPMs:(id)parent;
 
 // Internal
 -(NSData *)queryAPI:(NSString *)api withData:(NSString *)string andResponse:(NSHTTPURLResponse **)res;

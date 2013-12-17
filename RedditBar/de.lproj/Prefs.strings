@@ -34,8 +34,14 @@
 /* Class = "NSTextFieldCell"; title = "66"; ObjectID = "b76-4r-MEp"; */
 "b76-4r-MEp.title" = "66";
 
+/* Class = "NSTextFieldCell"; title = "PM Refresh (in Minutes):"; ObjectID = "cwK-wP-wB6"; */
+"cwK-wP-wB6.title" = "PM Aktualisierung (in Minuten):";
+
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "czz-51-wxr"; */
 "czz-51-wxr.title" = "Bearbeiten";
+
+/* Class = "NSTextFieldCell"; title = "5"; ObjectID = "gZN-n2-TGX"; */
+"gZN-n2-TGX.title" = "5";
 
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "j3h-hj-rfI"; */
 "j3h-hj-rfI.title" = "Einfügen";
@@ -45,6 +51,9 @@
 
 /* Class = "NSButtonCell"; title = "Show Subreddit after Title"; ObjectID = "nFK-xi-2F3"; */
 "nFK-xi-2F3.title" = "Zeige Subreddit hinter Titel";
+
+/* Class = "NSBox"; title = "Box"; ObjectID = "paW-kV-tNF"; */
+"paW-kV-tNF.title" = "Box";
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "qSu-ha-DhM"; */
 "qSu-ha-DhM.title" = "Alle auswählen";

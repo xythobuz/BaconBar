@@ -37,6 +37,7 @@
 @property (atomic) NSInteger length;
 @property (atomic) Boolean showSubreddit;
 @property (atomic) NSInteger titleLength;
+@property (atomic) NSInteger refreshInterval;
 
 -(void)registerDefaultPreferences;
 -(void)savePreferences;

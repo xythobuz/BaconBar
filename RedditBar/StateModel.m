@@ -30,7 +30,7 @@
 
 @implementation StateModel
 
-@synthesize username, modhash, useSubscriptions, subreddits, length, showSubreddit, titleLength;
+@synthesize username, modhash, useSubscriptions, subreddits, length, showSubreddit, titleLength, refreshInterval;
 
 NSString *s_username = @"username";
 NSString *s_modhash = @"modhash";
@@ -39,6 +39,7 @@ NSString *s_subreddits = @"subreddits";
 NSString *s_length = @"length";
 NSString *s_subs = @"showSubs";
 NSString *s_title = @"titleLength";
+NSString *s_refresh = @"refreshInterval";
 
 -(void)registerDefaultPreferences {
     NSUserDefaults *store = [NSUserDefaults standardUserDefaults];
@@ -48,6 +49,7 @@ NSString *s_title = @"titleLength";
     [appDefaults setValue:[NSNumber numberWithInt:10] forKey:s_length];
     [appDefaults setValue:[NSNumber numberWithBool:YES] forKey:s_subs];
     [appDefaults setValue:[NSNumber numberWithInt:66] forKey:s_title];
+    [appDefaults setValue:[NSNumber numberWithInt:5] forKey:s_refresh];
     [store registerDefaults:appDefaults];
 }
 
@@ -60,6 +62,7 @@ NSString *s_title = @"titleLength";
     [store setInteger:length forKey:s_length];
     [store setBool:showSubreddit forKey:s_subs];
     [store setInteger:titleLength forKey:s_title];
+    [store setInteger:refreshInterval forKey:s_refresh];
     [store synchronize];
 }
 
@@ -73,6 +76,7 @@ NSString *s_title = @"titleLength";
     length = [store integerForKey:s_length];
     showSubreddit = [store boolForKey:s_subs];
     titleLength = [store integerForKey:s_title];
+    refreshInterval = [store integerForKey:s_refresh];
 }
 
 @end

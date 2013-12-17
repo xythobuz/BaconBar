@@ -46,10 +46,14 @@
 @property (atomic, retain) IBOutlet NSTextField *titleField;
 @property (atomic, retain) IBOutlet NSStepper *titleStepper;
 @property (atomic) NSInteger titleLength;
+@property (atomic, retain) IBOutlet NSTextField *refreshField;
+@property (atomic, retain) IBOutlet NSStepper *refreshStepper;
+@property (atomic) NSInteger refreshInterval;
 
 -(IBAction)buttonSave:(id)sender;
 -(IBAction)toggleSubs:(id)sender;
 -(IBAction)lengthDidChange:(id)sender;
 -(IBAction)titleDidChange:(id)sender;
+-(IBAction)refreshDidChange:(id)sender;
 
 @end

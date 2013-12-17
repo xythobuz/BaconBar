@@ -30,11 +30,11 @@
 
 @interface RedditItem : NSObject
 
-@property (atomic, retain) NSString *name;
-@property (atomic, retain) NSString *fullName;
-@property (atomic, retain) NSString *link;
-@property (atomic, retain) NSString *comments;
-@property (atomic) BOOL isSelf;
+@property (atomic, retain) NSString *name; // Title, maybe cut with ... at the end
+@property (atomic, retain) NSString *fullName; // Complete Title
+@property (atomic, retain) NSString *link; // link itself
+@property (atomic, retain) NSString *comments; // link to comments, or nil if isSelf is true
+@property (atomic) BOOL isSelf; // link or selfpost
 
 +(RedditItem *)itemWithName:(NSString *)name Link:(NSString *)link Comments:(NSString *)comments Self:(BOOL)isSelf;
 

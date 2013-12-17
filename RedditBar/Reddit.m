@@ -187,10 +187,16 @@ NSString *subredditFormat = @" [r/%@]";
     NSHTTPURLResponse *response;
     NSData *data = [self queryAPI:url withResponse:&response];
     if ((data == nil) || ([response statusCode] != 200)) {
-        [parent performSelectorOnMainThread:@selector(reloadListHasSubredditsCallback:) withObject:nil waitUntilDone:false];
+        [(AppDelegate *)parent performSelectorOnMainThread:@selector(reloadListHasSubredditsCallback:) withObject:nil waitUntilDone:FALSE];
     } else {
-        [parent performSelectorOnMainThread:@selector(reloadListHasSubredditsCallback:) withObject:[self convertJSONToItemArray:data ShowSubs:showSubreddits] waitUntilDone:false];
+        [(AppDelegate *)parent performSelectorOnMainThread:@selector(reloadListHasSubredditsCallback:) withObject:[self convertJSONToItemArray:data ShowSubs:showSubreddits] waitUntilDone:FALSE];
     }
+}
+
+-(void)readPMs:(id)parent {
+    // TODO read PMs
+    // Fill NSArray with RedditItems for each PM, or return nil if none
+    [(AppDelegate *)parent performSelectorOnMainThread:@selector(readPMsCallback:) withObject:nil waitUntilDone:FALSE];
 }
 
 -(void)isAuthenticatedNewModhash:(id)parent {
