@@ -36,6 +36,8 @@
 @property (atomic, retain) IBOutlet NSMenu *statusMenu;
 @property (atomic, retain) IBOutlet NSApplication *application;
 @property (atomic, retain) IBOutlet NSMenuItem *firstMenuItem;
+@property (atomic, retain) IBOutlet NSMenuItem *PMItem;
+@property (atomic, retain) IBOutlet NSMenuItem *PMSeparator;
 
 @property (atomic, retain) NSStatusItem *statusItem;
 @property (atomic, retain) NSImage *statusImage;
@@ -52,16 +54,17 @@
 
 -(IBAction)showPreferences:(id)sender;
 -(IBAction)showAbout:(id)sender;
-- (IBAction)reloadCompleteList:(id)sender;
-- (IBAction)reloadNextList:(id)sender;
+-(IBAction)reloadCompleteList:(id)sender;
+-(IBAction)reloadNextList:(id)sender;
 -(IBAction)linkToOpen:(id)sender;
+-(IBAction)openUnread:(id)sender;
 
 -(void)reloadListWithOptions;
 -(void)reloadListIsAuthenticatedCallback;
 -(void)reloadListNotAuthenticatedCallback;
 -(void)reloadListHasSubredditsCallback:(NSArray *)items;
 -(void)reloadListHasFrontpageCallback:(NSArray *)items;
--(void)readPMsCallback:(NSArray *)items;
+-(void)readPMsCallback:(NSNumber *)items;
 
 -(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length printSubs:(Boolean)showSubreddits titleLength:(NSInteger)titleLength refresh:(NSInteger)refreshInterval;
 

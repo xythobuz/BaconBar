@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
@@ -14,6 +14,8 @@
         <customObject id="-3" userLabel="Application"/>
         <customObject id="494" customClass="AppDelegate">
             <connections>
+                <outlet property="PMItem" destination="IM8-KI-MAc" id="X1H-cL-0kE"/>
+                <outlet property="PMSeparator" destination="5L0-zz-YIh" id="2X3-PW-1G9"/>
                 <outlet property="application" destination="-3" id="1K5-sF-Im7"/>
                 <outlet property="firstMenuItem" destination="jfb-mv-iN9" id="2QT-D1-leO"/>
                 <outlet property="statusMenu" destination="fuB-VS-nSq" id="AZY-3d-h8G"/>
@@ -22,6 +24,13 @@
         <customObject id="420" customClass="NSFontManager"/>
         <menu id="fuB-VS-nSq" userLabel="StatusItem">
             <items>
+                <menuItem title="PMs..." hidden="YES" enabled="NO" id="IM8-KI-MAc">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="openUnread:" target="494" id="zdP-DS-AdX"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" hidden="YES" id="5L0-zz-YIh"/>
                 <menuItem title="Loading..." enabled="NO" id="jfb-mv-iN9">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>

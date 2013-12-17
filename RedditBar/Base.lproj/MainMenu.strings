@@ -5,6 +5,9 @@
 /* Class = "NSMenuItem"; title = "About RedditBar"; ObjectID = "4ah-qP-9eP"; */
 "4ah-qP-9eP.title" = "About RedditBar";
 
+/* Class = "NSMenuItem"; title = "PMs..."; ObjectID = "IM8-KI-MAc"; */
+"IM8-KI-MAc.title" = "PMs...";
+
 /* Class = "NSMenuItem"; title = "Reload"; ObjectID = "bQG-wq-9Zw"; */
 "bQG-wq-9Zw.title" = "Reload";
 

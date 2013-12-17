@@ -101,53 +101,6 @@ NSString *subredditFormat = @" [r/%@]";
     }
 }
 
--(NSArray *)convertJSONToItemArray:(NSData *)data ShowSubs:(Boolean)showSubs {
-    NSError *error;
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-    NSDictionary *dat = [json valueForKey:@"data"];
-    if (dat == nil)
-        return nil;
-    NSArray *children = [dat valueForKey:@"children"];
-    if (children == nil)
-        return nil;
-    
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity:[children count]];
-    for (NSUInteger i = 0; i < [children count]; i++) {
-        NSDictionary *child = [children objectAtIndex:i];
-        NSDictionary *current = [child valueForKey:@"data"];
-        NSString *name = [current valueForKey:@"title"];
-        NSString *link = [current valueForKey:@"url"];
-        NSString *comments = nil;
-        NSNumber *num = [current valueForKey:@"is_self"];
-        BOOL isSelf = [num boolValue];
-        if (!isSelf) {
-            comments = [NSString stringWithFormat:@"http://www.reddit.com%@", [current valueForKey:@"permalink"]];
-        }
-        NSString *subreddit = [NSString stringWithFormat:subredditFormat, [current valueForKey:@"subreddit"]];
-        NSInteger maxLen = titleLength;
-        if ([subreddit length] >= titleLength)
-            showSubs = FALSE;
-        if (showSubs)
-            maxLen -= [subreddit length];
-        if ([name length] > maxLen)
-            name = [NSString stringWithFormat:@"%@%@", [name substringToIndex:(maxLen - [replaceTextForTitle length])], replaceTextForTitle];
-        if (showSubs)
-            name = [NSString stringWithFormat:@"%@%@", name, subreddit];
-        RedditItem *r = [RedditItem itemWithName:name Link:link Comments:comments Self:isSelf];
-        NSString *fullName = [current valueForKey:@"title"];
-        if (showSubs)
-            fullName = [NSString stringWithFormat:@"%@%@", fullName, subreddit];
-        [r setFullName:fullName];
-        [array insertObject:r atIndex:i];
-        
-        if (i == ([children count] - 1)) {
-            NSString *name = [NSString stringWithFormat:@"%@_%@", [child valueForKey:@"kind"], [current valueForKey:@"id"]];
-            [array insertObject:name atIndex:i + 1];
-        }
-    }
-    return array;
-}
-
 -(void)readFrontpage:(id)parent {
     NSHTTPURLResponse *response;
     
@@ -193,10 +146,74 @@ NSString *subredditFormat = @" [r/%@]";
     }
 }
 
+-(NSArray *)convertJSONToItemArray:(NSData *)data ShowSubs:(Boolean)showSubs {
+    NSError *error;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+    NSDictionary *dat = [json valueForKey:@"data"];
+    if (dat == nil)
+        return nil;
+    NSArray *children = [dat valueForKey:@"children"];
+    if ((children == nil) || ([children count] == 0))
+        return nil;
+    
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:[children count]];
+    for (NSUInteger i = 0; i < [children count]; i++) {
+        NSDictionary *child = [children objectAtIndex:i];
+        NSDictionary *current = [child valueForKey:@"data"];
+        NSString *name = [current valueForKey:@"title"];
+        NSString *link = [current valueForKey:@"url"];
+        NSString *comments = nil;
+        NSNumber *num = [current valueForKey:@"is_self"];
+        BOOL isSelf = [num boolValue];
+        if (!isSelf) {
+            comments = [NSString stringWithFormat:@"http://www.reddit.com%@", [current valueForKey:@"permalink"]];
+        }
+        NSString *subreddit = [NSString stringWithFormat:subredditFormat, [current valueForKey:@"subreddit"]];
+        NSInteger maxLen = titleLength;
+        if ([subreddit length] >= titleLength)
+        showSubs = FALSE;
+        if (showSubs)
+        maxLen -= [subreddit length];
+        if ([name length] > maxLen)
+        name = [NSString stringWithFormat:@"%@%@", [name substringToIndex:(maxLen - [replaceTextForTitle length])], replaceTextForTitle];
+        if (showSubs)
+        name = [NSString stringWithFormat:@"%@%@", name, subreddit];
+        RedditItem *r = [RedditItem itemWithName:name Link:link Comments:comments Self:isSelf];
+        NSString *fullName = [current valueForKey:@"title"];
+        if (showSubs)
+        fullName = [NSString stringWithFormat:@"%@%@", fullName, subreddit];
+        [r setFullName:fullName];
+        [array insertObject:r atIndex:i];
+        
+        if (i == ([children count] - 1)) {
+            NSString *name = [NSString stringWithFormat:@"%@_%@", [child valueForKey:@"kind"], [current valueForKey:@"id"]];
+            [array insertObject:name atIndex:i + 1];
+        }
+    }
+    return array;
+}
+
+-(NSNumber *)messagesCount:(NSData *)data {
+    NSError *error;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+    NSDictionary *dat = [json valueForKey:@"data"];
+    if (dat == nil)
+        return nil;
+    NSArray *children = [dat valueForKey:@"children"];
+    if (children == nil)
+        return nil;
+    return [NSNumber numberWithInteger:[children count]];
+}
+
 -(void)readPMs:(id)parent {
-    // TODO read PMs
-    // Fill NSArray with RedditItems for each PM, or return nil if none
-    [(AppDelegate *)parent performSelectorOnMainThread:@selector(readPMsCallback:) withObject:nil waitUntilDone:FALSE];
+    NSString *url = @"message/unread.json";
+    NSHTTPURLResponse *response;
+    NSData *data = [self queryAPI:url withResponse:&response];
+    if ((data == nil) || ([response statusCode] != 200)) {
+        [(AppDelegate *)parent performSelectorOnMainThread:@selector(readPMsCallback:) withObject:nil waitUntilDone:FALSE];
+    } else {
+        [(AppDelegate *)parent performSelectorOnMainThread:@selector(readPMsCallback:) withObject:[self messagesCount:data] waitUntilDone:FALSE];
+    }
 }
 
 -(void)isAuthenticatedNewModhash:(id)parent {

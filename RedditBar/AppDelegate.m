@@ -30,7 +30,7 @@
 
 @implementation AppDelegate
 
-@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, orangeredImage, orangeredHighlightImage, prefWindow, currentState, application, api, firstMenuItem, menuItems, redditItems, lastFullName, refreshTimer;
+@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, orangeredImage, orangeredHighlightImage, prefWindow, currentState, application, api, firstMenuItem, menuItems, redditItems, lastFullName, refreshTimer, PMItem, PMSeparator;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
@@ -63,14 +63,18 @@
     [NSThread detachNewThreadSelector:@selector(readPMs:) toTarget:api withObject:self];
 }
 
--(void)readPMsCallback:(NSArray *)items {
-    if (items == nil) {
+-(void)readPMsCallback:(NSNumber *)items {
+    if ((items == nil) || ([items integerValue] == 0)) {
         [statusItem setImage:statusImage];
         [statusItem setAlternateImage:statusHighlightImage];
+        [PMItem setHidden:TRUE];
+        [PMSeparator setHidden:TRUE];
     } else {
         [statusItem setImage:orangeredImage];
         [statusItem setAlternateImage:orangeredHighlightImage];
-        // TODO put PMs in menu?!
+        [PMItem setTitle:[NSString stringWithFormat:NSLocalizedString(@"You've got %ld unread PMs!", @"PM message"), (long)items.integerValue]];
+        [PMItem setHidden:FALSE];
+        [PMSeparator setHidden:FALSE];
     }
 }
 
@@ -175,6 +179,11 @@
     }
 }
 
+-(IBAction)openUnread:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.reddit.com/message/unread"]];
+    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(refreshTick:) userInfo:nil repeats:NO];
+}
+
 -(void)clearMenuItems {
     if (menuItems != nil) {
         for (NSUInteger i = 0; i < [menuItems count]; i++) {
@@ -189,7 +198,7 @@
     for (NSUInteger i = 0; i < [array count]; i++) {
         NSMenuItem *item = [self prepareItemForMenu:[array objectAtIndex:i]];
         [items addObject:item];
-        [statusMenu insertItem:item atIndex:i];
+        [statusMenu insertItem:item atIndex:(i + 2)];
     }
     menuItems = items;
 }

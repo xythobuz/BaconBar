@@ -49,3 +49,5 @@
 /* Pref API Error */
 "Wrong Username or Password!" = "Falscher Nutzername oder falsches Passwort!";
 
+/* PM message */
+"You've got %ld unread PMs!" = "%ld ungelesene PMs!";

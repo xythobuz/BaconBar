@@ -2,7 +2,10 @@
 "1lW-9C-xt6.title" = "Einstellungen...";
 
 /* Class = "NSMenuItem"; title = "About RedditBar"; ObjectID = "4ah-qP-9eP"; */
-"4ah-qP-9eP.title" = "About RedditBar";
+"4ah-qP-9eP.title" = "Über RedditBar";
+
+/* Class = "NSMenuItem"; title = "PMs..."; ObjectID = "IM8-KI-MAc"; */
+"IM8-KI-MAc.title" = "PMs...";
 
 /* Class = "NSMenuItem"; title = "Reload"; ObjectID = "bQG-wq-9Zw"; */
 "bQG-wq-9Zw.title" = "Neu laden";
