@@ -245,6 +245,7 @@
 				ORGANIZATIONNAME = xythobuz;
 				TargetAttributes = {
 					E9CF1F1C184961010004AE02 = {
+						DevelopmentTeam = 2YRH3A6P3C;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -495,6 +496,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = RedditBar/RedditBar.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RedditBar/RedditBar-Prefix.pch";
@@ -510,6 +512,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = RedditBar/RedditBar.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RedditBar/RedditBar-Prefix.pch";
