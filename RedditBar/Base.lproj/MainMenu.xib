@@ -35,21 +35,18 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="7Rc-fG-5uQ"/>
-                <menuItem title="Load next" id="e8u-nc-P6x">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                <menuItem title="Load next" keyEquivalent="n" id="e8u-nc-P6x">
                     <connections>
                         <action selector="reloadNextList:" target="494" id="tbv-NV-8s7"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Reload" id="bQG-wq-9Zw">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                <menuItem title="Reload" keyEquivalent="r" id="bQG-wq-9Zw">
                     <connections>
                         <action selector="reloadCompleteList:" target="494" id="FoB-kO-9Sk"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="w4G-0W-l5l"/>
-                <menuItem title="Preferences..." id="1lW-9C-xt6">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                <menuItem title="Preferences..." keyEquivalent="," id="1lW-9C-xt6">
                     <connections>
                         <action selector="showPreferences:" target="494" id="Fen-Ci-4tc"/>
                     </connections>
@@ -60,8 +57,7 @@
                         <action selector="showAbout:" target="494" id="7IO-ZS-OJf"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Quit" id="oyC-3G-WEc">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                <menuItem title="Quit" keyEquivalent="q" id="oyC-3G-WEc">
                     <connections>
                         <action selector="terminate:" target="-1" id="AHO-0z-nt2"/>
                     </connections>
