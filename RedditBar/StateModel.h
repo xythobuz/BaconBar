@@ -38,6 +38,7 @@
 @property (atomic) Boolean showSubreddit;
 @property (atomic) NSInteger titleLength;
 @property (atomic) NSInteger refreshInterval;
+@property (atomic, retain) NSString *filter;
 
 -(void)registerDefaultPreferences;
 -(void)savePreferences;

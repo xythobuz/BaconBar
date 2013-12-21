@@ -34,7 +34,7 @@
 NSString *modhashSetLiteral = @"__MODHASH__IS__SET__";
 NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_\n";
 
-@synthesize username, password, subscriptions, subreddits, win, parent, state, lengthField, lengthStepper, length, progress, showSubreddit, titleField, titleStepper, titleLength, refreshField, refreshStepper, refreshInterval;
+@synthesize username, password, subscriptions, subreddits, win, parent, state, lengthField, lengthStepper, length, progress, showSubreddit, titleField, titleStepper, titleLength, refreshField, refreshStepper, refreshInterval, filterSelection;
 
 -(Boolean)isValidList:(NSString *)input {
     NSCharacterSet *invalidChars = [[NSCharacterSet characterSetWithCharactersInString:subredditCharacters] invertedSet];
@@ -70,6 +70,11 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
     [refreshField setIntegerValue:refreshInterval];
     [progress setUsesThreadedAnimation:YES];
     [showSubreddit setState:[NSNumber numberWithBool:state.showSubreddit].integerValue];
+    if ([state.filter isEqualToString:@"hot"]) {
+        [filterSelection selectItemAtIndex:0];
+    } else {
+        [filterSelection selectItemAtIndex:1];
+    }
 }
 
 -(IBAction)buttonSave:(id)sender {
@@ -132,7 +137,7 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
         print = FALSE;
     
     AppDelegate *app = (AppDelegate *)parent;
-    [app prefReturnName:username.stringValue Modhash:modhash subscriptions:subs subreddits:subreddits.textStorage.string length:[lengthField integerValue] printSubs:print titleLength:[titleField integerValue] refresh:[refreshField integerValue]];
+    [app prefReturnName:username.stringValue Modhash:modhash subscriptions:subs subreddits:subreddits.textStorage.string length:[lengthField integerValue] printSubs:print titleLength:[titleField integerValue] refresh:[refreshField integerValue] filter:[filterSelection titleOfSelectedItem]];
     [win performClose:self];
 }
 

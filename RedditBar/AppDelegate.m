@@ -234,7 +234,7 @@
     [application orderFrontStandardAboutPanel:self];
 }
 
--(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length printSubs:(Boolean)showSubreddits titleLength:(NSInteger)titleLength refresh:(NSInteger)refreshInterval {
+-(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length printSubs:(Boolean)showSubreddits titleLength:(NSInteger)titleLength refresh:(NSInteger)refreshInterval filter:(NSString *)filter {
     currentState.username = name;
     currentState.modhash = modhash;
     currentState.useSubscriptions = subscriptions;
@@ -243,7 +243,11 @@
     currentState.showSubreddit = showSubreddits;
     currentState.titleLength = titleLength;
     currentState.refreshInterval = refreshInterval;
+    currentState.filter = filter;
     [currentState savePreferences];
+    [firstMenuItem setTitle:NSLocalizedString(@"Loading...", nil)];
+    [self clearMenuItems];
+    [firstMenuItem setHidden:NO];
     lastFullName = nil; // reload from start
     [self reloadListWithOptions];
     [self recreateRefreshTimer];

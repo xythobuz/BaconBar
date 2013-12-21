@@ -106,11 +106,12 @@ NSString *subredditFormat = @" [r/%@]";
     
     NSString *after = ((AppDelegate *)parent).lastFullName;
     Boolean showSubreddits = ((AppDelegate *)parent).currentState.showSubreddit;
+    NSString *where = ((AppDelegate *)parent).currentState.filter;
     NSString *url;
     if (after == nil)
-        url = [NSString stringWithFormat:@"hot.json?limit=%ld", (long)length];
+        url = [NSString stringWithFormat:@"%@.json?limit=%ld", where, (long)length];
     else
-        url = [NSString stringWithFormat:@"hot.json?limit=%ld&after=%@", (long)length, after];
+        url = [NSString stringWithFormat:@"%@.json?limit=%ld&after=%@", where, (long)length, after];
         
     NSData *data = [self queryAPI:url withResponse:&response];
     if ((data == nil) || ([response statusCode] != 200)) {
@@ -131,11 +132,12 @@ NSString *subredditFormat = @" [r/%@]";
     
     NSString *after = ((AppDelegate *)parent).lastFullName;
     Boolean showSubreddits = ((AppDelegate *)parent).currentState.showSubreddit;
+    NSString *where = ((AppDelegate *)parent).currentState.filter;
     NSString *url;
     if (after == nil)
-        url = [NSString stringWithFormat:@"%@/hot.json?limit=%ld", subs, (long)length];
+        url = [NSString stringWithFormat:@"%@/%@.json?limit=%ld", subs, where, (long)length];
     else
-        url = [NSString stringWithFormat:@"%@/hot.json?limit=%ld&after=%@", subs, (long)length, after];
+        url = [NSString stringWithFormat:@"%@/%@.json?limit=%ld&after=%@", subs, where, (long)length, after];
     
     NSHTTPURLResponse *response;
     NSData *data = [self queryAPI:url withResponse:&response];

@@ -25,6 +25,9 @@
 /* Class = "NSButtonCell"; title = "Save"; ObjectID = "Mqa-FJ-C43"; */
 "Mqa-FJ-C43.title" = "Save";
 
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "Ow7-gc-PGv"; */
+"Ow7-gc-PGv.title" = "OtherViews";
+
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "TjO-Z6-Vng"; */
 "TjO-Z6-Vng.title" = "Cancel";
 
@@ -34,11 +37,17 @@
 /* Class = "NSTextFieldCell"; title = "66"; ObjectID = "b76-4r-MEp"; */
 "b76-4r-MEp.title" = "66";
 
+/* Class = "NSTextFieldCell"; title = "Filter:"; ObjectID = "coc-11-MQH"; */
+"coc-11-MQH.title" = "Filter:";
+
 /* Class = "NSTextFieldCell"; title = "PM Refresh (in Minutes):"; ObjectID = "cwK-wP-wB6"; */
 "cwK-wP-wB6.title" = "PM Refresh (in Minutes):";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "czz-51-wxr"; */
 "czz-51-wxr.title" = "Edit";
+
+/* Class = "NSMenuItem"; title = "new"; ObjectID = "dxr-Ml-O8i"; */
+"dxr-Ml-O8i.title" = "new";
 
 /* Class = "NSTextFieldCell"; title = "5"; ObjectID = "gZN-n2-TGX"; */
 "gZN-n2-TGX.title" = "5";
@@ -57,6 +66,9 @@
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "qSu-ha-DhM"; */
 "qSu-ha-DhM.title" = "Select All";
+
+/* Class = "NSMenuItem"; title = "hot"; ObjectID = "sKV-FZ-wbQ"; */
+"sKV-FZ-wbQ.title" = "hot";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "wSY-To-FDI"; */
 "wSY-To-FDI.title" = "Copy";

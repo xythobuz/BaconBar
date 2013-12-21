@@ -39,15 +39,17 @@
 @property (atomic, retain) IBOutlet NSTextField *lengthField;
 @property (atomic, retain) IBOutlet NSStepper *lengthStepper;
 @property (atomic, retain) IBOutlet NSProgressIndicator *progress;
-@property (weak) IBOutlet NSButton *showSubreddit;
+@property (atomic, retain) IBOutlet NSButton *showSubreddit;
+@property (atomic, retain) IBOutlet NSTextField *titleField;
+@property (atomic, retain) IBOutlet NSStepper *titleStepper;
+@property (atomic, retain) IBOutlet NSTextField *refreshField;
+@property (atomic, retain) IBOutlet NSStepper *refreshStepper;
+@property (atomic, retain) IBOutlet NSPopUpButton *filterSelection;
+
 @property (atomic, retain) NSObject *parent;
 @property (atomic, retain) StateModel *state;
 @property (atomic) NSInteger length;
-@property (atomic, retain) IBOutlet NSTextField *titleField;
-@property (atomic, retain) IBOutlet NSStepper *titleStepper;
 @property (atomic) NSInteger titleLength;
-@property (atomic, retain) IBOutlet NSTextField *refreshField;
-@property (atomic, retain) IBOutlet NSStepper *refreshStepper;
 @property (atomic) NSInteger refreshInterval;
 
 -(IBAction)buttonSave:(id)sender;
