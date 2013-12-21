@@ -172,7 +172,9 @@ NSString *subredditFormat = @" [r/%@]";
         }
         NSString *subreddit = [NSString stringWithFormat:subredditFormat, [current valueForKey:@"subreddit"]];
         NSInteger maxLen = titleLength;
-        if ([subreddit length] >= titleLength)
+        if (titleLength == 0)
+            maxLen = 1000; // Should be enough to not crop
+        if ([subreddit length] >= maxLen)
         showSubs = FALSE;
         if (showSubs)
         maxLen -= [subreddit length];

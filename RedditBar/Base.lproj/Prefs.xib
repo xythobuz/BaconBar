@@ -185,7 +185,7 @@ Gw
                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="jxz-fQ-M1L">
                         <rect key="frame" x="130" y="157" width="19" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="Gba-jV-Ouh"/>
+                        <stepperCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="100" doubleValue="1" id="Gba-jV-Ouh"/>
                         <connections>
                             <action selector="lengthDidChange:" target="-2" id="CJm-58-seM"/>
                             <outlet property="formatter" destination="zpc-oG-upp" id="nXg-hE-DQX"/>
@@ -194,7 +194,7 @@ Gw
                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="2aV-fo-xh7">
                         <rect key="frame" x="264" y="157" width="19" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="BWQ-gm-H9h"/>
+                        <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="1" id="BWQ-gm-H9h"/>
                         <connections>
                             <action selector="titleDidChange:" target="-2" id="l0Y-Mg-1KD"/>
                             <outlet property="formatter" destination="hDb-Na-Vku" id="EL4-2q-XKw"/>
@@ -244,7 +244,7 @@ Gw
                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="uaS-Xm-tIa">
                         <rect key="frame" x="291" y="58" width="19" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="rTZ-Zs-1eO"/>
+                        <stepperCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="100" doubleValue="1" id="rTZ-Zs-1eO"/>
                         <connections>
                             <action selector="refreshDidChange:" target="-2" id="4Di-oE-RDC"/>
                             <outlet property="formatter" destination="Y11-Cs-X1g" id="hoL-jC-QPe"/>
@@ -264,10 +264,10 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="zJW-6u-fHd">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="menu"/>
                             <menu key="menu" title="OtherViews" id="Ow7-gc-PGv">
                                 <items>
-                                    <menuItem title="hot" state="on" id="sKV-FZ-wbQ">
+                                    <menuItem title="hot" id="sKV-FZ-wbQ">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
                                     <menuItem title="new" id="dxr-Ml-O8i">
@@ -295,7 +295,7 @@ Gw
             <attributedString key="attributedStringForZero">
                 <fragment content="0"/>
             </attributedString>
-            <real key="minimum" value="1"/>
+            <real key="minimum" value="0.0"/>
             <real key="maximum" value="140"/>
             <metadata>
                 <bool key="localizesFormat" value="YES"/>
@@ -306,7 +306,7 @@ Gw
             <attributedString key="attributedStringForZero">
                 <fragment content="0"/>
             </attributedString>
-            <real key="minimum" value="0.0"/>
+            <real key="minimum" value="1"/>
             <decimal key="maximum" value="NaN"/>
             <metadata>
                 <bool key="localizesFormat" value="YES"/>
