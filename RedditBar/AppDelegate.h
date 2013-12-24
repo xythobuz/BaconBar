@@ -66,6 +66,6 @@
 -(void)reloadListHasFrontpageCallback:(NSArray *)items;
 -(void)readPMsCallback:(NSNumber *)items;
 
--(void)prefReturnName:(NSString *)name Modhash:(NSString *)modhash subscriptions:(Boolean)subscriptions subreddits:(NSString *)subreddits length:(NSInteger)length printSubs:(Boolean)showSubreddits titleLength:(NSInteger)titleLength refresh:(NSInteger)refreshInterval filter:(NSString *)filter;
+-(void)prefsDidSave;
 
 @end

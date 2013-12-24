@@ -136,8 +136,16 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
     else
         print = FALSE;
     
-    AppDelegate *app = (AppDelegate *)parent;
-    [app prefReturnName:username.stringValue Modhash:modhash subscriptions:subs subreddits:subreddits.textStorage.string length:[lengthField integerValue] printSubs:print titleLength:[titleField integerValue] refresh:[refreshField integerValue] filter:[filterSelection titleOfSelectedItem]];
+    state.username = username.stringValue;
+    state.modhash = modhash;
+    state.useSubscriptions = subs;
+    state.subreddits = [subreddits.textStorage.string componentsSeparatedByString: @"\n"];
+    state.length = [lengthField integerValue];
+    state.showSubreddit = print;
+    state.titleLength = [titleField integerValue];
+    state.refreshInterval = [refreshField integerValue];
+    state.filter = [filterSelection titleOfSelectedItem];
+    [(AppDelegate *)parent prefsDidSave];
     [win performClose:self];
 }
 
