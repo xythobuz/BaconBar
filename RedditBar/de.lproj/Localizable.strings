@@ -1,6 +1,9 @@
 ﻿/* Pref Error */
 "Authentication Error" = "Authentfizierungsfehler";
 
+/* Link & Comment item */
+"Both" = "Beide";
+
 /* comment item */
 "Comments..." = "Kommentare...";
 

@@ -35,6 +35,7 @@
 @property (atomic, retain) NSString *link; // link itself
 @property (atomic, retain) NSString *comments; // link to comments, or nil if isSelf is true
 @property (atomic) BOOL isSelf; // link or selfpost
+@property (atomic) NSInteger visitedCount; // used to keep track if both link & comments were opened to then remove item
 
 +(RedditItem *)itemWithName:(NSString *)name Link:(NSString *)link Comments:(NSString *)comments Self:(BOOL)isSelf;
 

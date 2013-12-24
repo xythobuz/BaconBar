@@ -144,7 +144,7 @@
     [self reloadListWithOptions];
 }
 
--(void)openAndRemoveAndReloadWithIndex:(NSInteger)index Comments:(Boolean)comments {
+-(void)openAndRemoveAndReloadWithIndex:(NSInteger)index Comments:(Boolean)comments Both:(Boolean)both {
     RedditItem *rItem = [redditItems objectAtIndex:index];
     NSString *url;
     if (comments)
@@ -152,6 +152,13 @@
     else
         url = [rItem link];
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+    if (both) {
+        if (!comments)
+            url = [rItem comments];
+        else
+            url = [rItem link];
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+    }
     
     if (currentState.removeVisited) {
         // TODO remove selfpost, remove submenu if link & comments visited
@@ -172,12 +179,26 @@
 
 -(IBAction)linkToOpen:(id)sender {
     NSString *title = [(NSMenuItem *)sender title];
-    if ([title isEqualToString:NSLocalizedString(@"Link...", nil)] || [title isEqualToString:NSLocalizedString(@"Comments...", nil)]) {
+    if ([title isEqualToString:NSLocalizedString(@"Link...", nil)] || [title isEqualToString:NSLocalizedString(@"Comments...", nil)] || [title isEqualToString:NSLocalizedString(@"Both", nil)]) {
         for (NSUInteger i = 0; i < [menuItems count]; i++) {
             NSMenuItem *item = [menuItems objectAtIndex:i];
             NSMenu *submenu = item.submenu;
-            if ((submenu != nil) && (sender == [submenu itemAtIndex:([title isEqualToString:NSLocalizedString(@"Link...", nil)] ? 0 : 1)])) {
-                [self openAndRemoveAndReloadWithIndex:i Comments:[title isEqualToString:NSLocalizedString(@"Comments...", nil)]];
+            Boolean isComments = [title isEqualToString:NSLocalizedString(@"Comments...", nil)];
+            Boolean isBoth = [title isEqualToString:NSLocalizedString(@"Both", nil)];
+            if (isBoth) {
+                isComments = !isComments; // Open comments first, then link
+            }
+            
+            NSInteger index;
+            if ([title isEqualToString:NSLocalizedString(@"Link...", nil)])
+                index = 0;
+            else if ([title isEqualToString:NSLocalizedString(@"Comments...", nil)])
+                index = 1;
+            else
+                index = 2;
+            
+            if ((submenu != nil) && (sender == [submenu itemAtIndex:index])) {
+                [self openAndRemoveAndReloadWithIndex:i Comments:isComments Both:isBoth];
                 break;
             }
         }
@@ -185,7 +206,7 @@
         for (NSUInteger i = 0; i < [menuItems count]; i++) {
             NSMenuItem *item = [menuItems objectAtIndex:i];
             if (sender == item) {
-                [self openAndRemoveAndReloadWithIndex:i Comments:FALSE];
+                [self openAndRemoveAndReloadWithIndex:i Comments:FALSE Both:FALSE];
                 break;
             }
         }
@@ -228,6 +249,7 @@
         NSMenu *submenu = [[NSMenu alloc] init];
         [submenu addItemWithTitle:NSLocalizedString(@"Link...", @"Link item") action:@selector(linkToOpen:) keyEquivalent:@""];
         [submenu addItemWithTitle:NSLocalizedString(@"Comments...", @"comment item") action:@selector(linkToOpen:) keyEquivalent:@""];
+        [submenu addItemWithTitle:NSLocalizedString(@"Both", @"Link & Comment item") action:@selector(linkToOpen:) keyEquivalent:@""];
         [item setSubmenu:submenu];
     }
     return item;
