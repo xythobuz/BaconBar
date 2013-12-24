@@ -8,7 +8,7 @@
 "32T-3T-EcY.title" = "Ausschneiden";
 
 /* Class = "NSButtonCell"; title = "Remove visited links"; ObjectID = "7KI-oO-Qcg"; */
-"7KI-oO-Qcg.title" = "Remove visited links";
+"7KI-oO-Qcg.title" = "Entferne besuchte Links";
 
 /* Class = "NSTextFieldCell"; title = "Items:"; ObjectID = "FNJ-RL-DXT"; */
 "FNJ-RL-DXT.title" = "Links:";
@@ -74,7 +74,7 @@
 "sKV-FZ-wbQ.title" = "hot";
 
 /* Class = "NSButtonCell"; title = "Reload after every visited link"; ObjectID = "twM-Jr-KGn"; */
-"twM-Jr-KGn.title" = "Reload after every visited link";
+"twM-Jr-KGn.title" = "Nach jedem besuchten Link nachladen";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "wSY-To-FDI"; */
 "wSY-To-FDI.title" = "Kopieren";

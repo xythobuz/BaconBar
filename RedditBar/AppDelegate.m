@@ -144,25 +144,40 @@
     [self reloadListWithOptions];
 }
 
--(IBAction)linkToOpen:(id)sender {
-    NSString *title = [(NSMenuItem *)sender title];
-    if ([title isEqualToString:NSLocalizedString(@"Link...", nil)]) {
-        for (NSUInteger i = 0; i < [menuItems count]; i++) {
-            NSMenuItem *item = [menuItems objectAtIndex:i];
-            NSMenu *submenu = item.submenu;
-            if ((submenu != nil) && (sender == [submenu itemAtIndex:0])) {
-                RedditItem *rItem = [redditItems objectAtIndex:i];
-                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[rItem link]]];
-                break;
+-(void)openAndRemoveAndReloadWithIndex:(NSInteger)index Comments:(Boolean)comments {
+    RedditItem *rItem = [redditItems objectAtIndex:index];
+    NSString *url;
+    if (comments)
+        url = [rItem comments];
+    else
+        url = [rItem link];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+    
+    if (currentState.removeVisited) {
+        // TODO remove selfpost, remove submenu if link & comments visited
+        //[statusMenu removeItem:[menuItems objectAtIndex:i]];
+        
+        Boolean removed = TRUE;
+        Boolean listNowEmpty = TRUE;
+        
+        if (removed && listNowEmpty) {
+            [self reloadNextList:nil];
+        } else {
+            if (removed && currentState.reloadAfterVisit) {
+                // TODO load one more item!
             }
         }
-    } else if ([title isEqualToString:NSLocalizedString(@"Comments...", nil)]) {
+    }
+}
+
+-(IBAction)linkToOpen:(id)sender {
+    NSString *title = [(NSMenuItem *)sender title];
+    if ([title isEqualToString:NSLocalizedString(@"Link...", nil)] || [title isEqualToString:NSLocalizedString(@"Comments...", nil)]) {
         for (NSUInteger i = 0; i < [menuItems count]; i++) {
             NSMenuItem *item = [menuItems objectAtIndex:i];
             NSMenu *submenu = item.submenu;
-            if ((submenu != nil) && (sender == [submenu itemAtIndex:1])) {
-                RedditItem *rItem = [redditItems objectAtIndex:i];
-                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[rItem comments]]];
+            if ((submenu != nil) && (sender == [submenu itemAtIndex:([title isEqualToString:NSLocalizedString(@"Link...", nil)] ? 0 : 1)])) {
+                [self openAndRemoveAndReloadWithIndex:i Comments:[title isEqualToString:NSLocalizedString(@"Comments...", nil)]];
                 break;
             }
         }
@@ -170,9 +185,7 @@
         for (NSUInteger i = 0; i < [menuItems count]; i++) {
             NSMenuItem *item = [menuItems objectAtIndex:i];
             if (sender == item) {
-                RedditItem *rItem = [redditItems objectAtIndex:i];
-                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[rItem link]]];
-                [statusMenu removeItem:[menuItems objectAtIndex:i]];
+                [self openAndRemoveAndReloadWithIndex:i Comments:FALSE];
                 break;
             }
         }
