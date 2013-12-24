@@ -87,3 +87,12 @@ body {
     margin-right: auto;
     max-height: 360px;
 }
+
+.subheading {
+    margin-bottom: 20px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.heading {
+    font-weight: bold;
+}
