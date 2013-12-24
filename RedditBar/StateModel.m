@@ -30,7 +30,7 @@
 
 @implementation StateModel
 
-@synthesize username, modhash, useSubscriptions, subreddits, length, showSubreddit, titleLength, refreshInterval, filter;
+@synthesize username, modhash, useSubscriptions, subreddits, length, showSubreddit, titleLength, refreshInterval, filter, removeVisited, reloadAfterVisit;
 
 NSString *s_username = @"username";
 NSString *s_modhash = @"modhash";
@@ -41,6 +41,8 @@ NSString *s_subs = @"showSubs";
 NSString *s_title = @"titleLength";
 NSString *s_refresh = @"refreshInterval";
 NSString *s_filter = @"filter";
+NSString *s_remove = @"remove";
+NSString *s_reload = @"reload";
 
 -(void)registerDefaultPreferences {
     NSUserDefaults *store = [NSUserDefaults standardUserDefaults];
@@ -52,6 +54,8 @@ NSString *s_filter = @"filter";
     [appDefaults setValue:[NSNumber numberWithInt:66] forKey:s_title];
     [appDefaults setValue:[NSNumber numberWithInt:5] forKey:s_refresh];
     [appDefaults setValue:@"hot" forKey:s_filter];
+    [appDefaults setValue:[NSNumber numberWithBool:YES] forKey:s_remove];
+    [appDefaults setValue:[NSNumber numberWithBool:YES] forKey:s_reload];
     [store registerDefaults:appDefaults];
 }
 
@@ -66,6 +70,8 @@ NSString *s_filter = @"filter";
     [store setInteger:titleLength forKey:s_title];
     [store setInteger:refreshInterval forKey:s_refresh];
     [store setObject:filter forKey:s_filter];
+    [store setBool:removeVisited forKey:s_remove];
+    [store setBool:reloadAfterVisit forKey:s_reload];
     [store synchronize];
 }
 
@@ -81,6 +87,8 @@ NSString *s_filter = @"filter";
     titleLength = [store integerForKey:s_title];
     refreshInterval = [store integerForKey:s_refresh];
     filter = [store stringForKey:s_filter];
+    removeVisited = [store boolForKey:s_remove];
+    reloadAfterVisit = [store boolForKey:s_reload];
 }
 
 @end

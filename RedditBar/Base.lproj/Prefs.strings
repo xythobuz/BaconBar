@@ -8,6 +8,9 @@
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "32T-3T-EcY"; */
 "32T-3T-EcY.title" = "Cut";
 
+/* Class = "NSButtonCell"; title = "Remove visited links"; ObjectID = "7KI-oO-Qcg"; */
+"7KI-oO-Qcg.title" = "Remove visited links";
+
 /* Class = "NSTextFieldCell"; title = "Items:"; ObjectID = "FNJ-RL-DXT"; */
 "FNJ-RL-DXT.title" = "Items:";
 
@@ -70,6 +73,9 @@
 
 /* Class = "NSMenuItem"; title = "hot"; ObjectID = "sKV-FZ-wbQ"; */
 "sKV-FZ-wbQ.title" = "hot";
+
+/* Class = "NSButtonCell"; title = "Reload after every visited link"; ObjectID = "twM-Jr-KGn"; */
+"twM-Jr-KGn.title" = "Reload after every visited link";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "wSY-To-FDI"; */
 "wSY-To-FDI.title" = "Copy";

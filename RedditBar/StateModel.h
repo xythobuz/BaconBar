@@ -39,6 +39,8 @@
 @property (atomic) NSInteger titleLength;
 @property (atomic) NSInteger refreshInterval;
 @property (atomic, retain) NSString *filter;
+@property (atomic) Boolean removeVisited;
+@property (atomic) Boolean reloadAfterVisit;
 
 -(void)registerDefaultPreferences;
 -(void)savePreferences;

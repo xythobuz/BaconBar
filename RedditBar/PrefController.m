@@ -34,7 +34,7 @@
 NSString *modhashSetLiteral = @"__MODHASH__IS__SET__";
 NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_\n";
 
-@synthesize username, password, subscriptions, subreddits, win, parent, state, lengthField, lengthStepper, length, progress, showSubreddit, titleField, titleStepper, titleLength, refreshField, refreshStepper, refreshInterval, filterSelection;
+@synthesize username, password, subscriptions, subreddits, win, parent, state, lengthField, lengthStepper, length, progress, showSubreddit, titleField, titleStepper, titleLength, refreshField, refreshStepper, refreshInterval, filterSelection, removeVisited, reloadAfterVisit;
 
 -(Boolean)isValidList:(NSString *)input {
     NSCharacterSet *invalidChars = [[NSCharacterSet characterSetWithCharactersInString:subredditCharacters] invertedSet];
@@ -74,6 +74,18 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
         [filterSelection selectItemAtIndex:0];
     } else {
         [filterSelection selectItemAtIndex:1];
+    }
+    if (state.removeVisited) {
+        [removeVisited setState:1];
+        [reloadAfterVisit setEnabled:TRUE];
+    } else {
+        [removeVisited setState:0];
+        [reloadAfterVisit setEnabled:FALSE];
+    }
+    if (state.reloadAfterVisit) {
+        [reloadAfterVisit setState:1];
+    } else {
+        [reloadAfterVisit setState:0];
     }
 }
 
@@ -135,6 +147,16 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
         print = TRUE;
     else
         print = FALSE;
+    Boolean remove;
+    if (removeVisited.state != 0)
+        remove = TRUE;
+    else
+        remove = FALSE;
+    Boolean reload;
+    if (reloadAfterVisit.state != 0)
+        reload = TRUE;
+    else
+        reload = FALSE;
     
     state.username = username.stringValue;
     state.modhash = modhash;
@@ -145,6 +167,8 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
     state.titleLength = [titleField integerValue];
     state.refreshInterval = [refreshField integerValue];
     state.filter = [filterSelection titleOfSelectedItem];
+    state.removeVisited = remove;
+    state.reloadAfterVisit = reload;
     [(AppDelegate *)parent prefsDidSave];
     [win performClose:self];
 }
@@ -175,6 +199,14 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
     refreshInterval = [sender integerValue];
     [refreshStepper setIntegerValue:refreshInterval];
     [refreshField setIntegerValue:refreshInterval];
+}
+
+- (IBAction)removeVisitedToggled:(id)sender {
+    if (removeVisited.state != 0) {
+        [reloadAfterVisit setEnabled:TRUE];
+    } else {
+        [reloadAfterVisit setEnabled:FALSE];
+    }
 }
 
 @end

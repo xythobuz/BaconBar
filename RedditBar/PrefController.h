@@ -45,6 +45,8 @@
 @property (atomic, retain) IBOutlet NSTextField *refreshField;
 @property (atomic, retain) IBOutlet NSStepper *refreshStepper;
 @property (atomic, retain) IBOutlet NSPopUpButton *filterSelection;
+@property (atomic, retain) IBOutlet NSButton *removeVisited;
+@property (atomic, retain) IBOutlet NSButton *reloadAfterVisit;
 
 @property (atomic, retain) NSObject *parent;
 @property (atomic, retain) StateModel *state;
@@ -57,5 +59,6 @@
 -(IBAction)lengthDidChange:(id)sender;
 -(IBAction)titleDidChange:(id)sender;
 -(IBAction)refreshDidChange:(id)sender;
+- (IBAction)removeVisitedToggled:(id)sender;
 
 @end
