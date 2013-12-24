@@ -147,27 +147,33 @@
 -(void)openAndRemoveAndReloadWithIndex:(NSInteger)index Comments:(Boolean)comments Both:(Boolean)both {
     RedditItem *rItem = [redditItems objectAtIndex:index];
     NSString *url;
-    if (comments)
+    if (comments) {
         url = [rItem comments];
-    else
+        [rItem setVisitedComments:TRUE];
+    } else {
         url = [rItem link];
+        [rItem setVisitedLink:TRUE];
+    }
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
     if (both) {
-        if (!comments)
+        if (!comments) {
             url = [rItem comments];
-        else
+            [rItem setVisitedComments:TRUE];
+        } else {
             url = [rItem link];
+            [rItem setVisitedLink:TRUE];
+        }
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
     }
     
     if (currentState.removeVisited) {
-        // TODO remove selfpost, remove submenu if link & comments visited
-        //[statusMenu removeItem:[menuItems objectAtIndex:i]];
+        Boolean removed = FALSE;
+        if ((rItem.isSelf && (rItem.visitedLink || rItem.visitedComments)) || ((!rItem.isSelf) && rItem.visitedLink && rItem.visitedComments)) {
+            [statusMenu removeItem:[menuItems objectAtIndex:index]];
+            removed = TRUE;
+        }
         
-        Boolean removed = TRUE;
-        Boolean listNowEmpty = TRUE;
-        
-        if (removed && listNowEmpty) {
+        if (removed && ([statusMenu numberOfItems] <= 10)) {
             [self reloadNextList:nil];
         } else {
             if (removed && currentState.reloadAfterVisit) {
@@ -221,7 +227,9 @@
 -(void)clearMenuItems {
     if (menuItems != nil) {
         for (NSUInteger i = 0; i < [menuItems count]; i++) {
-            [statusMenu removeItem:[menuItems objectAtIndex:i]];
+            NSMenuItem *item = [menuItems objectAtIndex:i];
+            if ([statusMenu indexOfItem:item] != -1)
+                [statusMenu removeItem:item];
         }
         menuItems = nil;
     }

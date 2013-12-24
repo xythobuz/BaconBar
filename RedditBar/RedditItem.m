@@ -30,7 +30,7 @@
 
 @implementation RedditItem
 
-@synthesize name, fullName, link, comments, isSelf, visitedCount;
+@synthesize name, fullName, link, comments, isSelf, visitedLink, visitedComments;
 
 +(RedditItem *)itemWithName:(NSString *)name Link:(NSString *)link Comments:(NSString *)comments Self:(BOOL)isSelf {
     RedditItem *i = [[RedditItem alloc] init];
@@ -38,7 +38,8 @@
     [i setLink:link];
     [i setComments:comments];
     [i setIsSelf:isSelf];
-    [i setVisitedCount:0];
+    [i setVisitedLink:FALSE];
+    [i setVisitedComments:FALSE];
     return i;
 }
 
