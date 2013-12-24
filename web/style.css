@@ -96,3 +96,13 @@ body {
 .heading {
     font-weight: bold;
 }
+
+.system {
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.twitter {
+    margin-bottom: 40px;
+    text-align: center;
+}
