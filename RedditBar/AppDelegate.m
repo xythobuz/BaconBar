@@ -30,6 +30,14 @@
 
 @implementation AppDelegate
 
+NSInteger itemsBeforeLinkList = 2;
+NSInteger numberOfStaticMenuItems = 10;
+#define MULTIPLIER_PM_INTERVALL_TO_SEC 60
+#define RECHECK_PM_AFTER_OPEN 10
+#define SUBMENU_INDEX_LINK 0
+#define SUBMENU_INDEX_COMMENTS 1
+#define SUBMENU_INDEX_BOTH 2
+
 @synthesize statusMenu, statusItem, statusImage, statusHighlightImage, orangeredImage, orangeredHighlightImage, prefWindow, currentState, application, api, firstMenuItem, menuItems, redditItems, lastFullName, refreshTimer, PMItem, PMSeparator;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -55,7 +63,7 @@
 -(void)recreateRefreshTimer {
     if (refreshTimer != nil)
         [refreshTimer invalidate];
-    refreshTimer = [NSTimer scheduledTimerWithTimeInterval:(currentState.refreshInterval * 60) target:self selector:@selector(refreshTick:) userInfo:nil repeats:YES];
+    refreshTimer = [NSTimer scheduledTimerWithTimeInterval:(currentState.refreshInterval * MULTIPLIER_PM_INTERVALL_TO_SEC) target:self selector:@selector(refreshTick:) userInfo:nil repeats:YES];
     [refreshTimer fire];
 }
 
@@ -116,6 +124,19 @@
     }
 }
 
+-(void)singleItemReloadedCallback:(NSArray *)items {
+    if (items != nil) {
+        lastFullName = [items objectAtIndex:[items count] - 1]; // last link fullname is at end of array
+        items = [items subarrayWithRange:NSMakeRange(0, [items count] - 1)]; // Remove last item
+        NSMutableArray *newMenuItems = [NSMutableArray arrayWithArray:menuItems];
+        NSMenuItem *item = [self prepareItemForMenu:[items objectAtIndex:0]];
+        [newMenuItems addObject:item];
+        [statusMenu insertItem:item atIndex:([statusMenu numberOfItems] - numberOfStaticMenuItems + itemsBeforeLinkList)];
+        menuItems = newMenuItems;
+        redditItems = [redditItems arrayByAddingObjectsFromArray:items];
+    }
+}
+
 -(void)reloadListWithOptions {
     if ([currentState.modhash isEqualToString:@""]) {
         [firstMenuItem setTitle:NSLocalizedString(@"Not logged in!", @"Statusitem when no modhash is stored")];
@@ -173,11 +194,11 @@
             removed = TRUE;
         }
         
-        if (removed && ([statusMenu numberOfItems] <= 10)) {
+        if (removed && ([statusMenu numberOfItems] <= numberOfStaticMenuItems)) {
             [self reloadNextList:nil];
         } else {
             if (removed && currentState.reloadAfterVisit) {
-                // TODO load one more item!
+                [NSThread detachNewThreadSelector:@selector(readSingleItem:) toTarget:api withObject:self];
             }
         }
     }
@@ -197,11 +218,11 @@
             
             NSInteger index;
             if ([title isEqualToString:NSLocalizedString(@"Link...", nil)])
-                index = 0;
+                index = SUBMENU_INDEX_LINK;
             else if ([title isEqualToString:NSLocalizedString(@"Comments...", nil)])
-                index = 1;
+                index = SUBMENU_INDEX_COMMENTS;
             else
-                index = 2;
+                index = SUBMENU_INDEX_BOTH;
             
             if ((submenu != nil) && (sender == [submenu itemAtIndex:index])) {
                 [self openAndRemoveAndReloadWithIndex:i Comments:isComments Both:isBoth];
@@ -221,7 +242,7 @@
 
 -(IBAction)openUnread:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.reddit.com/message/unread"]];
-    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(refreshTick:) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:RECHECK_PM_AFTER_OPEN target:self selector:@selector(refreshTick:) userInfo:nil repeats:NO];
 }
 
 -(void)clearMenuItems {
@@ -240,7 +261,7 @@
     for (NSUInteger i = 0; i < [array count]; i++) {
         NSMenuItem *item = [self prepareItemForMenu:[array objectAtIndex:i]];
         [items addObject:item];
-        [statusMenu insertItem:item atIndex:(i + 2)];
+        [statusMenu insertItem:item atIndex:(i + itemsBeforeLinkList)];
     }
     menuItems = items;
 }

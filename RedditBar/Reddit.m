@@ -102,8 +102,6 @@ NSString *subredditFormat = @" [r/%@]";
 }
 
 -(void)readFrontpage:(id)parent {
-    NSHTTPURLResponse *response;
-    
     NSString *after = ((AppDelegate *)parent).lastFullName;
     Boolean showSubreddits = ((AppDelegate *)parent).currentState.showSubreddit;
     NSString *where = ((AppDelegate *)parent).currentState.filter;
@@ -112,7 +110,8 @@ NSString *subredditFormat = @" [r/%@]";
         url = [NSString stringWithFormat:@"%@.json?limit=%ld", where, (long)length];
     else
         url = [NSString stringWithFormat:@"%@.json?limit=%ld&after=%@", where, (long)length, after];
-        
+
+    NSHTTPURLResponse *response;
     NSData *data = [self queryAPI:url withResponse:&response];
     if ((data == nil) || ([response statusCode] != 200)) {
         [parent performSelectorOnMainThread:@selector(reloadListHasFrontpageCallback:) withObject:nil waitUntilDone:false];
@@ -145,6 +144,38 @@ NSString *subredditFormat = @" [r/%@]";
         [(AppDelegate *)parent performSelectorOnMainThread:@selector(reloadListHasSubredditsCallback:) withObject:nil waitUntilDone:FALSE];
     } else {
         [(AppDelegate *)parent performSelectorOnMainThread:@selector(reloadListHasSubredditsCallback:) withObject:[self convertJSONToItemArray:data ShowSubs:showSubreddits] waitUntilDone:FALSE];
+    }
+}
+
+-(void)readSingleItem:(id)parent {
+    NSString *after = ((AppDelegate *)parent).lastFullName;
+    Boolean showSubreddits = ((AppDelegate *)parent).currentState.showSubreddit;
+    NSString *where = ((AppDelegate *)parent).currentState.filter;
+    NSString *url;
+    if (((AppDelegate *)parent).currentState.useSubscriptions) {
+        if (after == nil)
+            url = [NSString stringWithFormat:@"%@.json?limit=1", where];
+        else
+            url = [NSString stringWithFormat:@"%@.json?limit=1&after=%@", where, after];
+    } else {
+        NSMutableString *subs = [NSMutableString stringWithString:@"r/"];
+        for (NSUInteger i = 0; i < [subreddits count]; i++) {
+            [subs appendString:[subreddits objectAtIndex:i]];
+            if (i < ([subreddits count] - 1)) {
+                [subs appendString:@"+"];
+            }
+        }
+        if (after == nil)
+            url = [NSString stringWithFormat:@"%@/%@.json?limit=1", subs, where];
+        else
+            url = [NSString stringWithFormat:@"%@/%@.json?limit=1&after=%@", subs, where, after];
+    }
+    NSHTTPURLResponse *response;
+    NSData *data = [self queryAPI:url withResponse:&response];
+    if ((data == nil) || ([response statusCode] != 200)) {
+        [(AppDelegate *)parent performSelectorOnMainThread:@selector(singleItemReloadedCallback:) withObject:nil waitUntilDone:FALSE];
+    } else {
+        [(AppDelegate *)parent performSelectorOnMainThread:@selector(singleItemReloadedCallback:) withObject:[self convertJSONToItemArray:data ShowSubs:showSubreddits] waitUntilDone:FALSE];
     }
 }
 

@@ -65,6 +65,7 @@
 -(void)reloadListHasSubredditsCallback:(NSArray *)items;
 -(void)reloadListHasFrontpageCallback:(NSArray *)items;
 -(void)readPMsCallback:(NSNumber *)items;
+-(void)singleItemReloadedCallback:(NSArray *)items;
 
 -(void)prefsDidSave;
 
