@@ -31,7 +31,7 @@
 #import "StateModel.h"
 #import "Reddit.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSUserNotificationCenterDelegate>
 
 @property (atomic, retain) IBOutlet NSMenu *statusMenu;
 @property (atomic, retain) IBOutlet NSApplication *application;
@@ -64,7 +64,7 @@
 -(void)reloadListNotAuthenticatedCallback;
 -(void)reloadListHasSubredditsCallback:(NSArray *)items;
 -(void)reloadListHasFrontpageCallback:(NSArray *)items;
--(void)readPMsCallback:(NSNumber *)items;
+-(void)readPMsCallback:(NSArray *)items;
 -(void)singleItemReloadedCallback:(NSArray *)items;
 
 -(void)prefsDidSave;

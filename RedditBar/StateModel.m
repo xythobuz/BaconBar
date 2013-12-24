@@ -30,7 +30,7 @@
 
 @implementation StateModel
 
-@synthesize username, modhash, useSubscriptions, subreddits, length, showSubreddit, titleLength, refreshInterval, filter, removeVisited, reloadAfterVisit;
+@synthesize username, modhash, useSubscriptions, subreddits, length, showSubreddit, titleLength, refreshInterval, filter, removeVisited, reloadAfterVisit, lastNotifiedPM;
 
 NSString *s_username = @"username";
 NSString *s_modhash = @"modhash";
@@ -43,6 +43,7 @@ NSString *s_refresh = @"refreshInterval";
 NSString *s_filter = @"filter";
 NSString *s_remove = @"remove";
 NSString *s_reload = @"reload";
+NSString *s_lastPM = @"lastNotifiedPM";
 
 -(void)registerDefaultPreferences {
     NSUserDefaults *store = [NSUserDefaults standardUserDefaults];
@@ -56,6 +57,7 @@ NSString *s_reload = @"reload";
     [appDefaults setValue:@"hot" forKey:s_filter];
     [appDefaults setValue:[NSNumber numberWithBool:YES] forKey:s_remove];
     [appDefaults setValue:[NSNumber numberWithBool:YES] forKey:s_reload];
+    [appDefaults setValue:@"" forKey:s_lastPM];
     [store registerDefaults:appDefaults];
 }
 
@@ -72,6 +74,7 @@ NSString *s_reload = @"reload";
     [store setObject:filter forKey:s_filter];
     [store setBool:removeVisited forKey:s_remove];
     [store setBool:reloadAfterVisit forKey:s_reload];
+    [store setObject:lastNotifiedPM forKey:s_lastPM];
     [store synchronize];
 }
 
@@ -89,6 +92,7 @@ NSString *s_reload = @"reload";
     filter = [store stringForKey:s_filter];
     removeVisited = [store boolForKey:s_remove];
     reloadAfterVisit = [store boolForKey:s_reload];
+    lastNotifiedPM = [store stringForKey:s_lastPM];
 }
 
 @end

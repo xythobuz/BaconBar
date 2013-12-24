@@ -228,7 +228,7 @@ NSString *subredditFormat = @" [r/%@]";
     return array;
 }
 
--(NSNumber *)messagesCount:(NSData *)data {
+-(NSArray *)messagesData:(NSData *)data {
     NSError *error;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
     NSDictionary *dat = [json valueForKey:@"data"];
@@ -237,7 +237,13 @@ NSString *subredditFormat = @" [r/%@]";
     NSArray *children = [dat valueForKey:@"children"];
     if (children == nil)
         return nil;
-    return [NSNumber numberWithInteger:[children count]];
+    NSString *newest_name = nil;
+    if (children.count > 0) {
+        NSDictionary *child = [children objectAtIndex:0];
+        NSDictionary *current = [child valueForKey:@"data"];
+        newest_name = [current valueForKey:@"name"];
+    }
+    return [NSArray arrayWithObjects:[NSNumber numberWithInteger:[children count]], newest_name, nil];
 }
 
 -(void)readPMs:(id)parent {
@@ -247,7 +253,7 @@ NSString *subredditFormat = @" [r/%@]";
     if ((data == nil) || ([response statusCode] != 200)) {
         [(AppDelegate *)parent performSelectorOnMainThread:@selector(readPMsCallback:) withObject:nil waitUntilDone:FALSE];
     } else {
-        [(AppDelegate *)parent performSelectorOnMainThread:@selector(readPMsCallback:) withObject:[self messagesCount:data] waitUntilDone:FALSE];
+        [(AppDelegate *)parent performSelectorOnMainThread:@selector(readPMsCallback:) withObject:[self messagesData:data] waitUntilDone:FALSE];
     }
 }
 

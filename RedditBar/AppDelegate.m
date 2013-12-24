@@ -32,8 +32,9 @@
 
 NSInteger itemsBeforeLinkList = 2;
 NSInteger numberOfStaticMenuItems = 10;
+
 #define MULTIPLIER_PM_INTERVALL_TO_SEC 60
-#define RECHECK_PM_AFTER_OPEN 10
+#define RECHECK_PM_AFTER_OPEN 7
 #define SUBMENU_INDEX_LINK 0
 #define SUBMENU_INDEX_COMMENTS 1
 #define SUBMENU_INDEX_BOTH 2
@@ -58,6 +59,15 @@ NSInteger numberOfStaticMenuItems = 10;
     lastFullName = nil;
     [self reloadListWithOptions];
     [self recreateRefreshTimer];
+    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+}
+
+-(BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification {
+    return YES;
+}
+
+-(void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
+    [self openUnread:nil];
 }
 
 -(void)recreateRefreshTimer {
@@ -71,8 +81,8 @@ NSInteger numberOfStaticMenuItems = 10;
     [NSThread detachNewThreadSelector:@selector(readPMs:) toTarget:api withObject:self];
 }
 
--(void)readPMsCallback:(NSNumber *)items {
-    if ((items == nil) || ([items integerValue] == 0)) {
+-(void)readPMsCallback:(NSArray *)items {
+    if ((items == nil) || ([items count] < 1) || (((NSNumber *)[items objectAtIndex:0]).integerValue == 0)) {
         [statusItem setImage:statusImage];
         [statusItem setAlternateImage:statusHighlightImage];
         [PMItem setHidden:TRUE];
@@ -80,9 +90,20 @@ NSInteger numberOfStaticMenuItems = 10;
     } else {
         [statusItem setImage:orangeredImage];
         [statusItem setAlternateImage:orangeredHighlightImage];
-        [PMItem setTitle:[NSString stringWithFormat:NSLocalizedString(@"You've got %ld unread PMs!", @"PM message"), (long)items.integerValue]];
+        [PMItem setTitle:[NSString stringWithFormat:NSLocalizedString(@"You've got %ld unread PMs.", @"PM message"), (long)((NSNumber *)[items objectAtIndex:0]).integerValue]];
         [PMItem setHidden:FALSE];
         [PMSeparator setHidden:FALSE];
+
+        if ([items count] >= 2) {
+            if (![currentState.lastNotifiedPM isEqualToString:[items objectAtIndex:1]]) {
+                currentState.lastNotifiedPM = [items objectAtIndex:1];
+                [currentState savePreferences];
+                NSUserNotification *notification = [[NSUserNotification alloc] init];
+                notification.title = NSLocalizedString(@"New Reddit PM!", @"Notification Title");
+                notification.informativeText = [NSString stringWithFormat:NSLocalizedString(@"You've got %ld unread PMs.", nil), (long)((NSNumber *)[items objectAtIndex:0]).integerValue];
+                [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+            }
+        }
     }
 }
 

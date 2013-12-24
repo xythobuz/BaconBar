@@ -22,6 +22,9 @@
 /* Statusitem when API is not authenticated */
 "Login Error!" = "Fehler beim Login!";
 
+/* Notification Title */
+"New Reddit PM!" = "Neue Reddit PM!";
+
 /* Statusitem when no modhash is stored */
 "Not logged in!" = "Nicht eingeloggt!";
 

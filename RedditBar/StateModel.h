@@ -41,6 +41,7 @@
 @property (atomic, retain) NSString *filter;
 @property (atomic) Boolean removeVisited;
 @property (atomic) Boolean reloadAfterVisit;
+@property (atomic, retain) NSString *lastNotifiedPM;
 
 -(void)registerDefaultPreferences;
 -(void)savePreferences;
