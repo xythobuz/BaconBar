@@ -51,7 +51,7 @@
                         <action selector="showPreferences:" target="494" id="Fen-Ci-4tc"/>
                     </connections>
                 </menuItem>
-                <menuItem title="About RedditBar" id="4ah-qP-9eP">
+                <menuItem title="About BaconBar" id="4ah-qP-9eP">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="showAbout:" target="494" id="7IO-ZS-OJf"/>

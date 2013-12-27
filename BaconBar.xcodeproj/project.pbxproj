@@ -54,21 +54,21 @@
 		E9A129B0184BD24000F50D1D /* RedditItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedditItem.m; sourceTree = "<group>"; };
 		E9B6773C184B73DC00850559 /* Reddit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reddit.h; sourceTree = "<group>"; };
 		E9B6773D184B73DC00850559 /* Reddit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reddit.m; sourceTree = "<group>"; };
-		E9CF1F1D184961010004AE02 /* RedditBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedditBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9CF1F1D184961010004AE02 /* BaconBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaconBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9CF1F20184961010004AE02 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E9CF1F23184961010004AE02 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		E9CF1F24184961010004AE02 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E9CF1F25184961010004AE02 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		E9CF1F28184961010004AE02 /* RedditBar-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RedditBar-Info.plist"; sourceTree = "<group>"; };
+		E9CF1F28184961010004AE02 /* BaconBar-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BaconBar-Info.plist"; sourceTree = "<group>"; };
 		E9CF1F2A184961010004AE02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E9CF1F2C184961010004AE02 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E9CF1F2E184961010004AE02 /* RedditBar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RedditBar-Prefix.pch"; sourceTree = "<group>"; };
+		E9CF1F2E184961010004AE02 /* BaconBar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaconBar-Prefix.pch"; sourceTree = "<group>"; };
 		E9CF1F30184961010004AE02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		E9CF1F32184961010004AE02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E9CF1F33184961010004AE02 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E9CF1F36184961020004AE02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E9CF1F38184961020004AE02 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E9CF1F3E184961020004AE02 /* RedditBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedditBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9CF1F3E184961020004AE02 /* BaconBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaconBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9CF1F3F184961020004AE02 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		E9CF1F46184961020004AE02 /* RedditBarTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RedditBarTests-Info.plist"; sourceTree = "<group>"; };
 		E9CF1F48184961020004AE02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -114,8 +114,8 @@
 		E9CF1F1E184961010004AE02 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E9CF1F1D184961010004AE02 /* RedditBar.app */,
-				E9CF1F3E184961020004AE02 /* RedditBarTests.xctest */,
+				E9CF1F1D184961010004AE02 /* BaconBar.app */,
+				E9CF1F3E184961020004AE02 /* BaconBarTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -168,10 +168,10 @@
 		E9CF1F27184961010004AE02 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E9CF1F28184961010004AE02 /* RedditBar-Info.plist */,
+				E9CF1F28184961010004AE02 /* BaconBar-Info.plist */,
 				E9CF1F29184961010004AE02 /* InfoPlist.strings */,
 				E9CF1F2C184961010004AE02 /* main.m */,
-				E9CF1F2E184961010004AE02 /* RedditBar-Prefix.pch */,
+				E9CF1F2E184961010004AE02 /* BaconBar-Prefix.pch */,
 				E9CF1F2F184961010004AE02 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
@@ -198,9 +198,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E9CF1F1C184961010004AE02 /* RedditBar */ = {
+		E9CF1F1C184961010004AE02 /* BaconBar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E9CF1F4E184961020004AE02 /* Build configuration list for PBXNativeTarget "RedditBar" */;
+			buildConfigurationList = E9CF1F4E184961020004AE02 /* Build configuration list for PBXNativeTarget "BaconBar" */;
 			buildPhases = (
 				E9CF1F19184961010004AE02 /* Sources */,
 				E9CF1F1A184961010004AE02 /* Frameworks */,
@@ -212,14 +212,14 @@
 			);
 			dependencies = (
 			);
-			name = RedditBar;
+			name = BaconBar;
 			productName = RedditBar;
-			productReference = E9CF1F1D184961010004AE02 /* RedditBar.app */;
+			productReference = E9CF1F1D184961010004AE02 /* BaconBar.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E9CF1F3D184961020004AE02 /* RedditBarTests */ = {
+		E9CF1F3D184961020004AE02 /* BaconBarTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E9CF1F51184961020004AE02 /* Build configuration list for PBXNativeTarget "RedditBarTests" */;
+			buildConfigurationList = E9CF1F51184961020004AE02 /* Build configuration list for PBXNativeTarget "BaconBarTests" */;
 			buildPhases = (
 				E9CF1F3A184961020004AE02 /* Sources */,
 				E9CF1F3B184961020004AE02 /* Frameworks */,
@@ -230,9 +230,9 @@
 			dependencies = (
 				E9CF1F43184961020004AE02 /* PBXTargetDependency */,
 			);
-			name = RedditBarTests;
+			name = BaconBarTests;
 			productName = RedditBarTests;
-			productReference = E9CF1F3E184961020004AE02 /* RedditBarTests.xctest */;
+			productReference = E9CF1F3E184961020004AE02 /* BaconBarTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -257,7 +257,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E9CF1F18184961010004AE02 /* Build configuration list for PBXProject "RedditBar" */;
+			buildConfigurationList = E9CF1F18184961010004AE02 /* Build configuration list for PBXProject "BaconBar" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -271,8 +271,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E9CF1F1C184961010004AE02 /* RedditBar */,
-				E9CF1F3D184961020004AE02 /* RedditBarTests */,
+				E9CF1F1C184961010004AE02 /* BaconBar */,
+				E9CF1F3D184961020004AE02 /* BaconBarTests */,
 			);
 		};
 /* End PBXProject section */
@@ -358,7 +358,7 @@
 /* Begin PBXTargetDependency section */
 		E9CF1F43184961020004AE02 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E9CF1F1C184961010004AE02 /* RedditBar */;
+			target = E9CF1F1C184961010004AE02 /* BaconBar */;
 			targetProxy = E9CF1F42184961020004AE02 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -500,10 +500,10 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RedditBar/RedditBar-Prefix.pch";
-				INFOPLIST_FILE = "RedditBar/RedditBar-Info.plist";
+				GCC_PREFIX_HEADER = "RedditBar/BaconBar-Prefix.pch";
+				INFOPLIST_FILE = "RedditBar/BaconBar-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BaconBar;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -518,10 +518,10 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RedditBar/RedditBar-Prefix.pch";
-				INFOPLIST_FILE = "RedditBar/RedditBar-Info.plist";
+				GCC_PREFIX_HEADER = "RedditBar/BaconBar-Prefix.pch";
+				INFOPLIST_FILE = "RedditBar/BaconBar-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BaconBar;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -543,7 +543,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "RedditBarTests/RedditBarTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BaconBarTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -561,7 +561,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RedditBar/RedditBar-Prefix.pch";
 				INFOPLIST_FILE = "RedditBarTests/RedditBarTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BaconBarTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -570,7 +570,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E9CF1F18184961010004AE02 /* Build configuration list for PBXProject "RedditBar" */ = {
+		E9CF1F18184961010004AE02 /* Build configuration list for PBXProject "BaconBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E9CF1F4C184961020004AE02 /* Debug */,
@@ -579,7 +579,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E9CF1F4E184961020004AE02 /* Build configuration list for PBXNativeTarget "RedditBar" */ = {
+		E9CF1F4E184961020004AE02 /* Build configuration list for PBXNativeTarget "BaconBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E9CF1F4F184961020004AE02 /* Debug */,
@@ -588,7 +588,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E9CF1F51184961020004AE02 /* Build configuration list for PBXNativeTarget "RedditBarTests" */ = {
+		E9CF1F51184961020004AE02 /* Build configuration list for PBXNativeTarget "BaconBarTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E9CF1F52184961020004AE02 /* Debug */,
