@@ -27,10 +27,11 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 #import "StateModel.h"
+#import <ServiceManagement/ServiceManagement.h>
 
 @implementation StateModel
 
-@synthesize username, modhash, useSubscriptions, subreddits, length, showSubreddit, titleLength, refreshInterval, filter, removeVisited, reloadAfterVisit, lastNotifiedPM;
+@synthesize username, modhash, useSubscriptions, subreddits, length, showSubreddit, titleLength, refreshInterval, filter, removeVisited, reloadAfterVisit, lastNotifiedPM, startOnLogin;
 
 NSString *s_username = @"username";
 NSString *s_modhash = @"modhash";
@@ -44,6 +45,7 @@ NSString *s_filter = @"filter";
 NSString *s_remove = @"remove";
 NSString *s_reload = @"reload";
 NSString *s_lastPM = @"lastNotifiedPM";
+NSString *s_startLogin = @"startOnLogin";
 
 -(void)registerDefaultPreferences {
     NSUserDefaults *store = [NSUserDefaults standardUserDefaults];
@@ -58,6 +60,7 @@ NSString *s_lastPM = @"lastNotifiedPM";
     [appDefaults setValue:[NSNumber numberWithBool:YES] forKey:s_remove];
     [appDefaults setValue:[NSNumber numberWithBool:YES] forKey:s_reload];
     [appDefaults setValue:@"" forKey:s_lastPM];
+    [appDefaults setValue:[NSNumber numberWithBool:NO] forKey:s_startLogin];
     [store registerDefaults:appDefaults];
 }
 
@@ -75,7 +78,16 @@ NSString *s_lastPM = @"lastNotifiedPM";
     [store setBool:removeVisited forKey:s_remove];
     [store setBool:reloadAfterVisit forKey:s_reload];
     [store setObject:lastNotifiedPM forKey:s_lastPM];
+    
     [store synchronize];
+    
+    // TODO start on login on or off
+    if (startOnLogin != [store boolForKey:s_startLogin]) {
+        NSString *appName = [NSString stringWithFormat:@"%@Helper", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"]];
+        if (SMLoginItemSetEnabled((__bridge CFStringRef)appName, startOnLogin)) {
+            [store setBool:startOnLogin forKey:s_startLogin];
+        }
+    }
 }
 
 -(void)loadPreferences {
@@ -93,6 +105,7 @@ NSString *s_lastPM = @"lastNotifiedPM";
     removeVisited = [store boolForKey:s_remove];
     reloadAfterVisit = [store boolForKey:s_reload];
     lastNotifiedPM = [store stringForKey:s_lastPM];
+    startOnLogin = [store boolForKey:s_startLogin];
 }
 
 @end

@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>BaconBarHelper.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>RedditBar.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>E9C32426186E4C8100B41515</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E9C32440186E4C8100B41515</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E9CF1F1C184961010004AE02</key>
 		<dict>
 			<key>primary</key>

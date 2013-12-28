@@ -47,6 +47,7 @@
 @property (atomic, retain) IBOutlet NSPopUpButton *filterSelection;
 @property (atomic, retain) IBOutlet NSButton *removeVisited;
 @property (atomic, retain) IBOutlet NSButton *reloadAfterVisit;
+@property (atomic, retain) IBOutlet NSButton *launchOnLogin;
 
 @property (atomic, retain) NSObject *parent;
 @property (atomic, retain) StateModel *state;

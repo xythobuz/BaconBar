@@ -1,5 +1,5 @@
 /* Class = "PrefWindow"; title = "BaconBar Preferences"; ObjectID = "1"; */
-"1.title" = "BaconBar Preferences";
+"1.title" = "BaconBar Einstellungen";
 
 /* Class = "NSTextFieldCell"; title = "10"; ObjectID = "0SD-Tf-uZS"; */
 "0SD-Tf-uZS.title" = "10";
@@ -39,6 +39,9 @@
 
 /* Class = "NSTextFieldCell"; title = "66"; ObjectID = "b76-4r-MEp"; */
 "b76-4r-MEp.title" = "66";
+
+/* Class = "NSButtonCell"; title = "Launch BaconBar on login"; ObjectID = "cVl-wa-cE9"; */
+"cVl-wa-cE9.title" = "BaconBar beim Login starten";
 
 /* Class = "NSTextFieldCell"; title = "Filter:"; ObjectID = "coc-11-MQH"; */
 "coc-11-MQH.title" = "Filter:";

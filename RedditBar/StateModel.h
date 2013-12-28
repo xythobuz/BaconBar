@@ -42,6 +42,7 @@
 @property (atomic) Boolean removeVisited;
 @property (atomic) Boolean reloadAfterVisit;
 @property (atomic, retain) NSString *lastNotifiedPM;
+@property (atomic) Boolean startOnLogin;
 
 -(void)registerDefaultPreferences;
 -(void)savePreferences;

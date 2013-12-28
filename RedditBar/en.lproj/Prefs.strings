@@ -40,6 +40,9 @@
 /* Class = "NSTextFieldCell"; title = "66"; ObjectID = "b76-4r-MEp"; */
 "b76-4r-MEp.title" = "66";
 
+/* Class = "NSButtonCell"; title = "Launch BaconBar on login"; ObjectID = "cVl-wa-cE9"; */
+"cVl-wa-cE9.title" = "Launch BaconBar on login";
+
 /* Class = "NSTextFieldCell"; title = "Filter:"; ObjectID = "coc-11-MQH"; */
 "coc-11-MQH.title" = "Filter:";
 

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E9CF1F1C184961010004AE02"
-               BuildableName = "BaconBar.app"
-               BlueprintName = "BaconBar"
+               BlueprintIdentifier = "E9C32426186E4C8100B41515"
+               BuildableName = "BaconBarHelper.app"
+               BlueprintName = "BaconBarHelper"
                ReferencedContainer = "container:BaconBar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,33 +28,13 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E9CF1F3D184961020004AE02"
-               BuildableName = "BaconBarTests.xctest"
-               BlueprintName = "BaconBarTests"
-               ReferencedContainer = "container:BaconBar.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E9C32440186E4C8100B41515"
-               BuildableName = "BaconBarHelperTests.xctest"
-               BlueprintName = "BaconBarHelperTests"
-               ReferencedContainer = "container:BaconBar.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E9CF1F1C184961010004AE02"
-            BuildableName = "BaconBar.app"
-            BlueprintName = "BaconBar"
+            BlueprintIdentifier = "E9C32426186E4C8100B41515"
+            BuildableName = "BaconBarHelper.app"
+            BlueprintName = "BaconBarHelper"
             ReferencedContainer = "container:BaconBar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -71,18 +51,12 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E9CF1F1C184961010004AE02"
-            BuildableName = "BaconBar.app"
-            BlueprintName = "BaconBar"
+            BlueprintIdentifier = "E9C32426186E4C8100B41515"
+            BuildableName = "BaconBarHelper.app"
+            BlueprintName = "BaconBarHelper"
             ReferencedContainer = "container:BaconBar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "-AppleLanguages &quot;(German)&quot;"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -95,9 +69,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E9CF1F1C184961010004AE02"
-            BuildableName = "BaconBar.app"
-            BlueprintName = "BaconBar"
+            BlueprintIdentifier = "E9C32426186E4C8100B41515"
+            BuildableName = "BaconBarHelper.app"
+            BlueprintName = "BaconBarHelper"
             ReferencedContainer = "container:BaconBar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
