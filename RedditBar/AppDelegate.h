@@ -67,6 +67,6 @@
 -(void)readPMsCallback:(NSArray *)items;
 -(void)singleItemReloadedCallback:(NSArray *)items;
 
--(void)prefsDidSave;
+-(void)prefsDidSaveReload:(Boolean)shouldReload;
 
 @end

@@ -319,14 +319,16 @@ NSInteger numberOfStaticMenuItems = 10;
     [application orderFrontStandardAboutPanel:self];
 }
 
--(void)prefsDidSave {
+-(void)prefsDidSaveReload:(Boolean)shouldReload {
     [currentState savePreferences];
-    [firstMenuItem setTitle:NSLocalizedString(@"Loading...", nil)];
-    [self clearMenuItems];
-    [firstMenuItem setHidden:NO];
-    lastFullName = nil; // reload from start
-    [self reloadListWithOptions];
     [self recreateRefreshTimer];
+    if (shouldReload) {
+        [firstMenuItem setTitle:NSLocalizedString(@"Loading...", nil)];
+        [self clearMenuItems];
+        [firstMenuItem setHidden:NO];
+        lastFullName = nil; // reload from start
+        [self reloadListWithOptions];
+    }
 }
 
 @end

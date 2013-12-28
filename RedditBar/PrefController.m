@@ -164,10 +164,30 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
     else
         start = FALSE;
     
+    NSArray *subredditsToUse = [subreddits.textStorage.string componentsSeparatedByString: @"\n"];
+    
+    Boolean changesRequireReload = FALSE;
+    if (![[username stringValue] isEqualToString:state.username])
+        changesRequireReload = TRUE;
+    if (![modhash isEqualToString:state.modhash])
+        changesRequireReload = TRUE;
+    if (subs != state.useSubscriptions)
+        changesRequireReload = TRUE;
+    if (subs && (![state.subreddits isEqualToArray:subredditsToUse]))
+        changesRequireReload = TRUE;
+    if ([lengthField integerValue] != state.length)
+        changesRequireReload = TRUE;
+    if (print != state.showSubreddit)
+        changesRequireReload = TRUE;
+    if ([titleField integerValue] != state.titleLength)
+        changesRequireReload = TRUE;
+    if (![[filterSelection titleOfSelectedItem] isEqualToString:state.filter])
+        changesRequireReload = TRUE;
+    
     state.username = username.stringValue;
     state.modhash = modhash;
     state.useSubscriptions = subs;
-    state.subreddits = [subreddits.textStorage.string componentsSeparatedByString: @"\n"];
+    state.subreddits = subredditsToUse;
     state.length = [lengthField integerValue];
     state.showSubreddit = print;
     state.titleLength = [titleField integerValue];
@@ -176,7 +196,7 @@ NSString *subredditCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
     state.removeVisited = remove;
     state.reloadAfterVisit = reload;
     state.startOnLogin = start;
-    [(AppDelegate *)parent prefsDidSave];
+    [(AppDelegate *)parent prefsDidSaveReload:changesRequireReload];
     [win performClose:self];
 }
 
