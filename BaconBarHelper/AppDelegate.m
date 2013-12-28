@@ -10,14 +10,13 @@
 
 @implementation AppDelegate
 
--(void)applicationDidFinishLaunching:(NSNotification *)aNotification
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Check if main app is already running; if yes, do nothing and terminate helper app
     BOOL alreadyRunning = NO;
-    NSString *appName = [(NSString *)([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"]) stringByReplacingOccurrencesOfString:@"Helper" withString:@""];
     NSArray *running = [[NSWorkspace sharedWorkspace] runningApplications];
     for (NSRunningApplication *app in running) {
-        if ([[app bundleIdentifier] isEqualToString:appName]) {
+        if ([[app bundleIdentifier] isEqualToString:@"xythobuz.BaconBar"]) {
             alreadyRunning = YES;
         }
     }

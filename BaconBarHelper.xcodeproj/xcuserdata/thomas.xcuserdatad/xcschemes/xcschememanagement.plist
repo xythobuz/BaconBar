@@ -4,35 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>BaconBar.xcscheme</key>
+		<key>BaconBarHelper.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>BaconBarHelper.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>E9C32426186E4C8100B41515</key>
+		<key>E922AEF6186F5F790038E4D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E9C32440186E4C8100B41515</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E9CF1F1C184961010004AE02</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E9CF1F3D184961020004AE02</key>
+		<key>E922AF17186F5F790038E4D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

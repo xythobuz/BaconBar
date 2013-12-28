@@ -107,6 +107,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "BaconBar"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

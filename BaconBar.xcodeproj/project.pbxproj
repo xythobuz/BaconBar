@@ -12,13 +12,8 @@
 		E934191B184A47DE00D03488 /* Prefs.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9341919184A47DE00D03488 /* Prefs.xib */; };
 		E9A129B1184BD24000F50D1D /* RedditItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A129B0184BD24000F50D1D /* RedditItem.m */; };
 		E9B6773E184B73DC00850559 /* Reddit.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6773D184B73DC00850559 /* Reddit.m */; };
+		E9BA9EB2186F63D600D147BC /* BaconBarHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = E9BA9EAF186F63C400D147BC /* BaconBarHelper.app */; };
 		E9C32422186E49F000B41515 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C32421186E49F000B41515 /* ServiceManagement.framework */; };
-		E9C32428186E4C8100B41515 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9CF1F20184961010004AE02 /* Cocoa.framework */; };
-		E9C3242E186E4C8100B41515 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9C3242C186E4C8100B41515 /* InfoPlist.strings */; };
-		E9C32430186E4C8100B41515 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C3242F186E4C8100B41515 /* main.m */; };
-		E9C32437186E4C8100B41515 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C32436186E4C8100B41515 /* AppDelegate.m */; };
-		E9C3243C186E4C8100B41515 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C3243B186E4C8100B41515 /* Images.xcassets */; };
-		E9C32455186E4D1700B41515 /* BaconBarHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = E9C32427186E4C8100B41515 /* BaconBarHelper.app */; };
 		E9CF1F21184961010004AE02 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9CF1F20184961010004AE02 /* Cocoa.framework */; };
 		E9CF1F2B184961010004AE02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9CF1F29184961010004AE02 /* InfoPlist.strings */; };
 		E9CF1F2D184961010004AE02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CF1F2C184961010004AE02 /* main.m */; };
@@ -30,6 +25,16 @@
 		E9F64A2E185E1E2900D6CA16 /* PrefWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F64A2D185E1E2900D6CA16 /* PrefWindow.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E9BA9EAE186F63C400D147BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E9BA9EA9186F63C400D147BC /* BaconBarHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E922AEF7186F5F790038E4D7;
+			remoteInfo = BaconBarHelper;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		E9C32454186E4CF900B41515 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -37,7 +42,7 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				E9C32455186E4D1700B41515 /* BaconBarHelper.app in CopyFiles */,
+				E9BA9EB2186F63D600D147BC /* BaconBarHelper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,23 +58,14 @@
 		E9341912184A1A1A00D03488 /* StateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateModel.h; sourceTree = "<group>"; };
 		E9341913184A1A1A00D03488 /* StateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateModel.m; sourceTree = "<group>"; };
 		E934191A184A47DE00D03488 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Prefs.xib; sourceTree = "<group>"; };
-		E97FD65E185232CA006B5B3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		E97FD65F185232D5006B5B3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Prefs.strings; sourceTree = "<group>"; };
 		E9A129AF184BD24000F50D1D /* RedditItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedditItem.h; sourceTree = "<group>"; };
 		E9A129B0184BD24000F50D1D /* RedditItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedditItem.m; sourceTree = "<group>"; };
+		E9A72EF0186F66EC009ECE8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		E9B6773C184B73DC00850559 /* Reddit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reddit.h; sourceTree = "<group>"; };
 		E9B6773D184B73DC00850559 /* Reddit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reddit.m; sourceTree = "<group>"; };
+		E9BA9EA9186F63C400D147BC /* BaconBarHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = BaconBarHelper.xcodeproj; sourceTree = "<group>"; };
 		E9C32421186E49F000B41515 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
-		E9C32427186E4C8100B41515 /* BaconBarHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaconBarHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E9C3242B186E4C8100B41515 /* BaconBarHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BaconBarHelper-Info.plist"; sourceTree = "<group>"; };
-		E9C3242D186E4C8100B41515 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E9C3242F186E4C8100B41515 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E9C32431186E4C8100B41515 /* BaconBarHelper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaconBarHelper-Prefix.pch"; sourceTree = "<group>"; };
-		E9C32435186E4C8100B41515 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		E9C32436186E4C8100B41515 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E9C3243B186E4C8100B41515 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E9C32456186E4D9B00B41515 /* BaconBarHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BaconBarHelper.entitlements; sourceTree = "<group>"; };
-		E9C32457186E54D300B41515 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E9CF1F1D184961010004AE02 /* BaconBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaconBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9CF1F20184961010004AE02 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E9CF1F23184961010004AE02 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -93,14 +89,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E9C32424186E4C8100B41515 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E9C32428186E4C8100B41515 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E9CF1F1A184961010004AE02 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -113,34 +101,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E9C32429186E4C8100B41515 /* BaconBarHelper */ = {
+		E9BA9EAA186F63C400D147BC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E9C32456186E4D9B00B41515 /* BaconBarHelper.entitlements */,
-				E9C32435186E4C8100B41515 /* AppDelegate.h */,
-				E9C32436186E4C8100B41515 /* AppDelegate.m */,
-				E9C3243B186E4C8100B41515 /* Images.xcassets */,
-				E9C3242A186E4C8100B41515 /* Supporting Files */,
+				E9BA9EAF186F63C400D147BC /* BaconBarHelper.app */,
 			);
-			path = BaconBarHelper;
-			sourceTree = "<group>";
-		};
-		E9C3242A186E4C8100B41515 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E9C3242B186E4C8100B41515 /* BaconBarHelper-Info.plist */,
-				E9C3242C186E4C8100B41515 /* InfoPlist.strings */,
-				E9C3242F186E4C8100B41515 /* main.m */,
-				E9C32431186E4C8100B41515 /* BaconBarHelper-Prefix.pch */,
-			);
-			name = "Supporting Files";
+			name = Products;
 			sourceTree = "<group>";
 		};
 		E9CF1F14184961010004AE02 = {
 			isa = PBXGroup;
 			children = (
+				E9BA9EA9186F63C400D147BC /* BaconBarHelper.xcodeproj */,
 				E9CF1F26184961010004AE02 /* RedditBar */,
-				E9C32429186E4C8100B41515 /* BaconBarHelper */,
 				E9CF1F1F184961010004AE02 /* Frameworks */,
 				E9CF1F1E184961010004AE02 /* Products */,
 			);
@@ -150,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				E9CF1F1D184961010004AE02 /* BaconBar.app */,
-				E9C32427186E4C8100B41515 /* BaconBarHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,23 +188,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E9C32426186E4C8100B41515 /* BaconBarHelper */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E9C3244E186E4C8100B41515 /* Build configuration list for PBXNativeTarget "BaconBarHelper" */;
-			buildPhases = (
-				E9C32423186E4C8100B41515 /* Sources */,
-				E9C32424186E4C8100B41515 /* Frameworks */,
-				E9C32425186E4C8100B41515 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = BaconBarHelper;
-			productName = BaconBarHelper;
-			productReference = E9C32427186E4C8100B41515 /* BaconBarHelper.app */;
-			productType = "com.apple.product-type.application";
-		};
 		E9CF1F1C184961010004AE02 /* BaconBar */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9CF1F4E184961020004AE02 /* Build configuration list for PBXNativeTarget "BaconBar" */;
@@ -241,7 +196,7 @@
 				E9CF1F1A184961010004AE02 /* Frameworks */,
 				E9341915184A3A6500D03488 /* ShellScript */,
 				E9CF1F1B184961010004AE02 /* Resources */,
-				E97FD65D185231D0006B5B3E /* ShellScript */,
+				E97FD65D185231D0006B5B3E /* Run Script */,
 				E9C32454186E4CF900B41515 /* CopyFiles */,
 			);
 			buildRules = (
@@ -262,14 +217,6 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = xythobuz;
 				TargetAttributes = {
-					E9C32426186E4C8100B41515 = {
-						DevelopmentTeam = 2YRH3A6P3C;
-						SystemCapabilities = {
-							com.apple.Sandbox = {
-								enabled = 1;
-							};
-						};
-					};
 					E9CF1F1C184961010004AE02 = {
 						DevelopmentTeam = 2YRH3A6P3C;
 						SystemCapabilities = {
@@ -292,24 +239,30 @@
 			mainGroup = E9CF1F14184961010004AE02;
 			productRefGroup = E9CF1F1E184961010004AE02 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E9BA9EAA186F63C400D147BC /* Products */;
+					ProjectRef = E9BA9EA9186F63C400D147BC /* BaconBarHelper.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E9CF1F1C184961010004AE02 /* BaconBar */,
-				E9C32426186E4C8100B41515 /* BaconBarHelper */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		E9C32425186E4C8100B41515 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E9C3242E186E4C8100B41515 /* InfoPlist.strings in Resources */,
-				E9C3243C186E4C8100B41515 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
+/* Begin PBXReferenceProxy section */
+		E9BA9EAF186F63C400D147BC /* BaconBarHelper.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = BaconBarHelper.app;
+			remoteRef = E9BA9EAE186F63C400D147BC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
 		E9CF1F1B184961010004AE02 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,31 +292,23 @@
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
-		E97FD65D185231D0006B5B3E /* ShellScript */ = {
+		E97FD65D185231D0006B5B3E /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# update_storyboard_strings.sh - automatically extract translatable strings from storyboards and update strings files\n# Based on http://forums.macrumors.com/showpost.php?p=16060008&postcount=4 by mikezang\n\nstoryboardExt=\".xib\"\nstringsExt=\".strings\"\nnewStringsExt=\".strings.new\"\noldStringsExt=\".strings.old\"\nlocaleDirExt=\".lproj\"\n\n# Find storyboard file full path inside project folder\nfor storyboardPath in `find . -name \"*$storyboardExt\" -print`\ndo\n# Get Base strings file full path\nbaseStringsPath=$(echo \"$storyboardPath\" | sed \"s/$storyboardExt/$stringsExt/\")\n\n# Create base strings file if it doesn't exist\nif ! [ -f $baseStringsPath ]; then\ntouch -r $storyboardPath $baseStringsPath\n# Make base strings file older than the storyboard file\ntouch -A -01 $baseStringsPath\nfi\n\n# Create strings file only when storyboard file newer\nif find $storyboardPath -prune -newer $baseStringsPath -print | grep -q .; then\n# Get storyboard file name and folder\nstoryboardFile=$(basename \"$storyboardPath\")\nstoryboardDir=$(dirname \"$storyboardPath\")\n\n# Get New Base strings file full path and strings file name\nnewBaseStringsPath=$(echo \"$storyboardPath\" | sed \"s/$storyboardExt/$newStringsExt/\")\nstringsFile=$(basename \"$baseStringsPath\")\nibtool --export-strings-file $newBaseStringsPath $storyboardPath\niconv -f UTF-16 -t UTF-8 $newBaseStringsPath > $baseStringsPath\nrm $newBaseStringsPath\n\n# Get all locale strings folder\nfor localeStringsDir in `find . -name \"*$localeDirExt\" -print`\ndo\n# Skip Base strings folder\nif [ $localeStringsDir != $storyboardDir ]; then\nlocaleStringsPath=$localeStringsDir/$stringsFile\n\n# Just copy base strings file on first time\nif [ ! -e $localeStringsPath ]; then\ncp $baseStringsPath $localeStringsPath\nelse\noldLocaleStringsPath=$(echo \"$localeStringsPath\" | sed \"s/$stringsExt/$oldStringsExt/\")\ncp $localeStringsPath $oldLocaleStringsPath\n\n# Merge baseStringsPath to localeStringsPath\nawk 'NR == FNR && /^\\/\\*/ {x=$0; getline; a[x]=$0; next} /^\\/\\*/ {x=$0; print; getline; $0=a[x]?a[x]:$0; printf $0\"\\n\\n\"}' $oldLocaleStringsPath $baseStringsPath > $localeStringsPath\n\nrm $oldLocaleStringsPath\nfi\nfi\ndone\nelse\necho \"$storyboardPath file not modified.\"\nfi\ndone";
+			shellScript = "# update_storyboard_strings.sh - automatically extract translatable strings from storyboards and update strings files\n# Based on http://forums.macrumors.com/showpost.php?p=16060008&postcount=4 by mikezang\n\n# Also regenerate Localizable.strings\nfind . -name \\*.m | xargs genstrings -o en.lproj\n\nstoryboardExt=\".xib\"\nstringsExt=\".strings\"\nnewStringsExt=\".strings.new\"\noldStringsExt=\".strings.old\"\nlocaleDirExt=\".lproj\"\n\n# Find storyboard file full path inside project folder\nfor storyboardPath in `find . -name \"*$storyboardExt\" -print`\ndo\n# Get Base strings file full path\nbaseStringsPath=$(echo \"$storyboardPath\" | sed \"s/$storyboardExt/$stringsExt/\")\n\n# Create base strings file if it doesn't exist\nif ! [ -f $baseStringsPath ]; then\ntouch -r $storyboardPath $baseStringsPath\n# Make base strings file older than the storyboard file\ntouch -A -01 $baseStringsPath\nfi\n\n# Create strings file only when storyboard file newer\nif find $storyboardPath -prune -newer $baseStringsPath -print | grep -q .; then\n# Get storyboard file name and folder\nstoryboardFile=$(basename \"$storyboardPath\")\nstoryboardDir=$(dirname \"$storyboardPath\")\n\n# Get New Base strings file full path and strings file name\nnewBaseStringsPath=$(echo \"$storyboardPath\" | sed \"s/$storyboardExt/$newStringsExt/\")\nstringsFile=$(basename \"$baseStringsPath\")\nibtool --export-strings-file $newBaseStringsPath $storyboardPath\niconv -f UTF-16 -t UTF-8 $newBaseStringsPath > $baseStringsPath\nrm $newBaseStringsPath\n\n# Get all locale strings folder\nfor localeStringsDir in `find . -name \"*$localeDirExt\" -print`\ndo\n# Skip Base strings folder\nif [ $localeStringsDir != $storyboardDir ]; then\nlocaleStringsPath=$localeStringsDir/$stringsFile\n\n# Just copy base strings file on first time\nif [ ! -e $localeStringsPath ]; then\ncp $baseStringsPath $localeStringsPath\nelse\noldLocaleStringsPath=$(echo \"$localeStringsPath\" | sed \"s/$stringsExt/$oldStringsExt/\")\ncp $localeStringsPath $oldLocaleStringsPath\n\n# Merge baseStringsPath to localeStringsPath\nawk 'NR == FNR && /^\\/\\*/ {x=$0; getline; a[x]=$0; next} /^\\/\\*/ {x=$0; print; getline; $0=a[x]?a[x]:$0; printf $0\"\\n\\n\"}' $oldLocaleStringsPath $baseStringsPath > $localeStringsPath\n\nrm $oldLocaleStringsPath\nfi\nfi\ndone\nelse\necho \"$storyboardPath file not modified.\"\nfi\ndone";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E9C32423186E4C8100B41515 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E9C32437186E4C8100B41515 /* AppDelegate.m in Sources */,
-				E9C32430186E4C8100B41515 /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E9CF1F19184961010004AE02 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -400,15 +345,6 @@
 			name = Prefs.xib;
 			sourceTree = "<group>";
 		};
-		E9C3242C186E4C8100B41515 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E9C3242D186E4C8100B41515 /* en */,
-				E9C32457186E54D300B41515 /* de */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		E9CF1F29184961010004AE02 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -432,7 +368,7 @@
 			children = (
 				E9CF1F36184961020004AE02 /* Base */,
 				E90E74B6184FAADE00F38929 /* de */,
-				E97FD65E185232CA006B5B3E /* en */,
+				E9A72EF0186F66EC009ECE8C /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -440,44 +376,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		E9C3244F186E4C8100B41515 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = BaconBarHelper/BaconBarHelper.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Thomas Buck (2YRH3A6P3C)";
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BaconBarHelper/BaconBarHelper-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "BaconBarHelper/BaconBarHelper-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "96C11281-B37D-4B03-89DD-AC0908449C25";
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		E9C32450186E4C8100B41515 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = BaconBarHelper/BaconBarHelper.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Thomas Buck (2YRH3A6P3C)";
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BaconBarHelper/BaconBarHelper-Prefix.pch";
-				INFOPLIST_FILE = "BaconBarHelper/BaconBarHelper-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "96C11281-B37D-4B03-89DD-AC0908449C25";
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
 		E9CF1F4C184961020004AE02 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -509,9 +407,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 			};
 			name = Debug;
 		};
@@ -541,8 +439,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				SDKROOT = macosx;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx10.8;
 			};
 			name = Release;
 		};
@@ -551,15 +449,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = RedditBar/RedditBar.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Thomas Buck (2YRH3A6P3C)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: Thomas Buck (2YRH3A6P3C)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RedditBar/BaconBar-Prefix.pch";
 				INFOPLIST_FILE = "RedditBar/BaconBar-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = BaconBar;
-				PROVISIONING_PROFILE = "96C11281-B37D-4B03-89DD-AC0908449C25";
+				PROVISIONING_PROFILE = "91F7EAB0-5C24-4F36-8C57-13FA38F4FF88";
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -567,17 +465,19 @@
 		E9CF1F50184961020004AE02 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = RedditBar/RedditBar.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Thomas Buck (2YRH3A6P3C)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: Thomas Buck (2YRH3A6P3C)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RedditBar/BaconBar-Prefix.pch";
 				INFOPLIST_FILE = "RedditBar/BaconBar-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = BaconBar;
-				PROVISIONING_PROFILE = "96C11281-B37D-4B03-89DD-AC0908449C25";
+				PROVISIONING_PROFILE = "91F7EAB0-5C24-4F36-8C57-13FA38F4FF88";
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -585,14 +485,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E9C3244E186E4C8100B41515 /* Build configuration list for PBXNativeTarget "BaconBarHelper" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E9C3244F186E4C8100B41515 /* Debug */,
-				E9C32450186E4C8100B41515 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
 		E9CF1F18184961010004AE02 /* Build configuration list for PBXProject "BaconBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
