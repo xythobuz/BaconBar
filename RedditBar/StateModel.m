@@ -86,6 +86,8 @@ NSString *s_startLogin = @"startOnLogin";
         NSString *appName = [NSString stringWithFormat:@"%@Helper", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"]];
         if (SMLoginItemSetEnabled((__bridge CFStringRef)appName, startOnLogin)) {
             [store setBool:startOnLogin forKey:s_startLogin];
+        } else {
+            startOnLogin = !startOnLogin; // Propagate revert of users change to the UI
         }
     }
 }

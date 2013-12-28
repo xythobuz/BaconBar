@@ -10,13 +10,12 @@
 
 @implementation AppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    // Check if main app is already running; if yes, do nothing and terminate helper app
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    NSString *appName = [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"] stringByReplacingOccurrencesOfString:@"Helper" withString:@""];
     BOOL alreadyRunning = NO;
     NSArray *running = [[NSWorkspace sharedWorkspace] runningApplications];
     for (NSRunningApplication *app in running) {
-        if ([[app bundleIdentifier] isEqualToString:@"xythobuz.BaconBar"]) {
+        if ([[app bundleIdentifier] isEqualToString:appName]) {
             alreadyRunning = YES;
         }
     }
@@ -24,15 +23,15 @@
     if (!alreadyRunning) {
         NSString *path = [[NSBundle mainBundle] bundlePath];
         NSArray *p = [path pathComponents];
-        NSMutableArray *pathComponents = [NSMutableArray arrayWithArray:p];
-        [pathComponents removeLastObject];
-        [pathComponents removeLastObject];
-        [pathComponents removeLastObject];
-        [pathComponents addObject:@"MacOS"];
-        [pathComponents addObject:@"BaconBar"];
+        NSMutableArray *pathComponents = [NSMutableArray arrayWithArray:p]; // /Applications/BaconBar.app/Contents/Library/LoginItems/BaconBarHelper.app
+        [pathComponents removeLastObject]; // /Applications/BaconBar.app/Contents/Library/LoginItems
+        [pathComponents removeLastObject]; // /Applications/BaconBar.app/Contents/Library
+        [pathComponents removeLastObject]; // /Applications/BaconBar.app/Contents
+        [pathComponents removeLastObject]; // /Applications/BaconBar.app
         NSString *newPath = [NSString pathWithComponents:pathComponents];
         [[NSWorkspace sharedWorkspace] launchApplication:newPath];
     }
+    
     [NSApp terminate:nil];
 }
 
