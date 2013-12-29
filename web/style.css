@@ -106,3 +106,11 @@ body {
     margin-bottom: 40px;
     text-align: center;
 }
+
+label {
+    width: 100%;
+}
+
+.butt {
+    width: 12em;
+}
