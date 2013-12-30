@@ -21,15 +21,12 @@
     }
     
     if (!alreadyRunning) {
-        NSString *path = [[NSBundle mainBundle] bundlePath];
-        NSArray *p = [path pathComponents];
-        NSMutableArray *pathComponents = [NSMutableArray arrayWithArray:p]; // /Applications/BaconBar.app/Contents/Library/LoginItems/BaconBarHelper.app
+        NSMutableArray *pathComponents = [NSMutableArray arrayWithArray:[[[NSBundle mainBundle] bundlePath] pathComponents]];
         [pathComponents removeLastObject]; // /Applications/BaconBar.app/Contents/Library/LoginItems
         [pathComponents removeLastObject]; // /Applications/BaconBar.app/Contents/Library
         [pathComponents removeLastObject]; // /Applications/BaconBar.app/Contents
         [pathComponents removeLastObject]; // /Applications/BaconBar.app
-        NSString *newPath = [NSString pathWithComponents:pathComponents];
-        [[NSWorkspace sharedWorkspace] launchApplication:newPath];
+        [[NSWorkspace sharedWorkspace] launchApplication:[NSString pathWithComponents:pathComponents]];
     }
     
     [NSApp terminate:nil];
