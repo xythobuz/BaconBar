@@ -8,8 +8,14 @@
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "32T-3T-EcY"; */
 "32T-3T-EcY.title" = "Cut";
 
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "3jR-5g-kvu"; */
+"3jR-5g-kvu.title" = "Minimize";
+
 /* Class = "NSButtonCell"; title = "Remove visited links"; ObjectID = "7KI-oO-Qcg"; */
 "7KI-oO-Qcg.title" = "Remove visited links";
+
+/* Class = "NSMenuItem"; title = "BaconBar"; ObjectID = "Dcc-hD-clC"; */
+"Dcc-hD-clC.title" = "BaconBar";
 
 /* Class = "NSTextFieldCell"; title = "Items:"; ObjectID = "FNJ-RL-DXT"; */
 "FNJ-RL-DXT.title" = "Items:";
@@ -17,8 +23,8 @@
 /* Class = "NSTextFieldCell"; title = "Title:"; ObjectID = "Frl-AE-ROJ"; */
 "Frl-AE-ROJ.title" = "Title:";
 
-/* Class = "NSTextFieldCell"; title = "Username: "; ObjectID = "GTO-OP-MYS"; */
-"GTO-OP-MYS.title" = "Username: ";
+/* Class = "NSTextFieldCell"; title = "Username:"; ObjectID = "GTO-OP-MYS"; */
+"GTO-OP-MYS.title" = "Username:";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "IWp-hb-gSM"; */
 "IWp-hb-gSM.title" = "Main Menu";
@@ -32,11 +38,23 @@
 /* Class = "NSMenu"; title = "OtherViews"; ObjectID = "Ow7-gc-PGv"; */
 "Ow7-gc-PGv.title" = "OtherViews";
 
+/* Class = "NSMenu"; title = "BaconBar"; ObjectID = "PCa-vb-klD"; */
+"PCa-vb-klD.title" = "BaconBar";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "TaA-nh-br8"; */
+"TaA-nh-br8.title" = "Window";
+
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "TjO-Z6-Vng"; */
 "TjO-Z6-Vng.title" = "Cancel";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "YpZ-Vi-h1u"; */
 "YpZ-Vi-h1u.title" = "Edit";
+
+/* Class = "NSMenuItem"; title = "Quit BaconBar"; ObjectID = "Z8h-ok-eBD"; */
+"Z8h-ok-eBD.title" = "Quit BaconBar";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "ZIP-EI-Msd"; */
+"ZIP-EI-Msd.title" = "File";
 
 /* Class = "NSTextFieldCell"; title = "66"; ObjectID = "b76-4r-MEp"; */
 "b76-4r-MEp.title" = "66";
@@ -59,11 +77,17 @@
 /* Class = "NSTextFieldCell"; title = "5"; ObjectID = "gZN-n2-TGX"; */
 "gZN-n2-TGX.title" = "5";
 
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "hc0-g1-acY"; */
+"hc0-g1-acY.title" = "Window";
+
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "j3h-hj-rfI"; */
 "j3h-hj-rfI.title" = "Paste";
 
 /* Class = "NSTextFieldCell"; title = "Password:"; ObjectID = "m11-YF-fEa"; */
 "m11-YF-fEa.title" = "Password:";
+
+/* Class = "NSMenuItem"; title = "Close Window"; ObjectID = "mSw-Re-17a"; */
+"mSw-Re-17a.title" = "Close Window";
 
 /* Class = "NSButtonCell"; title = "Show Subreddit after Title"; ObjectID = "nFK-xi-2F3"; */
 "nFK-xi-2F3.title" = "Show Subreddit after Title";
@@ -76,6 +100,9 @@
 
 /* Class = "NSMenuItem"; title = "hot"; ObjectID = "sKV-FZ-wbQ"; */
 "sKV-FZ-wbQ.title" = "hot";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "sfM-Vz-Yb6"; */
+"sfM-Vz-Yb6.title" = "File";
 
 /* Class = "NSButtonCell"; title = "Reload after every visited link"; ObjectID = "twM-Jr-KGn"; */
 "twM-Jr-KGn.title" = "Reload after every visited link";

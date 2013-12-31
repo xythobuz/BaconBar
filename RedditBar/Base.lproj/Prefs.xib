@@ -29,7 +29,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application"/>
         <window title="BaconBar Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" wantsToBeColor="NO" animationBehavior="default" id="1" customClass="PrefWindow">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="340" height="464"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
@@ -49,7 +49,7 @@
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="f72-fM-yQc">
                         <rect key="frame" x="18" y="429" width="96" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Username: " id="GTO-OP-MYS">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Username:" id="GTO-OP-MYS">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -345,6 +345,30 @@ Gw
         </numberFormatter>
         <menu title="Main Menu" systemMenu="main" id="IWp-hb-gSM">
             <items>
+                <menuItem title="BaconBar" id="Dcc-hD-clC">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="BaconBar" id="PCa-vb-klD">
+                        <items>
+                            <menuItem title="Quit BaconBar" keyEquivalent="q" id="Z8h-ok-eBD">
+                                <connections>
+                                    <action selector="terminate:" target="-1" id="jEK-rq-g2I"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="File" id="ZIP-EI-Msd">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="File" id="sfM-Vz-Yb6">
+                        <items>
+                            <menuItem title="Close Window" keyEquivalent="w" id="mSw-Re-17a">
+                                <connections>
+                                    <action selector="performClose:" target="-1" id="Hzx-hE-RDZ"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Edit" id="czz-51-wxr">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Edit" id="YpZ-Vi-h1u">
@@ -372,6 +396,18 @@ Gw
                             <menuItem title="Select All" keyEquivalent="a" id="qSu-ha-DhM">
                                 <connections>
                                     <action selector="selectAll:" target="-1" id="TBx-Re-gUK"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Window" id="hc0-g1-acY">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Window" id="TaA-nh-br8">
+                        <items>
+                            <menuItem title="Minimize" keyEquivalent="m" id="3jR-5g-kvu">
+                                <connections>
+                                    <action selector="miniaturize:" target="-1" id="TXP-qS-Sfn"/>
                                 </connections>
                             </menuItem>
                         </items>
