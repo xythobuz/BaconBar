@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1060" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="494" id="495"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <customObject id="494" customClass="AppDelegate">
+            <connections>
+                <outlet property="PMItem" destination="IM8-KI-MAc" id="X1H-cL-0kE"/>
+                <outlet property="PMSeparator" destination="5L0-zz-YIh" id="2X3-PW-1G9"/>
+                <outlet property="application" destination="-3" id="1K5-sF-Im7"/>
+                <outlet property="firstMenuItem" destination="jfb-mv-iN9" id="2QT-D1-leO"/>
+                <outlet property="statusMenu" destination="fuB-VS-nSq" id="AZY-3d-h8G"/>
+            </connections>
+        </customObject>
+        <customObject id="420" customClass="NSFontManager"/>
+        <menu id="fuB-VS-nSq" userLabel="StatusItem">
+            <items>
+                <menuItem title="PMs..." hidden="YES" enabled="NO" id="IM8-KI-MAc">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="openUnread:" target="494" id="zdP-DS-AdX"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" hidden="YES" id="5L0-zz-YIh"/>
+                <menuItem title="Loading..." enabled="NO" id="jfb-mv-iN9">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="7Rc-fG-5uQ"/>
+                <menuItem title="Load next" keyEquivalent="n" id="e8u-nc-P6x">
+                    <connections>
+                        <action selector="reloadNextList:" target="494" id="tbv-NV-8s7"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Reload" keyEquivalent="r" id="bQG-wq-9Zw">
+                    <connections>
+                        <action selector="reloadCompleteList:" target="494" id="FoB-kO-9Sk"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="w4G-0W-l5l"/>
+                <menuItem title="Preferences..." keyEquivalent="," id="1lW-9C-xt6">
+                    <connections>
+                        <action selector="showPreferences:" target="494" id="Fen-Ci-4tc"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="About BaconBar" id="4ah-qP-9eP">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showAbout:" target="494" id="7IO-ZS-OJf"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Quit" keyEquivalent="q" id="oyC-3G-WEc">
+                    <connections>
+                        <action selector="terminate:" target="-1" id="AHO-0z-nt2"/>
+                    </connections>
+                </menuItem>
+            </items>
+        </menu>
+    </objects>
+</document>

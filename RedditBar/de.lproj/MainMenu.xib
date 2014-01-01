@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1080" identifier="macosx"/>
+        <deployment defaultVersion="1060" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
     </dependencies>
     <objects>
@@ -31,33 +31,33 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" hidden="YES" id="5L0-zz-YIh"/>
-                <menuItem title="Loading..." enabled="NO" id="jfb-mv-iN9">
+                <menuItem title="Lade..." enabled="NO" id="jfb-mv-iN9">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="7Rc-fG-5uQ"/>
-                <menuItem title="Load next" keyEquivalent="n" id="e8u-nc-P6x">
+                <menuItem title="Mehr laden" keyEquivalent="n" id="e8u-nc-P6x">
                     <connections>
                         <action selector="reloadNextList:" target="494" id="tbv-NV-8s7"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Reload" keyEquivalent="r" id="bQG-wq-9Zw">
+                <menuItem title="Neu laden" keyEquivalent="r" id="bQG-wq-9Zw">
                     <connections>
                         <action selector="reloadCompleteList:" target="494" id="FoB-kO-9Sk"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="w4G-0W-l5l"/>
-                <menuItem title="Preferences..." keyEquivalent="," id="1lW-9C-xt6">
+                <menuItem title="Einstellungen..." keyEquivalent="," id="1lW-9C-xt6">
                     <connections>
                         <action selector="showPreferences:" target="494" id="Fen-Ci-4tc"/>
                     </connections>
                 </menuItem>
-                <menuItem title="About BaconBar" id="4ah-qP-9eP">
+                <menuItem title="Über BaconBar" id="4ah-qP-9eP">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="showAbout:" target="494" id="7IO-ZS-OJf"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Quit" keyEquivalent="q" id="oyC-3G-WEc">
+                <menuItem title="Beenden" keyEquivalent="q" id="oyC-3G-WEc">
                     <connections>
                         <action selector="terminate:" target="-1" id="AHO-0z-nt2"/>
                     </connections>
