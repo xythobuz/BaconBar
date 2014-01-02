@@ -43,11 +43,10 @@ NSInteger numberOfStaticMenuItems = 10;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
-    NSBundle *bundle = [NSBundle mainBundle];
-    statusImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon" ofType:@"png"]];
-    statusHighlightImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon-alt" ofType:@"png"]];
-    orangeredImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"orangered" ofType:@"png"]];
-    orangeredHighlightImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"orangered-alt" ofType:@"png"]];
+    statusImage = [NSImage imageNamed:@"icon"];
+    statusHighlightImage = [NSImage imageNamed:@"icon-alt"];
+    orangeredImage = [NSImage imageNamed:@"orangered"];
+    orangeredHighlightImage = [NSImage imageNamed:@"orangered-alt"];
     [statusItem setImage:statusImage];
     [statusItem setAlternateImage:statusHighlightImage];
     [statusItem setMenu:statusMenu];
