@@ -39,16 +39,15 @@ NSInteger numberOfStaticMenuItems = 10;
 #define SUBMENU_INDEX_COMMENTS 1
 #define SUBMENU_INDEX_BOTH 2
 
-@synthesize statusMenu, statusItem, statusImage, statusHighlightImage, orangeredImage, orangeredHighlightImage, prefWindow, currentState, application, api, firstMenuItem, menuItems, redditItems, lastFullName, refreshTimer, PMItem, PMSeparator;
+@synthesize statusMenu, statusItem, statusImage, orangeredImage, prefWindow, currentState, application, api, firstMenuItem, menuItems, redditItems, lastFullName, refreshTimer, PMItem, PMSeparator;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
     statusImage = [NSImage imageNamed:@"icon"];
-    statusHighlightImage = [NSImage imageNamed:@"icon-alt"];
+    [statusImage setTemplate:YES];
     orangeredImage = [NSImage imageNamed:@"orangered"];
-    orangeredHighlightImage = [NSImage imageNamed:@"orangered-alt"];
+    [orangeredImage setTemplate:YES];
     [statusItem setImage:statusImage];
-    [statusItem setAlternateImage:statusHighlightImage];
     [statusItem setMenu:statusMenu];
     [statusItem setToolTip:NSLocalizedString(@"RedditBar", @"Main Menuitem Tooltip")];
     [statusItem setHighlightMode:YES];
@@ -83,12 +82,10 @@ NSInteger numberOfStaticMenuItems = 10;
 -(void)readPMsCallback:(NSArray *)items {
     if ((items == nil) || ([items count] < 1) || (((NSNumber *)[items objectAtIndex:0]).integerValue == 0)) {
         [statusItem setImage:statusImage];
-        [statusItem setAlternateImage:statusHighlightImage];
         [PMItem setHidden:TRUE];
         [PMSeparator setHidden:TRUE];
     } else {
         [statusItem setImage:orangeredImage];
-        [statusItem setAlternateImage:orangeredHighlightImage];
         [PMItem setTitle:[NSString stringWithFormat:NSLocalizedString(@"You've got %ld unread PMs.", @"PM message"), (long)((NSNumber *)[items objectAtIndex:0]).integerValue]];
         [PMItem setHidden:FALSE];
         [PMSeparator setHidden:FALSE];

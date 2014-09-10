@@ -41,9 +41,7 @@
 
 @property (atomic, retain) NSStatusItem *statusItem;
 @property (atomic, retain) NSImage *statusImage;
-@property (atomic, retain) NSImage *statusHighlightImage;
 @property (atomic, retain) NSImage *orangeredImage;
-@property (atomic, retain) NSImage *orangeredHighlightImage;
 @property (atomic, retain) PrefController *prefWindow;
 @property (atomic, retain) StateModel *currentState;
 @property (atomic, retain) Reddit *api;
