@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1060" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PrefController">
@@ -27,7 +27,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="BaconBar Einstellungen" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="1" customClass="PrefWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -224,7 +224,7 @@ Gw
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="paW-kV-tNF">
+                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="paW-kV-tNF">
                         <rect key="frame" x="14" y="111" width="316" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -316,9 +316,6 @@ Gw
             </attributedString>
             <real key="minimum" value="1"/>
             <real key="maximum" value="100"/>
-            <metadata>
-                <real key="inspectorSampleValue" value="1"/>
-            </metadata>
         </numberFormatter>
         <numberFormatter formatterBehavior="10_0" positiveFormat="0" negativeFormat="-0" hasThousandSeparators="NO" thousandSeparator="." id="hDb-Na-Vku">
             <attributedString key="attributedStringForZero">
@@ -326,9 +323,6 @@ Gw
             </attributedString>
             <real key="minimum" value="0.0"/>
             <real key="maximum" value="140"/>
-            <metadata>
-                <real key="inspectorSampleValue" value="1"/>
-            </metadata>
         </numberFormatter>
         <numberFormatter formatterBehavior="10_0" positiveFormat="0" negativeFormat="-0" hasThousandSeparators="NO" thousandSeparator="." id="Y11-Cs-X1g">
             <attributedString key="attributedStringForZero">
@@ -336,9 +330,6 @@ Gw
             </attributedString>
             <real key="minimum" value="1"/>
             <decimal key="maximum" value="NaN"/>
-            <metadata>
-                <real key="inspectorSampleValue" value="1"/>
-            </metadata>
         </numberFormatter>
         <menu title="Hauptmenü" systemMenu="main" id="IWp-hb-gSM">
             <items>
